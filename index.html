@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="ROWOD">
@@ -14,6 +14,9 @@
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,700;0,800;0,900;1,800;1,900&family=Inter:wght@400;500;600&display=swap">
 <style>
+/* iOS zooms into any field whose text is under 16px: keep fields at 16px on touch screens */
+@media (pointer:coarse){input,textarea,select{font-size:16px!important}}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 :root{--bg:#111315;--surf:#1C1F24;--surf2:#252930;--bdr:#2D3038;--fg:#F0F2F5;--fg2:#8590A0;--fg3:#484F5C;--acc:#FF5200;--acc2:rgba(255,82,0,.14);--acc3:rgba(255,82,0,.28);--grn:#2ECC71;--grn2:rgba(46,204,113,.14);--red:#E74C3C;--r:14px;--rs:9px;color-scheme:dark}
 @media(prefers-color-scheme:light){:root:not([data-theme="dark"]){--bg:#F4F5F7;--surf:#FFF;--surf2:#ECEEF2;--bdr:#DDE0E6;--fg:#0D1117;--fg2:#5A6270;--fg3:#9AA0AC;--acc2:rgba(255,82,0,.1);--acc3:rgba(255,82,0,.22);--grn2:rgba(46,204,113,.1);color-scheme:light}}
 :root[data-theme="dark"]{--bg:#111315;--surf:#1C1F24;--surf2:#252930;--bdr:#2D3038;--fg:#F0F2F5;--fg2:#8590A0;--fg3:#484F5C;--acc2:rgba(255,82,0,.14);--acc3:rgba(255,82,0,.28);--grn2:rgba(46,204,113,.14);color-scheme:dark}
@@ -482,6 +485,7 @@ input:focus{border-color:var(--acc)}
     <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-style:italic;font-size:3.6rem;color:var(--acc);letter-spacing:-.01em;line-height:.85;">WOD</div>
     <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:3.6rem;line-height:.9;margin-bottom:10px;">HUB</div>
     <div style="font-size:.68rem;color:var(--fg3);letter-spacing:.14em;text-transform:uppercase;">Fitness games · Team workouts</div>
+    <button id="acct-btn" onclick="openAccount()" style="margin-top:14px;background:var(--surf);border:1px solid var(--bdr);border-radius:999px;padding:7px 14px;color:var(--fg2);font-size:.76rem;font-weight:600;font-family:'Inter',sans-serif;cursor:pointer;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">👤 Sign in · sync your data</button>
   </div>
   <div class="menu-grid">
     <div class="menu-tile" onclick="openWodsTimers()">
@@ -757,7 +761,10 @@ input:focus{border-color:var(--acc)}
       <div class="wod-info">
         <div class="wod-name">TAROT WOD</div>
         <div class="wod-desc">Cards · Team · Reps</div>
-        <button onclick="event.stopPropagation();document.getElementById('tmodal').classList.remove('h')" style="background:none;border:none;color:var(--fg3);font-size:.7rem;cursor:pointer;padding:0;margin-top:4px;font-family:'Inter',sans-serif;">📋 Rules</button>
+        <div style="display:flex;gap:10px;margin-top:4px;align-items:center;">
+          <button onclick="event.stopPropagation();document.getElementById('tmodal').classList.remove('h')" style="background:none;border:none;color:var(--fg3);font-size:.7rem;cursor:pointer;padding:0;font-family:'Inter',sans-serif;">📋 Rules</button>
+          <button onclick="event.stopPropagation();openTarotLoad(true)" style="background:none;border:none;color:var(--acc);font-size:.7rem;cursor:pointer;padding:0;font-family:'Inter',sans-serif;">📂 Load config</button>
+        </div>
       </div>
       <div style="color:var(--acc);font-size:1.3rem;flex-shrink:0;">›</div>
     </div>
@@ -1252,10 +1259,11 @@ input:focus{border-color:var(--acc)}
 <div id="roster-export-ovl" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:900;align-items:flex-end;justify-content:center;">
   <div style="background:var(--surf);border-radius:var(--r) var(--r) 0 0;padding:24px 20px 32px;width:100%;max-width:480px;box-shadow:0 -4px 32px rgba(0,0,0,.3);">
     <div style="display:flex;align-items:center;margin-bottom:4px;">
-      <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.3rem;text-transform:uppercase;letter-spacing:.04em;">⬆ Export Players</div>
+      <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.3rem;text-transform:uppercase;letter-spacing:.04em;">⬆ Export data</div>
       <button onclick="closeRosterExport()" style="margin-left:auto;background:none;border:none;color:var(--fg2);font-size:1.5rem;cursor:pointer;line-height:1;">✕</button>
     </div>
-    <div style="font-size:.8rem;color:var(--fg3);margin-bottom:18px;">Copy this code and paste it on another device to import all players.</div>
+    <div style="font-size:.8rem;color:var(--fg3);margin-bottom:8px;">Copy this code and keep it (Notes, email…) or paste it on another device with ⬇ Import.</div>
+    <div id="roster-export-summary" style="font-size:.75rem;color:var(--fg2);margin-bottom:14px;line-height:1.6;"></div>
     <textarea id="roster-export-code" readonly style="width:100%;box-sizing:border-box;background:var(--surf2);border:1px solid var(--bdr);border-radius:var(--rs);padding:10px 12px;color:var(--fg);font-size:.72rem;font-family:'Courier New',monospace;resize:none;height:90px;word-break:break-all;"></textarea>
     <div style="display:flex;gap:10px;margin-top:14px;">
       <button class="btn bs" style="flex:1;" onclick="closeRosterExport()">Close</button>
@@ -1268,16 +1276,51 @@ input:focus{border-color:var(--acc)}
 <div id="roster-import-ovl" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:900;align-items:flex-end;justify-content:center;">
   <div style="background:var(--surf);border-radius:var(--r) var(--r) 0 0;padding:24px 20px 32px;width:100%;max-width:480px;box-shadow:0 -4px 32px rgba(0,0,0,.3);">
     <div style="display:flex;align-items:center;margin-bottom:4px;">
-      <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.3rem;text-transform:uppercase;letter-spacing:.04em;">⬇ Import Players</div>
+      <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.3rem;text-transform:uppercase;letter-spacing:.04em;">⬇ Import data</div>
       <button onclick="closeRosterImport()" style="margin-left:auto;background:none;border:none;color:var(--fg2);font-size:1.5rem;cursor:pointer;line-height:1;">✕</button>
     </div>
-    <div style="font-size:.8rem;color:var(--fg3);margin-bottom:18px;">Paste the export code from another device. New players will be added (existing names skipped).</div>
+    <div style="font-size:.8rem;color:var(--fg3);margin-bottom:18px;">Paste an export code. Players, exercises, configs and WODs are added to what you already have — nothing is deleted.</div>
     <textarea id="roster-import-code" style="width:100%;box-sizing:border-box;background:var(--surf2);border:1px solid var(--bdr);border-radius:var(--rs);padding:10px 12px;color:var(--fg);font-size:.72rem;font-family:'Courier New',monospace;resize:none;height:90px;word-break:break-all;" placeholder="Paste export code here…"></textarea>
     <div id="roster-import-preview" style="display:none;margin-top:12px;font-size:.8rem;color:var(--fg2);"></div>
     <div style="display:flex;gap:10px;margin-top:14px;">
       <button class="btn bs" style="flex:1;" onclick="closeRosterImport()">Cancel</button>
       <button class="btn bp" style="flex:2;" onclick="doRosterImport()">⬇ Import</button>
     </div>
+  </div>
+</div>
+
+<!-- ══ ACCOUNT MODAL ═════════════════════════════ -->
+<div id="acct-ovl" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:950;align-items:flex-end;justify-content:center;">
+  <div style="background:var(--surf);border-radius:var(--r) var(--r) 0 0;padding:24px 20px calc(32px + env(safe-area-inset-bottom,0px));width:100%;max-width:480px;max-height:90vh;overflow-y:auto;box-shadow:0 -4px 32px rgba(0,0,0,.3);box-sizing:border-box;">
+    <div style="display:flex;align-items:center;margin-bottom:4px;">
+      <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.3rem;text-transform:uppercase;letter-spacing:.04em;">☁️ Account</div>
+      <button onclick="closeAccount()" style="margin-left:auto;background:none;border:none;color:var(--fg2);font-size:1.5rem;cursor:pointer;line-height:1;">✕</button>
+    </div>
+    <div id="acct-out">
+      <div style="font-size:.8rem;color:var(--fg3);margin-bottom:18px;">Sign in to find your players, exercises and saved configs on any device.</div>
+      <div style="font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--fg3);margin-bottom:6px;">Email</div>
+      <input id="acct-email" type="email" autocomplete="username" inputmode="email" autocapitalize="off" style="width:100%;box-sizing:border-box;background:var(--surf2);border:1px solid var(--bdr);border-radius:var(--rs);padding:10px 12px;color:var(--fg);font-size:16px;font-family:'Inter',sans-serif;margin-bottom:14px;" placeholder="you@example.com">
+      <div style="font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--fg3);margin-bottom:6px;">Password</div>
+      <input id="acct-pass" type="password" autocomplete="current-password" style="width:100%;box-sizing:border-box;background:var(--surf2);border:1px solid var(--bdr);border-radius:var(--rs);padding:10px 12px;color:var(--fg);font-size:16px;font-family:'Inter',sans-serif;margin-bottom:8px;" placeholder="6 characters minimum">
+      <button onclick="acctReset()" style="background:none;border:none;color:var(--fg3);font-size:.75rem;cursor:pointer;padding:0;margin-bottom:16px;font-family:'Inter',sans-serif;text-decoration:underline;">Forgot password?</button>
+      <div style="display:flex;gap:10px;">
+        <button class="btn bs" style="flex:1;" onclick="acctSignUp()">Create account</button>
+        <button class="btn bp" style="flex:1;" onclick="acctSignIn()">Sign in</button>
+      </div>
+    </div>
+    <div id="acct-in" style="display:none;">
+      <div style="font-size:.8rem;color:var(--fg3);margin-bottom:14px;">Your data syncs automatically between your devices.</div>
+      <div style="background:var(--surf2);border:1px solid var(--bdr);border-radius:var(--rs);padding:12px 14px;margin-bottom:16px;">
+        <div style="font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--fg3);margin-bottom:3px;">Signed in as</div>
+        <div id="acct-who" style="font-weight:700;font-size:.92rem;word-break:break-all;"></div>
+        <div id="acct-sync" style="font-size:.75rem;color:var(--fg3);margin-top:6px;"></div>
+      </div>
+      <div style="display:flex;gap:10px;">
+        <button class="btn bs" style="flex:1;" onclick="acctSignOut()">Sign out</button>
+        <button class="btn bp" style="flex:1;" onclick="cloudSyncNow()">⟳ Sync now</button>
+      </div>
+    </div>
+    <div id="acct-msg" style="display:none;margin-top:14px;font-size:.8rem;padding:10px 12px;border-radius:var(--rs);"></div>
   </div>
 </div>
 
@@ -1516,9 +1559,14 @@ function saveRoster(){
 
 // ── Roster Export / Import ──────────────────────────────────────
 function openRosterExport(){
-  if(!ROSTER.length){toast('No players to export','err');return;}
   try{
-    const code=btoa(unescape(encodeURIComponent(JSON.stringify(ROSTER))));
+    const snap=_localSnapshot();
+    const payload={v:2};
+    SYNC_KEYS.forEach(k=>{payload[k]=_parse(snap[k],[]);});
+    const n=payload.wh_roster.length+payload.rowod_presets.length+payload.ROWOD_TAROT_CONFIGS.length+payload.wh_custom_wods.length;
+    if(!n){toast('Nothing to export yet','err');return;}
+    document.getElementById('roster-export-summary').textContent=`👥 ${payload.wh_roster.length} players · 💪 ${payload.wh_pool.length} exercises · 🚣 ${payload.rowod_presets.length} ROWOD configs · 🃏 ${payload.ROWOD_TAROT_CONFIGS.length} Tarot configs · 🏋️ ${payload.wh_custom_wods.length} custom WODs`;
+    const code=btoa(unescape(encodeURIComponent(JSON.stringify(payload))));
     document.getElementById('roster-export-code').value=code;
     document.getElementById('roster-export-ovl').style.display='flex';
   }catch(e){toast('Export error','err');}
@@ -1549,24 +1597,26 @@ function doRosterImport(){
   try{
     imported=JSON.parse(decodeURIComponent(escape(atob(code))));
   }catch(e){toast('Invalid code','err');return;}
-  if(!Array.isArray(imported)||!imported.length){toast('No players found in code','err');return;}
-  let added=0;
-  imported.forEach(p=>{
-    if(!p.name)return;
-    const exists=ROSTER.some(r=>r.name===p.name);
-    if(!exists){
-      const id='p_'+Date.now()+'_'+Math.random().toString(36).slice(2,6);
-      ROSTER.push({id,name:p.name,avatar:p.avatar||''});
-      added++;
-    }
-  });
-  saveRoster();
+  // Old codes contained only the players list
+  if(Array.isArray(imported)) imported={wh_roster:imported};
+  if(!imported||typeof imported!=='object'){toast('Invalid code','err');return;}
+  const before=_localSnapshot();
+  const inc={};
+  SYNC_KEYS.forEach(k=>{inc[k]=imported[k]!=null?JSON.stringify(imported[k]):null;});
+  const merged=_mergeSnapshots(before,inc);
+  const cnt=(snap,k)=>_parse(snap[k],[]).length;
+  const diff=k=>cnt(merged,k)-cnt(before,k);
+  _applyToLocal(merged);
+  try{SYNC_KEYS.forEach(k=>{if(merged[k]!=null)localStorage.setItem(k,merged[k]);});}catch{}
+  try{updateLaunchBtn();}catch{}
   closeRosterImport();
-  buildHubRoster();
-  updateLaunchBtn();
-  updateMenuBadges();
-  if(added>0) toast(`${added} player(s) imported ✅`,'ok');
-  else toast('All players already exist','err');
+  const parts=[];
+  if(diff('wh_roster'))parts.push(`${diff('wh_roster')} players`);
+  if(diff('wh_pool'))parts.push(`${diff('wh_pool')} exercises`);
+  if(diff('rowod_presets'))parts.push(`${diff('rowod_presets')} ROWOD configs`);
+  if(diff('ROWOD_TAROT_CONFIGS'))parts.push(`${diff('ROWOD_TAROT_CONFIGS')} Tarot configs`);
+  if(diff('wh_custom_wods'))parts.push(`${diff('wh_custom_wods')} WODs`);
+  toast(parts.length?`Imported: ${parts.join(', ')} ✅`:'Everything was already here','ok');
 }
 
 function loadPool(){
@@ -4747,7 +4797,9 @@ function doTarotSave(){
     mvtMap:{...GT.mvtMap},
     penaltyMode:GT.penaltyMode, penaltyCount:GT.penaltyCount, penaltyMvt:GT.penaltyMvt,
     gameMode:GT.gameMode, timeDuration:GT.timeDuration,
-    np:GT.np,
+    np:HUB_SEL.length,
+    playerIds:[...HUB_SEL],
+    playerObjects:ROSTER.filter(r=>HUB_SEL.includes(r.id)).map(r=>({...r})),
   };
   const arr=_loadTarotPresets();
   arr.unshift(preset);
@@ -4755,7 +4807,9 @@ function doTarotSave(){
   closeTarotSave();
   toast('Tarot config saved!');
 }
-function openTarotLoad(){
+let _tarotLoadFromGames=false;
+function openTarotLoad(fromGames){
+  _tarotLoadFromGames=!!fromGames;
   _renderTarotPresets();
   document.getElementById('tarot-load-ovl').style.display='flex';
 }
@@ -4782,6 +4836,7 @@ function _renderTarotPresets(){
       `<div style="font-size:.73rem;color:var(--fg3);display:flex;gap:12px;flex-wrap:wrap;margin-bottom:10px;">`+
         `<span>📅 ${dateStr}</span>`+
         `<span>🃏 ${p.variant||'shared'} · ${p.numDecks||1} deck(s)</span>`+
+        (p.playerObjects&&p.playerObjects.length?`<span>👥 ${p.playerObjects.length} players</span>`:'')+
         (mvts.length?`<span>💪 ${mvts.join(' / ')}</span>`:'')+
         (p.penaltyMode?`<span>⚠️ ${p.penaltyCount||3} penalties · ${p.penaltyMvt||'Burpees'}</span>`:'')+
       `</div>`+
@@ -4807,10 +4862,32 @@ function applyTarotPreset(id){
   GT.penaltyMvt=p.penaltyMvt||'Burpees';
   GT.gameMode=p.gameMode||'cards';
   GT.timeDuration=p.timeDuration||20;
+  // Players (recreate any that no longer exist in the roster)
+  let missing=0;
+  if(p.playerObjects&&p.playerObjects.length){
+    HUB_SEL.length=0;
+    p.playerObjects.forEach(saved=>{
+      let r=ROSTER.find(x=>x.id===saved.id)||ROSTER.find(x=>x.name===saved.name);
+      if(!r){ROSTER.push({...saved});r=ROSTER[ROSTER.length-1];missing++;}
+      if(!HUB_SEL.includes(r.id))HUB_SEL.push(r.id);
+    });
+    if(missing)saveRoster();
+  }
   closeTarotLoad();
+  if(_tarotLoadFromGames) go('s-tarot-cfg');
+  _refreshTarotCfgUI();
+  try{updateMenuBadges();buildHubRoster();updateGamesStatus();}catch{}
+  toast(missing?`Tarot config loaded! (${missing} player(s) recreated)`:'Tarot config loaded!','ok');
+}
+function _refreshTarotCfgUI(){
   initTarotCfg();
   initTarotCfg2();
-  toast('Tarot config loaded!');
+  const tdv=document.getElementById('tdv');if(tdv)tdv.textContent=GT.numDecks;
+  const tdbm=document.getElementById('tdbm');if(tdbm)tdbm.disabled=GT.numDecks<=1;
+  const tdbp=document.getElementById('tdbp');if(tdbp)tdbp.disabled=GT.numDecks>=4;
+  const tduv=document.getElementById('tduv');if(tduv)tduv.textContent=GT.timeDuration;
+  const dm=document.getElementById('tdurbm');if(dm)dm.disabled=GT.timeDuration<=5;
+  const dp=document.getElementById('tdurbp');if(dp)dp.disabled=GT.timeDuration>=90;
 }
 function deleteTarotPreset(id){
   const arr=_loadTarotPresets().filter(x=>x.id!==id);
@@ -4830,7 +4907,8 @@ function _tarotPresetDetail(p){
   const mvtRows=Object.entries(p.mvtMap||{}).filter(([,v])=>v).map(([k,v])=>`${SUIT_NAMES[k]||k}: <b>${v}</b>`);
   let rows=[
     `<b>Variant:</b> ${p.variant||'shared'} · ${p.numDecks||1} deck(s) · ${p.deckType||'classic'}`,
-    `<b>Mode:</b> ${p.gameMode==='timer'?`Timer ${p.timeDuration||20} min`:'Cards'}`,
+    `<b>Mode:</b> ${p.gameMode==='time'?`Timer ${p.timeDuration||20} min`:'Cards'}`,
+    p.playerObjects&&p.playerObjects.length?`<b>Players:</b> ${p.playerObjects.map(x=>x.name).join(', ')}`:null,
     mvtRows.length?`<b>Movements:</b><br>${mvtRows.join('<br>')}`:null,
     p.penaltyMode?`<b>Penalties:</b> ON · ${p.penaltyCount||3} per game · ${p.penaltyMvt||'Burpees'}`:null,
   ].filter(Boolean);
@@ -6217,8 +6295,250 @@ function saveCustomWods(){
   try{localStorage.setItem('wh_custom_wods',JSON.stringify(WD.custom));}catch{}
 }
 
+// ══ CLOUD SYNC (Firebase) ══════════════════════════════════════
+// Paste your Firebase web app config here (Project settings → Your apps).
+const FIREBASE_CONFIG={
+  apiKey:"",
+  authDomain:"",
+  projectId:"",
+  appId:""
+};
+const FB_VER='10.12.2';
+const SYNC_KEYS=['wh_roster','wh_pool','rowod_presets','ROWOD_TAROT_CONFIGS','wh_custom_wods'];
+const CLOUD={ready:false,user:null,db:null,unsub:null,applying:false,pushT:null,lastSync:0,status:'',
+  dev:(()=>{try{let d=localStorage.getItem('wh_device');if(!d){d='d_'+Math.random().toString(36).slice(2,10);localStorage.setItem('wh_device',d);}return d;}catch{return 'd_'+Math.random().toString(36).slice(2,10);}})()};
+function cloudConfigured(){return !!(FIREBASE_CONFIG.apiKey&&FIREBASE_CONFIG.projectId);}
+
+// Push automatically whenever one of the synced keys is written
+(function(){
+  try{
+    const orig=Storage.prototype.setItem;
+    Storage.prototype.setItem=function(k,v){
+      orig.call(this,k,v);
+      try{if(this===window.localStorage&&SYNC_KEYS.includes(k)&&!CLOUD.applying)cloudSchedulePush();}catch{}
+    };
+  }catch{}
+})();
+
+function _loadScript(src){
+  return new Promise((res,rej)=>{const sc=document.createElement('script');sc.src=src;sc.onload=res;sc.onerror=rej;document.head.appendChild(sc);});
+}
+async function cloudInit(){
+  _acctUpdateBtn();
+  if(!cloudConfigured())return;
+  try{
+    const base=`https://cdn.jsdelivr.net/npm/firebase@${FB_VER}/`;
+    await _loadScript(base+'firebase-app-compat.js');
+    await _loadScript(base+'firebase-auth-compat.js');
+    await _loadScript(base+'firebase-firestore-compat.js');
+    firebase.initializeApp(FIREBASE_CONFIG);
+    CLOUD.db=firebase.firestore();
+    CLOUD.ready=true;
+    firebase.auth().onAuthStateChanged(u=>{
+      CLOUD.user=u||null;
+      if(CLOUD.unsub){CLOUD.unsub();CLOUD.unsub=null;}
+      if(u) _cloudStart(u);
+      else {CLOUD.status='';}
+      _acctRender();_acctUpdateBtn();
+    });
+  }catch(e){CLOUD.status='offline';_acctUpdateBtn();}
+}
+
+function _localSnapshot(){
+  const o={};
+  SYNC_KEYS.forEach(k=>{try{o[k]=localStorage.getItem(k);}catch{o[k]=null;}});
+  return o;
+}
+function _parse(v,def){try{const x=JSON.parse(v);return x==null?def:x;}catch{return def;}}
+function _mergeById(a,b){
+  const m=new Map();
+  [...(a||[]),...(b||[])].forEach(x=>{if(x&&x.id!=null&&!m.has(x.id))m.set(x.id,x);});
+  return [...m.values()].sort((x,y)=>(y.savedAt||0)-(x.savedAt||0));
+}
+function _mergeSnapshots(cloud,local){
+  const out={};
+  // players: union by name (cloud first)
+  const r=[..._parse(cloud.wh_roster,[])];
+  _parse(local.wh_roster,[]).forEach(p=>{if(p&&p.name&&!r.some(x=>x.name===p.name))r.push(p.id?p:{...p,id:'p_'+Date.now()+'_'+Math.random().toString(36).slice(2,6)});});
+  out.wh_roster=JSON.stringify(r);
+  const pool=[..._parse(cloud.wh_pool,[])];
+  _parse(local.wh_pool,[]).forEach(m=>{if(!pool.includes(m))pool.push(m);});
+  out.wh_pool=JSON.stringify(pool);
+  out.rowod_presets=JSON.stringify(_mergeById(_parse(cloud.rowod_presets,[]),_parse(local.rowod_presets,[])));
+  out.ROWOD_TAROT_CONFIGS=JSON.stringify(_mergeById(_parse(cloud.ROWOD_TAROT_CONFIGS,[]),_parse(local.ROWOD_TAROT_CONFIGS,[])));
+  const w=[..._parse(cloud.wh_custom_wods,[])];
+  _parse(local.wh_custom_wods,[]).forEach(x=>{if(x&&!w.some(y=>y.id===x.id))w.push(x);});
+  out.wh_custom_wods=JSON.stringify(w);
+  return out;
+}
+function _applyToLocal(snap){
+  CLOUD.applying=true;
+  try{
+    SYNC_KEYS.forEach(k=>{const v=snap[k];try{if(v==null)localStorage.removeItem(k);else localStorage.setItem(k,v);}catch{}});
+  }finally{CLOUD.applying=false;}
+  try{loadRoster();loadPool();loadCustomWods();}catch{}
+  try{for(let i=HUB_SEL.length-1;i>=0;i--){if(!ROSTER.some(r=>r.id===HUB_SEL[i]))HUB_SEL.splice(i,1);}}catch{}
+  try{buildHub();}catch{}
+  try{updateMenuBadges();}catch{}
+  try{buildHubRoster();}catch{}
+  try{buildHubPool();}catch{}
+  try{if(typeof buildWodList==='function')buildWodList();}catch{}
+  try{if(document.getElementById('rowod-load-ovl').style.display==='flex')_renderPresets();}catch{}
+  try{if(document.getElementById('tarot-load-ovl').style.display==='flex')_renderTarotPresets();}catch{}
+}
+function _cloudDoc(){return CLOUD.db.collection('users').doc(CLOUD.user.uid);}
+function _snapFromDoc(d){const o={};SYNC_KEYS.forEach(k=>{o[k]=(d&&typeof d[k]==='string')?d[k]:null;});return o;}
+
+async function _cloudStart(u){
+  CLOUD.status='syncing';_acctRender();_acctUpdateBtn();
+  try{
+    const doc=await _cloudDoc().get();
+    const syncedKey='wh_synced_'+u.uid;
+    let already=false;try{already=localStorage.getItem(syncedKey)==='1';}catch{}
+    if(doc.exists){
+      const cloud=_snapFromDoc(doc.data());
+      // First time on this device: merge local + cloud. Afterwards: the cloud is the reference.
+      const snap=already?cloud:_mergeSnapshots(cloud,_localSnapshot());
+      _applyToLocal(snap);
+      if(!already) await _cloudPush();
+    } else {
+      await _cloudPush();
+    }
+    try{localStorage.setItem(syncedKey,'1');}catch{}
+    CLOUD.lastSync=Date.now();CLOUD.status='ok';
+    // Live updates from other devices
+    CLOUD.unsub=_cloudDoc().onSnapshot(d=>{
+      if(!d.exists||d.metadata.hasPendingWrites)return;
+      const data=d.data();
+      if(data.dev===CLOUD.dev)return;
+      _applyToLocal(_snapFromDoc(data));
+      CLOUD.lastSync=Date.now();CLOUD.status='ok';_acctRender();_acctUpdateBtn();
+    },()=>{CLOUD.status='error';_acctRender();_acctUpdateBtn();});
+  }catch(e){CLOUD.status='error';}
+  _acctRender();_acctUpdateBtn();
+}
+function cloudSchedulePush(){
+  if(!CLOUD.ready||!CLOUD.user)return;
+  clearTimeout(CLOUD.pushT);
+  CLOUD.status='syncing';_acctUpdateBtn();
+  CLOUD.pushT=setTimeout(()=>{_cloudPush().then(()=>{_acctRender();_acctUpdateBtn();});},800);
+}
+async function _cloudPush(){
+  if(!CLOUD.ready||!CLOUD.user)return;
+  try{
+    const data=_localSnapshot();
+    Object.keys(data).forEach(k=>{if(data[k]==null)delete data[k];});
+    data.dev=CLOUD.dev;
+    data.email=CLOUD.user.email||'';
+    data.updatedAt=firebase.firestore.FieldValue.serverTimestamp();
+    await _cloudDoc().set(data);
+    CLOUD.lastSync=Date.now();CLOUD.status='ok';
+  }catch(e){CLOUD.status='error';}
+}
+async function cloudSyncNow(){
+  if(!CLOUD.user)return;
+  CLOUD.status='syncing';_acctRender();
+  try{
+    const doc=await _cloudDoc().get();
+    if(doc.exists){
+      const d=doc.data();
+      if(d.dev!==CLOUD.dev)_applyToLocal(_snapFromDoc(d));
+      else await _cloudPush();
+    } else await _cloudPush();
+    CLOUD.lastSync=Date.now();CLOUD.status='ok';
+    _acctMsg('Synced ✅','ok');
+  }catch(e){CLOUD.status='error';_acctMsg('Sync failed — check your connection','err');}
+  _acctRender();_acctUpdateBtn();
+}
+
+// ── Account UI ──
+function openAccount(){
+  document.getElementById('acct-msg').style.display='none';
+  _acctRender();
+  document.getElementById('acct-ovl').style.display='flex';
+  if(!cloudConfigured()) _acctMsg('Cloud sync is not configured yet in this version of the app.','err');
+  else if(!CLOUD.ready) _acctMsg(CLOUD.status==='offline'?'Cannot reach the sync service — check your connection.':'Loading…','err');
+}
+function closeAccount(){document.getElementById('acct-ovl').style.display='none';}
+function _acctMsg(t,type){
+  const m=document.getElementById('acct-msg');
+  m.textContent=t;m.style.display='block';
+  m.style.background=type==='ok'?'rgba(16,185,129,.12)':'rgba(239,68,68,.12)';
+  m.style.color=type==='ok'?'#10b981':'#ef4444';
+}
+function _acctRender(){
+  const inn=!!CLOUD.user;
+  const o=document.getElementById('acct-out'),i=document.getElementById('acct-in');
+  if(!o||!i)return;
+  o.style.display=inn?'none':'block';i.style.display=inn?'block':'none';
+  if(inn){
+    document.getElementById('acct-who').textContent=CLOUD.user.email||'';
+    const t=CLOUD.lastSync?new Date(CLOUD.lastSync):null;
+    const ts=t?`${String(t.getHours()).padStart(2,'0')}:${String(t.getMinutes()).padStart(2,'0')}`:'—';
+    document.getElementById('acct-sync').textContent=
+      CLOUD.status==='syncing'?'⟳ Syncing…':CLOUD.status==='error'?'⚠️ Sync problem — will retry on next change':`✓ Last sync ${ts}`;
+  }
+}
+function _acctUpdateBtn(){
+  const b=document.getElementById('acct-btn');if(!b)return;
+  b.hidden=!cloudConfigured();
+  if(CLOUD.user){
+    const ic=CLOUD.status==='error'?'⚠️':CLOUD.status==='syncing'?'⟳':'☁️';
+    b.textContent=`${ic} ${CLOUD.user.email}`;
+    b.style.color=CLOUD.status==='error'?'#ef4444':'var(--fg)';
+  } else {
+    b.textContent='👤 Sign in · sync your data';
+    b.style.color='var(--fg2)';
+  }
+}
+function _acctErr(e){
+  const c=(e&&e.code)||'';
+  const M={
+    'auth/invalid-email':'Invalid email address.',
+    'auth/missing-password':'Enter your password.',
+    'auth/weak-password':'Password too short (6 characters minimum).',
+    'auth/email-already-in-use':'An account already exists with this email — sign in instead.',
+    'auth/invalid-credential':'Wrong email or password.',
+    'auth/wrong-password':'Wrong email or password.',
+    'auth/user-not-found':'No account with this email.',
+    'auth/too-many-requests':'Too many attempts — try again in a few minutes.',
+    'auth/network-request-failed':'No connection.',
+    'auth/operation-not-allowed':'Email/password sign-in is not enabled in Firebase.',
+  };
+  return M[c]||('Error: '+(e&&e.message||c));
+}
+function _acctCreds(){
+  return {email:document.getElementById('acct-email').value.trim(),pass:document.getElementById('acct-pass').value};
+}
+async function acctSignIn(){
+  if(!CLOUD.ready){openAccount();return;}
+  const {email,pass}=_acctCreds();
+  try{await firebase.auth().signInWithEmailAndPassword(email,pass);document.getElementById('acct-pass').value='';_acctMsg('Signed in ✅','ok');}
+  catch(e){_acctMsg(_acctErr(e),'err');}
+}
+async function acctSignUp(){
+  if(!CLOUD.ready){openAccount();return;}
+  const {email,pass}=_acctCreds();
+  try{await firebase.auth().createUserWithEmailAndPassword(email,pass);document.getElementById('acct-pass').value='';_acctMsg('Account created ✅ Your data is now synced.','ok');}
+  catch(e){_acctMsg(_acctErr(e),'err');}
+}
+async function acctReset(){
+  if(!CLOUD.ready){openAccount();return;}
+  const {email}=_acctCreds();
+  if(!email){_acctMsg('Enter your email first, then tap “Forgot password?”.','err');return;}
+  try{await firebase.auth().sendPasswordResetEmail(email);_acctMsg('Reset email sent — check your inbox (and spam).','ok');}
+  catch(e){_acctMsg(_acctErr(e),'err');}
+}
+async function acctSignOut(){
+  try{await firebase.auth().signOut();}catch{}
+  _acctMsg('Signed out. Your data stays on this device.','ok');
+  _acctRender();_acctUpdateBtn();
+}
+
+
 // Init
 loadRoster(); loadPool(); buildHub(); loadCustomWods(); go('s-hub');
+cloudInit();
 updStructDisplay();
 updPenMvtDisplay();
 </script>
