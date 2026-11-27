@@ -18,7 +18,7 @@
 /* iOS zooms into any field whose text is under 16px: keep fields at 16px on touch screens */
 @media (pointer:coarse){input,textarea,select{font-size:16px!important}}
 html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
-:root{--bg:#111315;--surf:#1C1F24;--surf2:#252930;--bdr:#2D3038;--fg:#F0F2F5;--fg2:#8590A0;--fg3:#484F5C;--acc:#FF5200;--acc2:rgba(255,82,0,.14);--acc3:rgba(255,82,0,.28);--grn:#2ECC71;--grn2:rgba(46,204,113,.14);--red:#E74C3C;--r:14px;--rs:9px;color-scheme:dark}
+:root{--bg:#0d0d0e;--surf:#18181a;--surf2:#232326;--bdr:#2e2e33;--fg:#f5f4f0;--fg2:#a3a3a8;--fg3:#66666c;--acc:#ff5a1f;--acc2:rgba(255,82,0,.14);--acc3:rgba(255,82,0,.28);--grn:#2ECC71;--grn2:rgba(46,204,113,.14);--red:#E74C3C;--r:14px;--rs:9px;color-scheme:dark}
 @media(prefers-color-scheme:light){:root:not([data-theme="dark"]){--bg:#F4F5F7;--surf:#FFF;--surf2:#ECEEF2;--bdr:#DDE0E6;--fg:#0D1117;--fg2:#5A6270;--fg3:#9AA0AC;--acc2:rgba(255,82,0,.1);--acc3:rgba(255,82,0,.22);--grn2:rgba(46,204,113,.1);color-scheme:light}}
 :root[data-theme="light"]{--bg:#F4F5F7;--surf:#FFF;--surf2:#ECEEF2;--bdr:#DDE0E6;--fg:#0D1117;--fg2:#5A6270;--fg3:#9AA0AC;--acc2:rgba(255,82,0,.1);--acc3:rgba(255,82,0,.22);--grn2:rgba(46,204,113,.1);color-scheme:light}
 .rk-wod{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.5rem;color:var(--acc);letter-spacing:.06em;text-transform:uppercase;line-height:1}
@@ -34,7 +34,7 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 .theme-seg button{flex:1;padding:10px 0;background:var(--surf2);color:var(--fg2);border:none;border-left:1px solid var(--bdr);font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:.9rem;text-transform:uppercase;letter-spacing:.05em;cursor:pointer}
 .theme-seg button:first-child{border-left:none}
 .theme-seg button.on{background:var(--acc);color:#fff}
-:root[data-theme="dark"]{--bg:#111315;--surf:#1C1F24;--surf2:#252930;--bdr:#2D3038;--fg:#F0F2F5;--fg2:#8590A0;--fg3:#484F5C;--acc2:rgba(255,82,0,.14);--acc3:rgba(255,82,0,.28);--grn2:rgba(46,204,113,.14);color-scheme:dark}
+:root[data-theme="dark"]{--bg:#0d0d0e;--surf:#18181a;--surf2:#232326;--bdr:#2e2e33;--fg:#f5f4f0;--fg2:#a3a3a8;--fg3:#66666c;--acc2:rgba(255,82,0,.14);--acc3:rgba(255,82,0,.28);--grn2:rgba(46,204,113,.14);color-scheme:dark}
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
 html,body{height:100%;font-family:'Inter',system-ui,sans-serif;font-size:15px;background:var(--bg);color:var(--fg);-webkit-font-smoothing:antialiased;overscroll-behavior:none}
 body{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
@@ -178,6 +178,7 @@ input:focus{border-color:var(--acc)}
 .tval{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(4.5rem,22vw,7.5rem);line-height:1;letter-spacing:-.02em;font-variant-numeric:tabular-nums;color:var(--fg);transition:color .3s}
 .tval.run{color:var(--acc);animation:timerBeat .9s ease-in-out infinite}
 .tms{display:none}
+.ring .tms{display:block;font-family:'Barlow Condensed',sans-serif;font-weight:800;color:var(--fg2);font-size:1rem;margin-top:-4px}
 .gobtn{width:100%;padding:22px;border:none;border-radius:var(--r);font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:2.2rem;text-transform:uppercase;letter-spacing:.06em;cursor:pointer;transition:all .15s}
 .gobtn:active{opacity:.82;transform:scale(.98)}
 .go{background:var(--grn);color:#fff;animation:goPulse 2s ease-in-out infinite}
@@ -383,8 +384,370 @@ input:focus{border-color:var(--acc)}
 .tarot-suit-row{display:flex;align-items:center;gap:10px;background:var(--surf);border:1px solid var(--bdr);border-radius:var(--rs);padding:11px 14px;cursor:pointer;transition:border-color .15s}
 .tarot-suit-row:active{border-color:var(--acc)}
 .tarot-suit-sym{font-size:1.4rem;width:28px;text-align:center;flex-shrink:0}
+
+/* ════════ SPORT DESIGN (orange & black) ════════ */
+:root{--r:18px;--rs:14px}
+.ic{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;display:block;flex-shrink:0}
+.ic.fill{fill:currentColor;stroke:none}
+.st,.sub-hdr-title,.rk-title{font-family:'Barlow Condensed',sans-serif!important;font-weight:900!important;font-style:italic;text-transform:uppercase;letter-spacing:-.005em}
+.st{font-size:2.3rem}
+.sub-hdr-title{font-size:1.9rem}
+.slbl,.rk-sect{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:.86rem;letter-spacing:.14em;color:var(--fg2)}
+.btn{border-radius:18px}
+.btn.bp{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-style:italic;text-transform:uppercase;font-size:1.45rem;letter-spacing:.02em;min-height:56px;color:#0d0d0e}
+.btn.bs{border-radius:18px}
+.mode-card{border-radius:16px;border-width:1.5px;position:relative;padding-right:46px}
+.mode-card::after{content:'';position:absolute;right:16px;top:50%;width:22px;height:22px;margin-top:-11px;border-radius:50%;border:2px solid var(--bdr);box-sizing:border-box}
+.mode-card.sel{background:rgba(255,90,31,.08)}
+.mode-card.sel::after{border:6px solid var(--acc)}
+.mode-title{font-weight:700}
+.tab-row{background:var(--surf);border:1px solid var(--bdr);border-radius:16px}
+.tab{border-radius:12px;font-family:'Barlow Condensed',sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:.04em;font-size:1rem}
+.tab.sel{background:var(--acc);color:#0d0d0e;box-shadow:none}
+.stp,.trow,.mrow,.drow,.wod-card,.apd,.opanel,.rbadge,.tp,.stat-card{border-radius:16px}
+.sb{border-radius:12px}
+.sv{font-style:italic}
+.dots{flex:1;gap:6px!important;max-width:170px}
+.dot{flex:1;width:auto!important;height:4px!important;border-radius:2px!important;background:var(--surf2)}
+.dot.ok,.dot.cur{background:var(--acc)}
+.back-btn{width:42px;height:42px;border-radius:14px;background:var(--surf);border:1px solid var(--bdr)!important;color:var(--fg);display:flex;align-items:center;justify-content:center;padding:0;font-size:1.5rem}
+/* bottom action bar on option screens */
+.cfg .cfg-go{position:sticky;bottom:0;z-index:20;display:flex;gap:10px;align-items:stretch;padding-top:16px!important;padding-bottom:calc(14px + env(safe-area-inset-bottom,0px));margin-top:auto;background:linear-gradient(to top,var(--bg) 78%,transparent)}
+.cfg .cfg-go .btn{flex:1;width:auto!important}
+.cfg-back{width:56px;min-height:56px;border-radius:18px;background:var(--surf);border:1px solid var(--bdr);color:var(--fg);display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0}
+/* tab bar */
+#tabbar{position:fixed;left:0;right:0;bottom:0;z-index:80;display:flex;justify-content:center;background:rgba(18,18,19,.96);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-top:1px solid #1f1f22;padding:9px max(6px,env(safe-area-inset-right,0px)) calc(10px + env(safe-area-inset-bottom,0px)) max(6px,env(safe-area-inset-left,0px))}
+#tabbar[hidden]{display:none!important}
+#tabbar .tabs{display:flex;justify-content:space-around;width:100%;max-width:480px}
+#tabbar button{background:none;border:none;display:flex;flex-direction:column;align-items:center;gap:4px;font-family:'Inter',sans-serif;font-size:.66rem;font-weight:600;color:var(--fg3);cursor:pointer;width:64px;padding:2px 0}
+#tabbar button.on{color:var(--acc)}
+body.has-tabbar #app{padding-bottom:84px}
+:root:not([data-theme="dark"]) #tabbar{background:rgba(255,255,255,.96);border-top-color:var(--bdr)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]) #tabbar{background:rgba(18,18,19,.96);border-top-color:#1f1f22}}
+:root[data-theme="dark"] #tabbar{background:rgba(18,18,19,.96);border-top-color:#1f1f22}
+/* home */
+.home-top{display:flex;align-items:center;justify-content:space-between;padding-top:14px}
+.home-logo{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-style:italic;font-size:2.7rem;line-height:.9;text-transform:uppercase}
+.home-logo span{color:var(--acc)}
+.home-kicker{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:.82rem;letter-spacing:.16em;text-transform:uppercase;color:var(--fg3)}
+.hero{margin-top:18px;border-radius:24px;padding:22px 20px 20px;position:relative;overflow:hidden;background:linear-gradient(135deg,#ff5a1f 0%,#ff7a2a 55%,#ff9a3d 100%);color:#0d0d0e;cursor:pointer}
+.hero::after{content:'';position:absolute;right:-30px;top:-30px;width:190px;height:190px;border-radius:50%;background:repeating-linear-gradient(-45deg,rgba(0,0,0,.09) 0 10px,transparent 10px 20px)}
+.hero .k{font-family:'Barlow Condensed',sans-serif;font-weight:800;letter-spacing:.16em;font-size:.8rem;text-transform:uppercase;opacity:.75}
+.hero .t{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-style:italic;font-size:3.6rem;line-height:.85;text-transform:uppercase;margin-top:8px}
+.hero .d{font-size:.86rem;font-weight:600;margin-top:8px;opacity:.8}
+.hero .cta{display:inline-flex;align-items:center;gap:8px;margin-top:16px;background:#0d0d0e;color:#fff;border-radius:99px;padding:11px 18px;font-family:'Barlow Condensed',sans-serif;font-weight:800;letter-spacing:.08em;text-transform:uppercase;border:none;cursor:pointer;font-size:1rem}
+.hero .cta .ic{width:16px;height:16px}
+.hero .em{position:absolute;right:18px;bottom:14px;font-size:4.4rem;z-index:1}
+.hstats{display:flex;gap:10px;margin-top:12px}
+.hstat{flex:1;background:var(--surf);border:1px solid var(--bdr);border-radius:16px;padding:12px 14px;cursor:pointer}
+.hstat b{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-style:italic;font-size:1.9rem;display:block;line-height:1}
+.hstat span{font-size:.72rem;color:var(--fg2);font-weight:500}
+.qrow{display:flex;align-items:center;gap:14px;background:var(--surf);border:1px solid var(--bdr);border-radius:18px;padding:13px 14px;margin-top:10px;cursor:pointer}
+.qcirc{width:48px;height:48px;border-radius:50%;background:var(--acc);color:#0d0d0e;display:flex;align-items:center;justify-content:center;font-size:1.4rem;flex-shrink:0}
+.qcirc .ic{width:24px;height:24px;stroke-width:2.4}
+.qrow .n{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-style:italic;text-transform:uppercase;font-size:1.35rem;line-height:1}
+.qrow .s{font-size:.8rem;color:var(--fg2);margin-top:4px}
+.qrow .chv{margin-left:auto;color:var(--acc)}
+.home-icbtn{width:42px;height:42px;border-radius:14px;background:var(--surf);border:1px solid var(--bdr);display:flex;align-items:center;justify-content:center;color:var(--fg);cursor:pointer}
+/* in-game control bar */
+.gctl{position:fixed;left:0;right:0;bottom:0;z-index:70;display:flex;justify-content:center;padding:12px 16px calc(18px + env(safe-area-inset-bottom,0px));background:linear-gradient(to top,var(--bg) 70%,transparent)}
+.gctl .in{display:flex;align-items:center;justify-content:space-between;width:100%;max-width:360px}
+.gcb{width:62px;height:62px;border-radius:50%;background:var(--surf);border:1px solid var(--bdr);display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--fg);cursor:pointer;padding:0}
+.gcb small{font-size:.55rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--fg2);margin-top:3px}
+.gcb:disabled{opacity:.3}
+.gmain{width:86px;height:86px;border-radius:50%;background:var(--acc);color:#0d0d0e;display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 8px rgba(255,90,31,.14);border:none;cursor:pointer}
+.gmain .ic{width:34px;height:34px}
+.gmain.go{background:#2ecc71;box-shadow:0 0 0 8px rgba(46,204,113,.16)}
+.gmain:active,.gcb:active{transform:scale(.95)}
+#s-active,#s-tarot-play{padding-bottom:130px}
+/* compact round layout so the ring stays above the controls */
+#s-active .apd{display:flex;align-items:flex-end;justify-content:space-between;text-align:left;padding:14px 18px;gap:10px;margin-bottom:10px}
+#s-active .adist{font-size:3.6rem;line-height:.85;font-style:italic}
+#s-active .aunit{display:none}
+#s-active .apd .adist::after{content:'m';font-size:1.1rem;color:var(--fg2);margin-left:3px;font-style:normal}
+#s-active .amvt{margin-top:0;text-align:right;font-family:'Barlow Condensed',sans-serif;font-weight:900;font-style:italic;text-transform:uppercase;font-size:1.5rem;line-height:1}
+#s-active .rbadge{padding:9px 12px;margin-bottom:8px}
+#s-active .opanel{padding:9px 12px;margin-bottom:6px}
+#s-active .orow{padding:4px 0}
+#s-active .ring{width:min(180px,48vw);margin-top:2px}
+#s-active .rndhdr .score-fab{display:none}
+#s-active .opanel{display:flex!important;flex-wrap:wrap;gap:6px}
+#s-active .opanel>.slbl{width:100%;margin-bottom:0!important}
+#s-active .orow{flex:1 1 calc(50% - 6px);min-width:0;border:1px solid var(--bdr)!important;border-radius:12px;padding:5px 8px!important;gap:6px}
+#s-active .orow>div[style*="flex:1"]{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:.82rem!important}
+#s-active .opill{font-size:.6rem;padding:2px 5px}
+#s-active .rbadge #a-av{width:36px!important;height:36px!important}
+#s-active .ring .tval{font-size:clamp(2.8rem,13vw,3.6rem)}
+/* ring timer */
+.ring{position:relative;width:min(250px,64vw);aspect-ratio:1;margin:8px auto 0;max-width:100%}
+.ring svg{width:100%;height:100%;display:block}
+.ring .c{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.ring .tval{font-size:clamp(3.2rem,16vw,4.4rem)}
+.ring .tval.run{animation:none}
+.ring .ru{font-size:.78rem;color:var(--fg2);font-weight:600;margin-top:2px}
+#ring-arc{transition:stroke-dashoffset .2s linear}
+.paused .tval{color:var(--fg2)!important}
+.pause-ovl{position:fixed;inset:0;z-index:240;background:rgba(0,0,0,.72);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;cursor:pointer}
+.pause-ovl b{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-style:italic;font-size:4rem;color:#fff;text-transform:uppercase}
+.pause-ovl span{color:#ccc;font-size:.9rem}
+
+/* option action bar sits just above the tab bar */
+body.has-tabbar .cfg .cfg-go{bottom:calc(62px + env(safe-area-inset-bottom,0px))}
+body.has-tabbar #app{padding-bottom:calc(76px + env(safe-area-inset-bottom,0px))}
+/* bottom-sheet modals: same look as the home cards */
+.ms{border-radius:26px 26px 0 0;background:var(--surf);border-top:1px solid var(--bdr)}
+/* list rows like the home "Quick start" (menus, games, timers) */
+.menu-grid,#s-timers>div[style*="grid"]{display:flex!important;flex-direction:column;gap:10px!important;margin-top:6px!important}
+.menu-tile,.timer-tile{aspect-ratio:auto;flex-direction:row;justify-content:flex-start;align-items:center;gap:14px;padding:13px 44px 13px 14px;border:1px solid var(--bdr);border-radius:18px;min-height:74px;text-align:left}
+.menu-tile::after,.timer-tile::after,.wod-entry::after{content:'›';position:absolute;right:16px;top:50%;transform:translateY(-52%);color:var(--acc);font-size:1.8rem;font-weight:400;line-height:1}
+.menu-tile-icon,.timer-tile-icon,.wod-icon{width:48px;height:48px;border-radius:50%;background:var(--acc);display:flex;align-items:center;justify-content:center;font-size:1.45rem!important;flex-shrink:0;line-height:1}
+.menu-tile-label,.timer-tile-name,.wod-name{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-style:italic;text-transform:uppercase;font-size:1.35rem!important;letter-spacing:0;color:var(--fg);line-height:1}
+.timer-tile{display:grid!important;grid-template-columns:48px 1fr;grid-template-rows:auto auto;column-gap:14px;row-gap:3px}
+.timer-tile-icon{grid-row:1/3}
+.timer-tile-name{align-self:end}
+.timer-tile-sub{font-size:.8rem;color:var(--fg2);align-self:start}
+.wod-card{border:1px solid var(--bdr);border-radius:18px;padding:13px 14px;position:relative}
+.wod-entry{padding-right:44px}
+.wod-entry>div[style*="color:var(--acc)"]{display:none}
+.wod-card.locked .wod-icon{background:var(--surf2)}
+.wod-desc{font-size:.8rem;margin-top:4px}
+
+/* bottom navigation only: hide the top back arrows (kept where no bottom bar is shown) */
+.sub-hdr .back-btn{display:none}
+
+.scr.cfg>div:first-child>button:first-child{display:none}
+#sel-back-btn{display:none}
+
+/* option steps: two round buttons + swipe */
+.cfg .cfg-go{justify-content:space-between;background:none;pointer-events:none}
+.cfg .cfg-go>*{pointer-events:auto}
+.cfg .cfg-go .cfg-back,.cfg .cfg-go .cfg-next{flex:0 0 64px!important;width:64px!important;height:64px;min-height:64px;border-radius:50%!important;padding:0!important;display:flex;align-items:center;justify-content:center}
+.cfg .cfg-go .cfg-back{background:var(--surf);border:1px solid var(--bdr);box-shadow:0 6px 18px rgba(0,0,0,.35)}
+.cfg .cfg-go .cfg-next{background:var(--acc);color:#0d0d0e;box-shadow:0 0 0 7px rgba(255,90,31,.14),0 6px 18px rgba(0,0,0,.35)}
+.cfg .cfg-go .cfg-next .ic{width:28px;height:28px;stroke-width:2.6}
+.cfg .cfg-go .cfg-next.launch{width:76px!important;height:76px;flex-basis:76px!important;background:#2ecc71;box-shadow:0 0 0 7px rgba(46,204,113,.16),0 6px 18px rgba(0,0,0,.35)}
+.cfg .cfg-go .cfg-next.launch .ic{width:30px;height:30px}
+.cfg-swipe-hint{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);margin-top:-6px;font-size:.7rem;color:var(--fg3);font-weight:600;letter-spacing:.06em;text-transform:uppercase;pointer-events:none;white-space:nowrap}
+@keyframes slideFromR{from{transform:translateX(40px);opacity:0}to{transform:none;opacity:1}}
+@keyframes slideFromL{from{transform:translateX(-40px);opacity:0}to{transform:none;opacity:1}}
+.scr.slide-r>*:not(.cfg-go):not(.wod-bar){animation:slideFromR .22s ease-out}
+.scr.slide-l>*:not(.cfg-go):not(.wod-bar){animation:slideFromL .22s ease-out}
+
+#tarot-start-wrap{display:none!important}
+@keyframes goPulse2{0%{box-shadow:0 0 0 0 rgba(46,204,113,.55)}70%{box-shadow:0 0 0 18px rgba(46,204,113,0)}100%{box-shadow:0 0 0 0 rgba(46,204,113,0)}}
+.gmain.go{background:#2ecc71;animation:goPulse2 1.3s ease-out infinite}
+.gmain:disabled{opacity:.35;animation:none}
+.sel-back-round{position:fixed;left:max(18px,env(safe-area-inset-left,0px));bottom:calc(76px + env(safe-area-inset-bottom,0px));z-index:75;width:58px;height:58px;border-radius:50%;background:var(--surf);border:1px solid var(--bdr);color:var(--fg);display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(0,0,0,.35);cursor:pointer}
+.sel-back-round[hidden]{display:none}
+
+.cfg-add{width:58px;height:58px;border-radius:50%;background:var(--surf);border:2px solid var(--acc);color:var(--acc);display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 6px 18px rgba(0,0,0,.35);align-self:center;flex-shrink:0}
+.cfg-add .ic{width:28px;height:28px;stroke-width:2.6}
+.cfg-add:active{transform:scale(.95)}
+
+/* round buttons stay fixed at the bottom, even at the end of the scroll */
+.cfg .cfg-go{position:fixed!important;left:0;right:0;bottom:0;margin:0 auto!important;max-width:480px;box-sizing:border-box;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+body.has-tabbar .cfg .cfg-go{bottom:calc(62px + env(safe-area-inset-bottom,0px));padding-bottom:10px}
+.scr.cfg{padding-bottom:110px}
+
+#swipe-ind{position:fixed;top:50%;z-index:260;width:58px;height:58px;border-radius:50%;background:var(--surf);border:2px solid var(--acc);color:var(--acc);display:flex;align-items:center;justify-content:center;pointer-events:none;opacity:0;transition:opacity .15s,background .12s,color .12s;box-shadow:0 6px 20px rgba(0,0,0,.4)}
+#swipe-ind.l{left:10px}
+#swipe-ind.r{right:10px}
+#swipe-ind.go{background:var(--acc);color:#0d0d0e}
+#swipe-ind .ic{width:28px;height:28px;stroke-width:2.6}
+/* TAROT deck gauge */
+#s-tarot-play>div:first-child{flex-wrap:wrap;row-gap:10px}
+#tarot-deck-info{flex-basis:100%;order:3;margin:0!important}
+.tdk{display:flex;align-items:center;gap:14px;background:var(--surf);border:1px solid var(--bdr);border-radius:16px;padding:10px 14px}
+.tdk-l{display:flex;align-items:baseline;gap:6px;flex-shrink:0}
+.tdk-l b{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-style:italic;font-size:2.7rem;line-height:.9;color:var(--fg);font-variant-numeric:tabular-nums}
+.tdk-l span{font-size:.7rem;font-weight:700;color:var(--fg2);text-transform:uppercase;letter-spacing:.08em;line-height:1.1}
+.tdk-r{flex:1;min-width:0}
+.tdk-bar{height:12px;border-radius:6px;background:var(--surf2);overflow:hidden}
+.tdk-bar i{display:block;height:100%;border-radius:6px;background:linear-gradient(90deg,#ff5a1f,#ff9a3d);transition:width .35s ease}
+.tdk-bar.low i{background:linear-gradient(90deg,#ef4444,#ff5a1f)}
+.tdk-sub{display:flex;justify-content:space-between;gap:8px;margin-top:6px;font-size:.72rem;color:var(--fg2);font-weight:600}
+.tdk-pen{color:#ef4444;white-space:nowrap}
+.tdk-pen u{text-decoration:none;letter-spacing:1px}
+
+/* previous & next both orange */
+.cfg .cfg-go .cfg-back{background:var(--acc);color:#0d0d0e;border:none;box-shadow:0 0 0 7px rgba(255,90,31,.14),0 6px 18px rgba(0,0,0,.35)}
+.cfg .cfg-go .cfg-back .ic{width:28px;height:28px;stroke-width:2.6}
+/* game control bar: side buttons exactly where the option buttons were */
+.gctl{bottom:0;padding:12px max(16px,env(safe-area-inset-right,0px)) calc(61px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
+#s-active .ring{width:min(210px,54vw)}
+#s-active .ring .tval{font-size:clamp(3rem,14vw,3.8rem)}
+#s-active .ring .ru{font-size:.7rem}
+#s-active .opanel>.slbl{display:none}
+.gctl .in{max-width:448px}
+.gctl .gcb{width:64px;height:64px}
+.gctl .gcb.back{background:var(--acc);color:#0d0d0e;border:none;box-shadow:0 0 0 7px rgba(255,90,31,.14)}
+.gctl .gcb.back small{color:#0d0d0e}
+#s-active,#s-tarot-play{padding-bottom:200px}
+/* ranking: round buttons */
+.rk-old{display:none!important}
+.rk-go{position:fixed;left:0;right:0;margin:0 auto;max-width:480px;box-sizing:border-box;bottom:calc(62px + env(safe-area-inset-bottom,0px));z-index:20;display:flex;align-items:center;justify-content:space-between;padding:16px max(16px,env(safe-area-inset-right,0px)) 10px max(16px,env(safe-area-inset-left,0px));background:linear-gradient(to top,var(--bg) 70%,transparent)}
+.rk-mid{display:flex;gap:14px}
+.rgb{width:64px;height:64px;border-radius:50%;background:var(--surf);border:1px solid var(--bdr);color:var(--fg);display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;padding:0;box-shadow:0 6px 18px rgba(0,0,0,.35)}
+.rgb small{font-size:.55rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--fg2);margin-top:3px}
+.rgb.sm{width:56px;height:56px}
+.rgb.back{background:var(--acc);color:#0d0d0e;border:none;box-shadow:0 0 0 7px rgba(255,90,31,.14),0 6px 18px rgba(0,0,0,.35)}
+.rgb.back small{color:#0d0d0e}
+.rgb.quit{color:#ef4444}
+.rgb:active{transform:scale(.95)}
+.rgb.off{visibility:hidden}
+#s-scores,#s-tarot-fin{padding-bottom:120px}
+
+.rnd-big{background:var(--acc);color:#0d0d0e;border:none;border-radius:14px;padding:10px 16px;font-family:'Barlow Condensed',sans-serif;font-weight:900;font-style:italic;font-size:1.25rem;text-transform:uppercase;letter-spacing:.02em;cursor:pointer;display:inline-flex;align-items:center;gap:6px;box-shadow:0 4px 14px rgba(255,90,31,.3)}
+.rnd-big:active{transform:scale(.96)}
+/* ranking tabs + per movement */
+.rk-tabs{display:flex;background:var(--surf);border:1px solid var(--bdr);border-radius:16px;padding:4px;gap:4px;margin:18px 0 12px}
+.rk-tabs button{flex:1;border:none;background:transparent;color:var(--fg2);border-radius:12px;padding:10px 4px;font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:.95rem;text-transform:uppercase;letter-spacing:.04em;cursor:pointer}
+.rk-tabs button.on{background:var(--acc);color:#0d0d0e}
+.pm-card{background:var(--surf);border:1px solid var(--bdr);border-radius:16px;padding:12px 14px;margin-bottom:10px}
+.pm-head{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.pm-sym{width:30px;height:30px;border-radius:50%;background:var(--surf2);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}
+.pm-name{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-style:italic;text-transform:uppercase;font-size:1.25rem;line-height:1;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pm-tot{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.25rem;color:var(--acc)}
+.pm-tot small{font-size:.7rem;color:var(--fg2);font-weight:700;margin-left:3px}
+.pm-row{display:grid;grid-template-columns:18px 26px minmax(0,1fr) auto;align-items:center;gap:8px;padding:5px 0;border-top:1px solid var(--bdr)}
+.pm-rk{font-family:'Barlow Condensed',sans-serif;font-weight:900;color:var(--fg3);text-align:center}
+.pm-rk.r1{color:#FFD700}.pm-rk.r2{color:#C0C0C0}.pm-rk.r3{color:#CD7F32}
+.pm-pl{min-width:0}
+.pm-pl b{display:block;font-size:.85rem;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pm-bar{height:5px;border-radius:3px;background:var(--surf2);margin-top:4px;overflow:hidden}
+.pm-bar i{display:block;height:100%;border-radius:3px;background:var(--acc)}
+.pm-v{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.1rem;text-align:right;white-space:nowrap}
+.pm-v small{font-size:.65rem;color:var(--fg2);font-weight:700;margin-left:2px}
+.pm-empty{font-size:.8rem;color:var(--fg3);text-align:center;padding:16px 0}
+
+.pm-card .pm-rank{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-style:italic;font-size:1.7rem;width:26px;text-align:center;color:var(--fg3);flex-shrink:0;line-height:1}
+.pm-rank.r1{color:#FFD700}.pm-rank.r2{color:#C0C0C0}.pm-rank.r3{color:#CD7F32}
+.pm-head .pm-who{flex:1;min-width:0}
+.pm-head .pm-who .pm-name{display:block}
+.pm-head .pm-who small{display:block;font-size:.7rem;color:var(--fg3);font-weight:600;margin-top:3px}
+.pm-row .pm-ic{width:26px;height:26px;border-radius:50%;background:var(--surf2);display:flex;align-items:center;justify-content:center;font-size:.85rem}
+.pm-row.pen .pm-pl b,.pm-row.pen .pm-v{color:#ef4444}
+
+.hero-car{position:relative;margin-top:18px}
+.hero-track{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch;border-radius:24px}
+.hero-track::-webkit-scrollbar{display:none}
+.hero-track .hero{flex:0 0 100%;margin-top:0;scroll-snap-align:start;scroll-snap-stop:always;min-height:200px;box-sizing:border-box}
+.hero-tarot{background:linear-gradient(135deg,#d93a12 0%,#ff5a1f 55%,#ff8a3d 100%)}
+.hero-tarot .t{font-size:3.1rem}
+.hero-card{position:absolute;right:16px;bottom:14px;width:78px;border-radius:8px;transform:rotate(9deg);box-shadow:0 8px 20px rgba(0,0,0,.35);z-index:1}
+.hero-nav{position:absolute;top:14px;right:14px;display:flex;gap:8px;z-index:3}
+.hero-arr{width:36px;height:36px;border-radius:50%;background:rgba(13,13,14,.82);color:#fff;border:none;display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0}
+.hero-arr .ic{width:20px;height:20px;stroke-width:2.6}
+.hero-arr:active{transform:scale(.92)}
+.hero-dots{display:flex;justify-content:center;gap:6px;margin-top:8px}
+.hero-dots i{width:7px;height:7px;border-radius:4px;background:var(--surf2);transition:width .2s,background .2s}
+.hero-dots i.on{width:20px;background:var(--acc)}
+
+/* round previous / next: light orange, like a selected option */
+.cfg .cfg-go .cfg-back,.cfg .cfg-go .cfg-next,.gctl .gcb.back,.rgb.back{background:linear-gradient(rgba(255,90,31,.16),rgba(255,90,31,.16)),var(--bg)!important;border:1.5px solid var(--acc)!important;color:var(--acc)!important;box-shadow:0 6px 18px rgba(0,0,0,.3)!important}
+.gctl .gcb.back small,.rgb.back small{color:var(--acc)!important}
+
+.cfg-swipe-hint{display:none!important}
+.cfg-step{width:64px;height:64px;border-radius:50%;border:none;background:var(--bg);padding:0;position:relative;cursor:pointer;align-self:center;flex-shrink:0;box-shadow:0 6px 18px rgba(0,0,0,.3)}
+.cfg-step svg{position:absolute;inset:0;width:100%;height:100%}
+.cfg-step span{position:relative;font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:.95rem;color:var(--fg2)}
+.cfg-step span b{font-weight:900;font-style:italic;font-size:1.45rem;color:var(--fg)}
+.cfg-step:active{transform:scale(.95)}
+.ss-row{display:flex;align-items:center;gap:12px;background:var(--bg);border:1px solid var(--bdr);border-radius:16px;padding:12px 14px;margin-bottom:8px;cursor:pointer}
+.ss-row.cur{border-color:var(--acc);background:rgba(255,90,31,.08)}
+.ss-row>div:first-child{flex:1;min-width:0}
+.ss-t{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:.85rem;letter-spacing:.12em;text-transform:uppercase;color:var(--fg2)}
+.ss-v{font-size:.86rem;font-weight:600;margin-top:3px;line-height:1.45}
+.ss-ch{color:var(--acc);font-size:1.4rem;flex-shrink:0}
+
+.cfg-step{display:none!important}
+/* top WOD banner on option steps */
+.wod-bar{position:fixed;top:0;left:0;right:0;z-index:30;background:rgba(255,90,31,.88);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);padding-top:env(safe-area-inset-top,0px)}
+.wod-bar .wb-in{max-width:480px;margin:0 auto;display:flex;align-items:center;gap:8px;padding:9px max(16px,env(safe-area-inset-right,0px)) 9px max(16px,env(safe-area-inset-left,0px));box-sizing:border-box}
+.wb-name{flex:1;min-width:0;font-family:'Barlow Condensed',sans-serif;font-weight:900;font-style:italic;font-size:1.45rem;text-transform:uppercase;color:#0d0d0e;line-height:1;display:flex;align-items:baseline;gap:10px}
+.wb-name small{font-style:normal;font-weight:800;font-size:.75rem;letter-spacing:.12em;opacity:.65}
+.wod-bar .hero-arr{width:34px;height:34px}
+.wb-prog{height:3px;background:rgba(13,13,14,.18)}
+.wb-prog i{display:block;height:100%;background:#0d0d0e}
+.scr.has-wodbar{padding-top:calc(72px + env(safe-area-inset-top,0px))}
+.scr.has-wodbar>div:nth-child(2):not(.sh):not(.cfg-sec){display:none!important}
+
+/* option steps with the top banner: no bottom ‹ › (the banner arrows and swipe remain) */
+.scr.has-wodbar .cfg-go{display:none!important}
+.scr.cfg.has-wodbar{padding-bottom:40px}
+
+.scr.has-gamebar{padding-top:calc(66px + env(safe-area-inset-top,0px))}
+.wod-bar .hero-arr:disabled{opacity:.3;cursor:default}
+#s-tarot-play>div:first-child{top:calc(52px + env(safe-area-inset-top,0px))!important}
+#s-tarot-play>div:first-child>div:first-child>div:first-child{display:none}
+.gmain.stop{background:#ef4444;box-shadow:0 0 0 8px rgba(239,68,68,.16);color:#fff;animation:none}
+#s-select .sh{margin-top:0}
+
+#s-select .sh>div[style*="margin-left:auto"]{display:none}
+.sel-back-round{display:none!important}
+
+/* banner: arrows → live counter once the game runs */
+.wb-clock{display:none;font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:2rem;line-height:1;color:#0d0d0e;font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.wod-bar.live .hero-arr{display:none}
+.wod-bar.live .wb-clock{display:block}
+.wod-bar.live .wb-name{font-size:1.25rem;flex-direction:column;align-items:flex-start;gap:2px}
+/* ROWOD round: everything on one screen */
+#s-active .rndhdr{display:none}
+#s-active .wod-bar .wb-clock{display:none!important}
+#s-active .wod-bar.live .wb-name{font-size:1.45rem;flex-direction:row;align-items:baseline;gap:10px}
+#s-active{padding-bottom:150px}
+#s-active .apd{margin-top:4px}
+#s-active .adist{font-size:5rem}
+#s-active .amvt{font-size:2rem}
+#s-tarot-play #tarot-timer-display{display:none!important}
+.gsp{width:64px;height:64px;flex-shrink:0}
+#s-results .sh+div{display:none}
+#s-results .mta,#s-select .mta .btn.bg:not([style*="display:none"])+x{display:none}
+#s-results>.mta{display:none}
+#s-select,#s-results{padding-bottom:170px}
+
+#s-results .sh+div{display:none!important}
+#s-results .sh{margin-bottom:8px}
+#s-results{padding-bottom:156px!important}
+#s-results .rtbig{padding:10px 14px;margin:0 0 8px}
+#s-results .rtv{font-size:2.4rem}
+#s-results .dist-input-wrap{padding:10px 12px;margin-bottom:8px}
+#s-results .repsrow{padding:6px 12px}
+#s-results #reps-list-lbl{margin-bottom:6px!important}
+#s-results #reps-list{gap:6px}
+#s-tarot-play>div:first-child{margin-bottom:8px!important}
+#s-tarot-play .tp{margin-bottom:8px}
+
+.wod-bar .wb-in{min-height:52px}
+
+/* ════════ LINE ICONS (V23) */
+.ic.ico{display:inline-block!important;width:1.15em!important;height:1.15em!important;vertical-align:-.2em;margin-right:.35em;stroke-width:2.2!important}
+.mode-icon{display:flex;align-items:center;justify-content:center;color:var(--acc)}
+.mode-icon .ic{width:30px!important;height:30px!important;stroke-width:2!important}
+.menu-tile-icon,.timer-tile-icon{color:#0d0d0e}
+.wod-icon{color:var(--acc)}
+.menu-tile-icon .ic,.timer-tile-icon .ic,.wod-icon .ic{width:26px!important;height:26px!important;stroke-width:2.2!important}
+.qcirc .ic{width:24px!important;height:24px!important}
+.cr-ic{width:26px;display:flex;justify-content:center;color:var(--acc)}.cr-ic .ic{width:22px!important;height:22px!important}
+.cam-ic{display:flex}.cam-ic .ic{width:22px!important;height:22px!important}
+.di{display:inline-flex;align-items:center;justify-content:center}
+.di .ic{width:30px!important;height:30px!important;stroke-width:2.2!important}
+.tab .ic.ico{margin-right:.3em}
+.wod-entry .wod-icon{color:#0d0d0e}
+
+/* ════════ NAV BANNER (V24) */
+.scr.has-navbar{padding-top:calc(66px + env(safe-area-inset-top,0px))}
+.scr.has-navbar .sub-hdr{top:calc(52px + env(safe-area-inset-top,0px))}
+.nav-bar .wb-in{gap:12px}
+#s-timer-run .sub-hdr,#s-wod-run .sub-hdr{position:static}
+#s-players-hub .cfg-back,#s-pool .cfg-back{visibility:hidden}
+#s-pool .cfg-go{display:none!important}
+.nav-bar .wb-name{font-size:1.3rem}
 </style>
-<script>try{var _h=document.documentElement;_h.lang='en';_h.setAttribute('translate','no');_h.classList.add('notranslate');}catch(e){}</script>
+<script>
+const _ICO={"target": "<circle cx=\"12\" cy=\"12\" r=\"9\"/><circle cx=\"12\" cy=\"12\" r=\"5\"/><circle cx=\"12\" cy=\"12\" r=\"1\" fill=\"currentColor\"/>", "dice": "<rect x=\"4\" y=\"4\" width=\"16\" height=\"16\" rx=\"3.5\"/><circle cx=\"8.6\" cy=\"8.6\" r=\"1.2\" fill=\"currentColor\" stroke=\"none\"/><circle cx=\"12\" cy=\"12\" r=\"1.2\" fill=\"currentColor\" stroke=\"none\"/><circle cx=\"15.4\" cy=\"15.4\" r=\"1.2\" fill=\"currentColor\" stroke=\"none\"/>", "shuffle": "<path d=\"M16 3h5v5M4 20 21 3M21 16v5h-5M15 15l6 6M4 4l5 5\"/>", "repeat": "<path d=\"M17 2l4 4-4 4M3 11v-1a4 4 0 0 1 4-4h14M7 22l-4-4 4-4M21 13v1a4 4 0 0 1-4 4H3\"/>", "timer": "<circle cx=\"12\" cy=\"13\" r=\"8\"/><path d=\"M12 9v4l2.5 2.5M9 2h6\"/>", "again": "<path d=\"M3 12a9 9 0 1 0 3-6.7L3 8M3 3v5h5\"/><path d=\"M12 8v4l3 2\"/>", "zap": "<path d=\"M13 2 4 14h8l-1 8 9-12h-8l1-8z\"/>", "bull": "<circle cx=\"12\" cy=\"12\" r=\"8\"/><path d=\"M12 2v4M12 18v4M2 12h4M18 12h4\"/><circle cx=\"12\" cy=\"12\" r=\"1.6\" fill=\"currentColor\" stroke=\"none\"/>", "ruler": "<path d=\"M3 17 17 3l4 4L7 21z\"/><path d=\"M7 13l2 2M10 10l2 2M13 7l2 2\"/>", "order": "<path d=\"M10 6h11M10 12h11M10 18h11\"/><path d=\"M4 4v4M3 8h2M3.5 14.5c0-1 1-1.5 1.7-1.2.9.4.7 1.4 0 2L3.5 17h2.2\"/>", "rotate": "<path d=\"M21 12a9 9 0 0 1-15.4 6.4L3 16M3 12a9 9 0 0 1 15.4-6.4L21 8\"/><path d=\"M21 3v5h-5M3 21v-5h5\"/>", "deck": "<rect x=\"8\" y=\"3\" width=\"12\" height=\"16\" rx=\"2\"/><path d=\"M5 7v12a2 2 0 0 0 2 2h9\"/>", "deckp": "<rect x=\"5\" y=\"3\" width=\"14\" height=\"18\" rx=\"2\"/><circle cx=\"12\" cy=\"10\" r=\"2.6\"/><path d=\"M8 17c1-2.2 2.4-3.2 4-3.2s3 1 4 3.2\"/>", "heartc": "<rect x=\"5\" y=\"3\" width=\"14\" height=\"18\" rx=\"2\"/><path d=\"M12 16s-3.6-2.2-3.6-4.6a1.9 1.9 0 0 1 3.6-.9 1.9 1.9 0 0 1 3.6.9c0 2.4-3.6 4.6-3.6 4.6z\"/>", "kb": "<path d=\"M8.5 10V7.5a3.5 3.5 0 0 1 7 0V10\"/><path d=\"M7.3 20a6.5 6.5 0 1 1 9.4 0z\"/>", "flag": "<path d=\"M5 21V4M5 4h11l-2 4 2 4H5\"/>", "alert": "<path d=\"M12 3 2 20h20z\"/><path d=\"M12 9.5v4.5M12 17h.01\"/>", "hat": "<path d=\"M5 20h14M5.5 20v-2.5h13V20\"/><path d=\"M6 17.5C6 12 4.5 8.5 2.5 8c2.5-2 6.5 1 8 6\"/><path d=\"M18 17.5c0-5.5 1.5-9 3.5-9.5-2.5-2-6.5 1-8 6\"/><path d=\"M10 17.5c0-6 .8-10 2-13 1.2 3 2 7 2 13\"/><circle cx=\"2.5\" cy=\"9.5\" r=\"1.2\"/><circle cx=\"21.5\" cy=\"9.5\" r=\"1.2\"/><circle cx=\"12\" cy=\"3.2\" r=\"1.2\"/>", "pencil": "<path d=\"M12 20h9\"/><path d=\"M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z\"/>", "pad": "<path d=\"M6 11h4M8 9v4\"/><circle cx=\"15.5\" cy=\"12\" r=\".8\" fill=\"currentColor\"/><circle cx=\"18\" cy=\"10\" r=\".8\" fill=\"currentColor\"/><path d=\"M17.3 5H6.7a4 4 0 0 0-4 3.6L2 15a3 3 0 0 0 5.5 1.8L9 15h6l1.5 1.8A3 3 0 0 0 22 15l-.7-6.4a4 4 0 0 0-4-3.6z\"/>", "trophy": "<path d=\"M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0zM17 5h3v2a3 3 0 0 1-3 3M7 5H4v2a3 3 0 0 0 3 3\"/>", "hour": "<path d=\"M5 3h14M5 21h14\"/><path d=\"M7 3v2.5c0 2.6 2 4.3 5 6.5-3 2.2-5 3.9-5 6.5V21M17 3v2.5c0 2.6-2 4.3-5 6.5 3 2.2 5 3.9 5 6.5V21\"/><path d=\"M9.5 18.5c.8-1.2 1.6-1.8 2.5-2.2.9.4 1.7 1 2.5 2.2z\" fill=\"currentColor\"/><path d=\"M10 7h4\"/>", "interval": "<circle cx=\"12\" cy=\"13\" r=\"8\"/><path d=\"M12 9v4h4M9 2h6\"/><path d=\"M20 5l1.5-1.5\"/>", "save": "<path d=\"M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z\"/><path d=\"M17 21v-8H7v8M7 3v5h8\"/>", "folder": "<path d=\"M3 19V6a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v2\"/><path d=\"M3 19l3-8h16l-3 8z\"/>", "down": "<path d=\"M12 3v12M7 10l5 5 5-5M4 21h16\"/>", "up": "<path d=\"M12 15V3M7 8l5-5 5 5M4 21h16\"/>", "rules": "<rect x=\"5\" y=\"4\" width=\"14\" height=\"17\" rx=\"2\"/><path d=\"M9 4V3h6v1M9 10h6M9 14h6M9 18h3\"/>", "sun": "<circle cx=\"12\" cy=\"12\" r=\"4\"/><path d=\"M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4\"/>", "moon": "<path d=\"M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z\"/>", "camera": "<path d=\"M3 8a2 2 0 0 1 2-2h2l2-2h6l2 2h2a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z\"/><circle cx=\"12\" cy=\"13\" r=\"3.5\"/>", "row": "<path d=\"M3 20h18\"/><circle cx=\"8\" cy=\"6\" r=\"2\"/><path d=\"M9 9l2 6 5-3 3 4M9.5 10l8 .5\"/>"};
+function ICO(k,c){return '<svg class="ic'+(c===''?'':' ico')+'" viewBox="0 0 24 24">'+(_ICO[k]||'')+'</svg>';}
+try{var _h=document.documentElement;_h.lang='en';_h.setAttribute('translate','no');_h.classList.add('notranslate');}catch(e){}</script>
 <script>try{var _t=localStorage.getItem('wh_theme');if(_t==='light'||_t==='dark')document.documentElement.setAttribute('data-theme',_t);}catch(e){}</script>
 
 <!-- ─── Toast ──────────────────── -->
@@ -402,7 +765,7 @@ input:focus{border-color:var(--acc)}
     <div class="mt">Avatar <span id="av-player-name"></span></div>
     <div class="emoji-grid" id="emoji-grid"></div>
     <label style="display:flex;align-items:center;gap:10px;padding:12px 14px;border-radius:var(--rs);background:var(--surf2);cursor:pointer;margin-bottom:10px;">
-      <span style="font-size:1.3rem;">📷</span>
+      <span class="cam-ic"><svg class="ic" viewBox="0 0 24 24"><path d="M3 8a2 2 0 0 1 2-2h2l2-2h6l2 2h2a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><circle cx="12" cy="13" r="3.5"/></svg></span>
       <span style="font-weight:600;font-size:.9rem;">Choose a photo</span>
       <input type="file" accept="image/*" id="av-file-input" style="display:none" onchange="handleAvatarPhoto(this)">
     </label>
@@ -418,7 +781,7 @@ input:focus{border-color:var(--acc)}
     <div class="slbl">Avatar</div>
     <div class="emoji-grid" id="addplayer-emoji-grid"></div>
     <label style="display:flex;align-items:center;gap:10px;padding:12px 14px;border-radius:var(--rs);background:var(--surf2);cursor:pointer;margin-bottom:14px;">
-      <span style="font-size:1.3rem;">📷</span>
+      <span class="cam-ic"><svg class="ic" viewBox="0 0 24 24"><path d="M3 8a2 2 0 0 1 2-2h2l2-2h6l2 2h2a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><circle cx="12" cy="13" r="3.5"/></svg></span>
       <span style="font-weight:600;font-size:.9rem;">Choose a photo</span>
       <input type="file" accept="image/*" id="addplayer-file" style="display:none" onchange="handleAddPlayerPhoto(this)">
     </label>
@@ -447,10 +810,10 @@ input:focus{border-color:var(--acc)}
       <strong>🎯 Goal:</strong> Draw cards and perform the associated movements. The suits (♥ ♦ ♣ ♠) define the exercise, the card value gives the number of reps.<br><br>
       <strong>🃏 Card values:</strong><br>
       Ace = 1 · Cards 2–10 = value · Jack = 11 · Knight = 12 · Queen = 13 · King = 14<br><br>
-      <strong>⚡ Trumps 1 &amp; 21 — Penalty:</strong><br>
-      Drawing the <em>Trump 1</em> (le Petit) or <em>Trump 21</em> (le Monde) triggers a collective penalty: all players perform the defined exercise.<br><br>
+      <strong>🃏 Jokers — Penalty cards (optional):</strong><br>
+      Added to the game when penalties are on (number set in the options, for the whole game). Drawing a Joker = do the penalty movement shown on the card. A Joker is worth <em>0 reps</em> in the ranking.<br><br>
       <strong>🌟 Excuse:</strong><br>
-      Special card: the player receives a reusable <em>Joker</em> they can activate at any time to absorb a card's reps without doing the movement.<br><br>
+      Special card: the player keeps a reusable token they can use at any time to absorb a card's reps without doing the movement.<br><br>
       <strong>🏁 End of game:</strong> when all cards are played (<em>All the way</em>) or when time runs out (<em>Time limit</em>).
     </div>
     <button class="btn bp mt16" onclick="document.getElementById('tmodal').classList.add('h')">Got it!</button>
@@ -492,7 +855,7 @@ input:focus{border-color:var(--acc)}
 <!-- ─── Crop modal ─────────────── -->
 <div class="mo h" id="cropmodal">
   <div class="ms" style="padding:16px;padding-bottom:max(16px,env(safe-area-inset-bottom,0px));">
-    <div class="mt" style="margin-bottom:14px;">📷 Crop photo</div>
+    <div class="mt" style="margin-bottom:14px;"><svg class="ic ico" viewBox="0 0 24 24"><path d="M3 8a2 2 0 0 1 2-2h2l2-2h6l2 2h2a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><circle cx="12" cy="13" r="3.5"/></svg>Crop photo</div>
     <div id="crop-wrap" style="position:relative;border-radius:var(--r);overflow:hidden;background:#000;touch-action:none;width:100%;aspect-ratio:1;margin-bottom:14px;">
       <img id="crop-img" style="position:absolute;transform-origin:0 0;cursor:move;max-width:none;user-select:none;-webkit-user-select:none;">
       <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;">
@@ -511,32 +874,43 @@ input:focus{border-color:var(--acc)}
 
 <!-- ══ S-HUB : HOME MENU ══════════════════════════ -->
 <div class="scr on" id="s-hub">
-  <div style="text-align:center;padding-top:36px;padding-bottom:8px;">
-    <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-style:italic;font-size:3.6rem;color:var(--acc);letter-spacing:-.01em;line-height:.85;">WOD</div>
-    <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:3.6rem;line-height:.9;margin-bottom:10px;">HUB</div>
-    <div style="font-size:.68rem;color:var(--fg3);letter-spacing:.14em;text-transform:uppercase;">Fitness games · Team workouts</div>
-    <button id="acct-btn" onclick="openAccount()" style="margin-top:14px;background:var(--surf);border:1px solid var(--bdr);border-radius:999px;padding:7px 14px;color:var(--fg2);font-size:.76rem;font-weight:600;font-family:'Inter',sans-serif;cursor:pointer;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">👤 Sign in · sync your data</button>
+  <div class="home-top">
+    <div><div class="home-kicker">Fitness games</div><div class="home-logo">WOD <span>HUB</span></div></div>
   </div>
-  <div class="menu-grid">
-    <div class="menu-tile" onclick="openWodsTimers()">
-      <div class="menu-tile-icon">🏋️</div>
-      <div class="menu-tile-label">Workouts</div>
+  <button id="acct-btn" onclick="openAccount()" style="align-self:flex-start;margin-top:14px;background:var(--surf);border:1px solid var(--bdr);border-radius:999px;padding:7px 14px;color:var(--fg2);font-size:.76rem;font-weight:600;font-family:'Inter',sans-serif;cursor:pointer;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">👤 Sign in · sync your data</button>
+  <div class="hero-car">
+    <div class="hero-track" id="hero-track">
+      <div class="hero" onclick="launchGame()">
+        <div class="k">Featured game · 1/2</div>
+        <div class="t">ROWOD</div>
+        <div class="d">Row. Rep. Repeat. · Team · Luck</div>
+        <button class="cta" onclick="event.stopPropagation();launchGame()"><svg class="ic fill" viewBox="0 0 24 24"><path d="M7 4.5v15l13-7.5z"/></svg>Play</button>
+        <div class="em">🚣</div>
+      </div>
+      <div class="hero hero-tarot" onclick="openTarotCfg()">
+        <div class="k">Featured game · 2/2</div>
+        <div class="t">TAROT<br>WOD</div>
+        <div class="d">Cards · Team · Reps</div>
+        <button class="cta" onclick="event.stopPropagation();openTarotCfg()"><svg class="ic fill" viewBox="0 0 24 24"><path d="M7 4.5v15l13-7.5z"/></svg>Play</button>
+        <img class="hero-card" id="hero-joker" alt="">
+      </div>
     </div>
-    <div class="menu-tile" onclick="openPlayersHub('s-hub')">
-      <div class="menu-tile-icon">👥</div>
-      <div class="menu-tile-label">Players</div>
-      <div class="menu-tile-badge" id="hub-badge-players">0</div>
-    </div>
-    <div class="menu-tile" onclick="openPoolHub('s-hub')">
-      <div class="menu-tile-icon">💪</div>
-      <div class="menu-tile-label">Exercises</div>
-      <div class="menu-tile-badge" id="hub-badge-pool">0</div>
-    </div>
-    <div class="menu-tile" onclick="go('s-about')">
-      <div class="menu-tile-icon">ℹ️</div>
-      <div class="menu-tile-label">About</div>
+    <div class="hero-nav">
+      <button class="hero-arr" onclick="heroGo(-1)" aria-label="Previous game"><svg class="ic" viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg></button>
+      <button class="hero-arr" onclick="heroGo(1)" aria-label="Next game"><svg class="ic" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button>
     </div>
   </div>
+  <div class="hero-dots" id="hero-dots"><i class="on"></i><i></i></div>
+  <div class="hstats">
+    <div class="hstat" onclick="openPlayersHub('s-hub')"><b id="hub-badge-players">0</b><span>players</span></div>
+    <div class="hstat" onclick="openPoolHub('s-hub')"><b id="hub-badge-pool">0</b><span>exercises</span></div>
+    <div class="hstat" onclick="openRowodLoad()"><b id="hub-badge-cfg">0</b><span>saved configs</span></div>
+  </div>
+  <div class="slbl" style="margin-top:22px;margin-bottom:0">Quick start</div>
+  <div class="qrow" onclick="go('s-wods-timers')"><div class="qcirc"><svg class="ic" viewBox="0 0 24 24"><path d="M6.5 6.5v11M17.5 6.5v11M3.5 9v6M20.5 9v6M6.5 12h11"/></svg></div><div><div class="n">Workouts</div><div class="s">Games · Classics · Custom · Timers</div></div><div class="chv"><svg class="ic" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></div></div>
+  <div class="qrow" onclick="go('s-timers')"><div class="qcirc"><svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2.5M9 2h6"/></svg></div><div><div class="n">Timers</div><div class="s">For time · AMRAP · EMOM · Tabata</div></div><div class="chv"><svg class="ic" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></div></div>
+  <div class="qrow" onclick="go('s-games');updateLaunchBtn()"><div class="qcirc"><svg class="ic" viewBox="0 0 24 24"><path d="M6 11h4M8 9v4"/><circle cx="15.5" cy="12" r=".8" fill="currentColor"/><circle cx="18" cy="10" r=".8" fill="currentColor"/><path d="M17.3 5H6.7a4 4 0 0 0-4 3.6L2 15a3 3 0 0 0 5.5 1.8L9 15h6l1.5 1.8A3 3 0 0 0 22 15l-.7-6.4a4 4 0 0 0-4-3.6z"/></svg></div><div><div class="n">All games</div><div class="s">ROWOD · Tarot WOD</div></div><div class="chv"><svg class="ic" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></div></div>
+  <div id="hub-sub-pool" hidden></div>
 </div>
 
 <!-- ══ S-WODS-TIMERS — hub section ═══════════════ -->
@@ -547,19 +921,19 @@ input:focus{border-color:var(--acc)}
   </div>
   <div class="menu-grid" style="margin-top:8px">
     <div class="menu-tile" onclick="go('s-games');updateLaunchBtn()">
-      <div class="menu-tile-icon">🎮</div>
+      <div class="menu-tile-icon"><svg class="ic" viewBox="0 0 24 24"><path d="M6 11h4M8 9v4"/><circle cx="15.5" cy="12" r=".8" fill="currentColor"/><circle cx="18" cy="10" r=".8" fill="currentColor"/><path d="M17.3 5H6.7a4 4 0 0 0-4 3.6L2 15a3 3 0 0 0 5.5 1.8L9 15h6l1.5 1.8A3 3 0 0 0 22 15l-.7-6.4a4 4 0 0 0-4-3.6z"/></svg></div>
       <div class="menu-tile-label">Games</div>
     </div>
     <div class="menu-tile" onclick="wodOpenClassics()">
-      <div class="menu-tile-icon">🏆</div>
+      <div class="menu-tile-icon"><svg class="ic" viewBox="0 0 24 24"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0zM17 5h3v2a3 3 0 0 1-3 3M7 5H4v2a3 3 0 0 0 3 3"/></svg></div>
       <div class="menu-tile-label">Classics</div>
     </div>
     <div class="menu-tile" onclick="wodOpenCustom()">
-      <div class="menu-tile-icon">✏️</div>
+      <div class="menu-tile-icon"><svg class="ic" viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg></div>
       <div class="menu-tile-label">Custom</div>
     </div>
     <div class="menu-tile" onclick="go('s-timers')">
-      <div class="menu-tile-icon">⏱️</div>
+      <div class="menu-tile-icon"><svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2.5M9 2h6"/></svg></div>
       <div class="menu-tile-label">Timers</div>
     </div>
   </div>
@@ -573,22 +947,22 @@ input:focus{border-color:var(--acc)}
   </div>
   <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:4px">
     <div class="timer-tile" onclick="tmSelect('stopwatch')">
-      <div class="timer-tile-icon">⏱️</div>
+      <div class="timer-tile-icon"><svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2.5M9 2h6"/></svg></div>
       <div class="timer-tile-name">Stopwatch</div>
       <div class="timer-tile-sub">For Time</div>
     </div>
     <div class="timer-tile" onclick="tmSelect('countdown')">
-      <div class="timer-tile-icon">⏳</div>
+      <div class="timer-tile-icon"><svg class="ic" viewBox="0 0 24 24"><path d="M5 3h14M5 21h14"/><path d="M7 3v2.5c0 2.6 2 4.3 5 6.5-3 2.2-5 3.9-5 6.5V21M17 3v2.5c0 2.6-2 4.3-5 6.5 3 2.2 5 3.9 5 6.5V21"/><path d="M9.5 18.5c.8-1.2 1.6-1.8 2.5-2.2.9.4 1.7 1 2.5 2.2z" fill="currentColor"/><path d="M10 7h4"/></svg></div>
       <div class="timer-tile-name">Countdown</div>
       <div class="timer-tile-sub">AMRAP</div>
     </div>
     <div class="timer-tile" onclick="tmSelect('interval')">
-      <div class="timer-tile-icon">🔁</div>
+      <div class="timer-tile-icon"><svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="13" r="8"/><path d="M12 9v4h4M9 2h6"/><path d="M20 5l1.5-1.5"/></svg></div>
       <div class="timer-tile-name">Interval</div>
       <div class="timer-tile-sub">EMOM</div>
     </div>
     <div class="timer-tile" onclick="tmSelect('tabata')">
-      <div class="timer-tile-icon">⚡</div>
+      <div class="timer-tile-icon"><svg class="ic" viewBox="0 0 24 24"><path d="M13 2 4 14h8l-1 8 9-12h-8l1-8z"/></svg></div>
       <div class="timer-tile-name">Tabata</div>
       <div class="timer-tile-sub">20 / 10</div>
     </div>
@@ -754,7 +1128,7 @@ input:focus{border-color:var(--acc)}
     <div id="wc-blks" class="gap8"></div>
     <button class="btn bg" style="width:100%;margin-top:8px" onclick="wcAddBlock()">+ Add block</button>
   </div>
-  <button class="btn bp" style="margin-top:22px;width:100%" onclick="wcSaveWod()">💾 Save</button>
+  <button class="btn bp" style="margin-top:22px;width:100%" onclick="wcSaveWod()"><svg class="ic ico" viewBox="0 0 24 24"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><path d="M17 21v-8H7v8M7 3v5h8"/></svg>Save</button>
   <div id="wc-delete-row" style="display:none;margin-top:12px">
     <button onclick="wcDeleteWod()" style="width:100%;padding:11px;border-radius:var(--rs);border:1px solid #ef4444;background:none;color:#ef4444;font-size:.88rem;font-weight:700;cursor:pointer">Delete this WOD</button>
   </div>
@@ -767,7 +1141,7 @@ input:focus{border-color:var(--acc)}
     <button class="back-btn" onclick="go('s-wods-timers')">‹</button>
     <div class="sub-hdr-title">Games</div>
   </div>
-  <div style="background:var(--surf);border-radius:var(--rs);padding:11px 14px;margin-bottom:16px;border:1px solid var(--bdr);font-size:.82rem;color:var(--fg2);display:flex;gap:16px;align-items:center;">
+  <div hidden style="background:var(--surf);border-radius:var(--rs);padding:11px 14px;margin-bottom:16px;border:1px solid var(--bdr);font-size:.82rem;color:var(--fg2);display:flex;gap:16px;align-items:center;">
     <span id="games-status-players" onclick="openPlayersHub('s-games')" style="cursor:pointer;text-decoration:underline dotted;">👥 —</span>
     <span style="color:var(--bdr)">|</span>
     <span id="games-status-pool" onclick="openPoolHub('s-games')" style="cursor:pointer;text-decoration:underline dotted;">💪 —</span>
@@ -779,28 +1153,28 @@ input:focus{border-color:var(--acc)}
         <div class="wod-name">ROWOD</div>
         <div class="wod-desc">Rowing · Team · Luck</div>
         <div style="display:flex;gap:10px;margin-top:4px;align-items:center;">
-          <button onclick="event.stopPropagation();document.getElementById('rmodal').classList.remove('h')" style="background:none;border:none;color:var(--fg3);font-size:.7rem;cursor:pointer;padding:0;font-family:'Inter',sans-serif;">📋 Rules</button>
-          <button onclick="event.stopPropagation();openRowodLoad()" id="btn-rowod-load" style="background:none;border:none;color:var(--acc);font-size:.7rem;cursor:pointer;padding:0;font-family:'Inter',sans-serif;">📂 Load config</button>
-          <button onclick="event.stopPropagation();openRowodSave()" style="background:none;border:none;color:var(--fg3);font-size:.7rem;cursor:pointer;padding:0;font-family:'Inter',sans-serif;">💾 Save config</button>
+          <button onclick="event.stopPropagation();document.getElementById('rmodal').classList.remove('h')" style="background:none;border:none;color:var(--fg3);font-size:.7rem;cursor:pointer;padding:0;font-family:'Inter',sans-serif;"><svg class="ic ico" viewBox="0 0 24 24"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V3h6v1M9 10h6M9 14h6M9 18h3"/></svg>Rules</button>
+          <button onclick="event.stopPropagation();openRowodLoad()" id="btn-rowod-load" style="background:none;border:none;color:var(--acc);font-size:.7rem;cursor:pointer;padding:0;font-family:'Inter',sans-serif;"><svg class="ic ico" viewBox="0 0 24 24"><path d="M3 19V6a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v2"/><path d="M3 19l3-8h16l-3 8z"/></svg>Load config</button>
+          <button onclick="event.stopPropagation();openRowodSave()" style="background:none;border:none;color:var(--fg3);font-size:.7rem;cursor:pointer;padding:0;font-family:'Inter',sans-serif;"><svg class="ic ico" viewBox="0 0 24 24"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><path d="M17 21v-8H7v8M7 3v5h8"/></svg>Save config</button>
         </div>
       </div>
       <div style="color:var(--acc);font-size:1.3rem;flex-shrink:0;">›</div>
     </div>
     <div class="wod-card wod-entry" onclick="openTarotCfg()">
-      <div class="wod-icon">🃏</div>
+      <div class="wod-icon"><svg class="ic" viewBox="0 0 24 24"><rect x="8" y="3" width="12" height="16" rx="2"/><path d="M5 7v12a2 2 0 0 0 2 2h9"/></svg></div>
       <div class="wod-info">
         <div class="wod-name">TAROT WOD</div>
         <div class="wod-desc">Cards · Team · Reps</div>
         <div style="display:flex;gap:10px;margin-top:4px;align-items:center;">
-          <button onclick="event.stopPropagation();document.getElementById('tmodal').classList.remove('h')" style="background:none;border:none;color:var(--fg3);font-size:.7rem;cursor:pointer;padding:0;font-family:'Inter',sans-serif;">📋 Rules</button>
-          <button onclick="event.stopPropagation();openTarotLoad(true)" style="background:none;border:none;color:var(--acc);font-size:.7rem;cursor:pointer;padding:0;font-family:'Inter',sans-serif;">📂 Load config</button>
-          <button onclick="event.stopPropagation();openTarotSave()" style="background:none;border:none;color:var(--fg3);font-size:.7rem;cursor:pointer;padding:0;font-family:'Inter',sans-serif;">💾 Save config</button>
+          <button onclick="event.stopPropagation();document.getElementById('tmodal').classList.remove('h')" style="background:none;border:none;color:var(--fg3);font-size:.7rem;cursor:pointer;padding:0;font-family:'Inter',sans-serif;"><svg class="ic ico" viewBox="0 0 24 24"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V3h6v1M9 10h6M9 14h6M9 18h3"/></svg>Rules</button>
+          <button onclick="event.stopPropagation();openTarotLoad(true)" style="background:none;border:none;color:var(--acc);font-size:.7rem;cursor:pointer;padding:0;font-family:'Inter',sans-serif;"><svg class="ic ico" viewBox="0 0 24 24"><path d="M3 19V6a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v2"/><path d="M3 19l3-8h16l-3 8z"/></svg>Load config</button>
+          <button onclick="event.stopPropagation();openTarotSave()" style="background:none;border:none;color:var(--fg3);font-size:.7rem;cursor:pointer;padding:0;font-family:'Inter',sans-serif;"><svg class="ic ico" viewBox="0 0 24 24"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><path d="M17 21v-8H7v8M7 3v5h8"/></svg>Save config</button>
         </div>
       </div>
       <div style="color:var(--acc);font-size:1.3rem;flex-shrink:0;">›</div>
     </div>
     <div class="wod-card locked">
-      <div class="wod-icon">🎲</div>
+      <div class="wod-icon"><svg class="ic" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="3.5"/><circle cx="8.6" cy="8.6" r="1.2" fill="currentColor" stroke="none"/><circle cx="12" cy="12" r="1.2" fill="currentColor" stroke="none"/><circle cx="15.4" cy="15.4" r="1.2" fill="currentColor" stroke="none"/></svg></div>
       <div class="wod-info"><div class="wod-name">MONOPOFIT</div><div class="wod-desc">Coming soon</div></div>
       <div class="wod-lock">🔒</div>
     </div>
@@ -810,7 +1184,7 @@ input:focus{border-color:var(--acc)}
 <!-- ══ S-TAROT-CFG (page 1/2) ═══════════════════ -->
 <div class="scr cfg" id="s-tarot-cfg">
   <div style="display:flex;align-items:center;gap:10px;margin-bottom:22px;">
-    <button onclick="go('s-games')" style="background:none;border:none;color:var(--fg2);font-size:1.6rem;cursor:pointer;padding:0 6px;line-height:1;flex-shrink:0;">‹</button>
+    <button onclick="gameEntryBack()" style="background:none;border:none;color:var(--fg2);font-size:1.6rem;cursor:pointer;padding:0 6px;line-height:1;flex-shrink:0;">‹</button>
     <div class="dots" style="margin:0"><div class="dot cur"></div><div class="dot"></div></div>
     <div style="margin-left:auto;font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:1.1rem;letter-spacing:.04em;text-transform:uppercase;color:var(--fg2)">Tarot WOD</div>
   </div>
@@ -819,11 +1193,11 @@ input:focus{border-color:var(--acc)}
     <div class="slbl">Card deck</div>
     <div class="mode-grid">
       <div class="mode-card sel" id="tcv-shared" onclick="setTarotVariant('shared')">
-        <div class="mode-icon">🃏</div>
+        <div class="mode-icon"><svg class="ic" viewBox="0 0 24 24"><rect x="8" y="3" width="12" height="16" rx="2"/><path d="M5 7v12a2 2 0 0 0 2 2h9"/></svg></div>
         <div><div class="mode-title">Shared deck</div><div class="mode-desc">All draw from the same deck</div></div>
       </div>
       <div class="mode-card" id="tcv-ind" onclick="setTarotVariant('individual')">
-        <div class="mode-icon">🎴</div>
+        <div class="mode-icon"><svg class="ic" viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2"/><circle cx="12" cy="10" r="2.6"/><path d="M8 17c1-2.2 2.4-3.2 4-3.2s3 1 4 3.2"/></svg></div>
         <div><div class="mode-title">1 deck / player</div><div class="mode-desc">Each player has their own 78-card deck</div></div>
       </div>
     </div>
@@ -839,19 +1213,19 @@ input:focus{border-color:var(--acc)}
   <div class="cfg-sec">
     <div class="slbl">Card design</div>
     <div style="display:flex;gap:6px">
-      <button id="tdt-classic" onclick="setTarotDeckType('classic')" style="padding:5px 12px;border-radius:20px;font-size:.82rem;cursor:pointer;transition:all .15s;border:2px solid var(--acc);background:var(--acc2);color:var(--fg);font-weight:600">🃏 Classic</button>
-      <button id="tdt-crossfit" onclick="setTarotDeckType('crossfit')" style="padding:5px 12px;border-radius:20px;font-size:.82rem;cursor:pointer;transition:all .15s;border:2px solid var(--bdr);background:transparent;color:var(--fg2);font-weight:500">💪 Crossfit</button>
+      <button id="tdt-classic" onclick="setTarotDeckType('classic')" style="padding:5px 12px;border-radius:20px;font-size:.82rem;cursor:pointer;transition:all .15s;border:2px solid var(--acc);background:var(--acc2);color:var(--fg);font-weight:600"><svg class="ic ico" viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M12 16s-3.6-2.2-3.6-4.6a1.9 1.9 0 0 1 3.6-.9 1.9 1.9 0 0 1 3.6.9c0 2.4-3.6 4.6-3.6 4.6z"/></svg>Classic</button>
+      <button id="tdt-crossfit" onclick="setTarotDeckType('crossfit')" style="padding:5px 12px;border-radius:20px;font-size:.82rem;cursor:pointer;transition:all .15s;border:2px solid var(--bdr);background:transparent;color:var(--fg2);font-weight:500"><svg class="ic ico" viewBox="0 0 24 24"><path d="M8.5 10V7.5a3.5 3.5 0 0 1 7 0V10"/><path d="M7.3 20a6.5 6.5 0 1 1 9.4 0z"/></svg>Crossfit</button>
     </div>
   </div>
   <div class="cfg-sec">
     <div class="slbl">Game mode</div>
     <div class="mode-grid">
       <div class="mode-card sel" id="tgm-cards" onclick="setTarotGameMode('cards')">
-        <div class="mode-icon">🃏</div>
+        <div class="mode-icon"><svg class="ic" viewBox="0 0 24 24"><path d="M5 21V4M5 4h11l-2 4 2 4H5"/></svg></div>
         <div><div class="mode-title">All the way</div><div class="mode-desc">Game ends when all cards are played</div></div>
       </div>
       <div class="mode-card" id="tgm-time" onclick="setTarotGameMode('time')">
-        <div class="mode-icon">⏱️</div>
+        <div class="mode-icon"><svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2.5M9 2h6"/></svg></div>
         <div><div class="mode-title">Time limit</div><div class="mode-desc">The game loops until time runs out</div></div>
       </div>
     </div>
@@ -878,14 +1252,14 @@ input:focus{border-color:var(--acc)}
   <div class="cfg-sec first">
     <div style="display:flex;align-items:center;justify-content:space-between;">
       <div class="slbl" style="margin:0">Movements by suit</div>
-      <button class="btn-link" onclick="randomTarotMvts()">🎲 Random</button>
+      <button class="rnd-big" onclick="randomTarotMvts()"><svg class="ic ico" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="3.5"/><circle cx="8.6" cy="8.6" r="1.2" fill="currentColor" stroke="none"/><circle cx="12" cy="12" r="1.2" fill="currentColor" stroke="none"/><circle cx="15.4" cy="15.4" r="1.2" fill="currentColor" stroke="none"/></svg>Random</button>
     </div>
     <div class="gap8" id="tarot-suit-rows"></div>
   </div>
   <div class="cfg-sec">
     <div class="slbl">Penalty</div>
     <div class="trow">
-      <div class="ti"><div class="tn">⚠️ Penalty cards</div><div class="td">Adds special ⚠️ cards to the 78-card deck</div></div>
+      <div class="ti"><div class="tn"><svg class="ic ico" viewBox="0 0 24 24"><path d="M12 3 2 20h20z"/><path d="M12 9.5v4.5M12 17h.01"/></svg>Penalty cards</div><div class="td">Adds special penalty cards to the 78-card deck</div></div>
       <div onclick="toggleTarotPenalty()" id="tarot-penalty-thumb" style="width:46px;height:26px;border-radius:13px;background:var(--bdr);cursor:pointer;position:relative;transition:.25s;flex-shrink:0"><div id="tarot-penalty-knob" style="position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;background:#fff;transition:.25s;box-shadow:0 1px 4px rgba(0,0,0,.35)"></div></div>
     </div>
     <div id="tarot-penalty-count-wrap" class="cfg-sub" style="display:none;">
@@ -905,7 +1279,7 @@ input:focus{border-color:var(--acc)}
   <div class="cfg-sec">
     <div class="slbl">Excuse</div>
     <div style="background:rgba(155,89,182,.1);border:1px solid rgba(155,89,182,.3);border-radius:var(--rs);padding:11px 14px;font-size:.82rem;color:#9B59B6;line-height:1.5;">
-      <strong>🃏 Excuse:</strong> Special card — the player gets a reusable joker usable at any time to absorb a card's reps without doing the movement.
+      <strong><svg class="ic ico" viewBox="0 0 24 24"><path d="M5 20h14M5.5 20v-2.5h13V20"/><path d="M6 17.5C6 12 4.5 8.5 2.5 8c2.5-2 6.5 1 8 6"/><path d="M18 17.5c0-5.5 1.5-9 3.5-9.5-2.5-2-6.5 1-8 6"/><path d="M10 17.5c0-6 .8-10 2-13 1.2 3 2 7 2 13"/><circle cx="2.5" cy="9.5" r="1.2"/><circle cx="21.5" cy="9.5" r="1.2"/><circle cx="12" cy="3.2" r="1.2"/></svg>Excuse:</strong> Special card — the player gets a reusable joker usable at any time to absorb a card's reps without doing the movement.
     </div>
   </div>
   <div class="mta cfg-go"><button class="btn bp" onclick="launchTarot()">RUN</button></div>
@@ -916,20 +1290,25 @@ input:focus{border-color:var(--acc)}
   <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;position:sticky;top:0;z-index:9;background:var(--bg);padding-top:10px;margin-top:-10px">
     <div style="min-width:0">
       <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.5rem;text-transform:uppercase;letter-spacing:.04em;">Tarot WOD</div>
-      <div id="tarot-deck-info" style="font-size:.85rem;margin-top:3px;line-height:1.4;"></div>
     </div>
     <div style="display:flex;flex-direction:column;align-items:flex-end;gap:6px;flex-shrink:0">
       <div id="tarot-timer-display" style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:2rem;color:var(--acc);line-height:1;display:none">00:00</div>
-      <div style="display:flex;gap:6px;">
+      <div style="display:none;gap:6px;">
         <button class="score-fab" onclick="showTarotScores()">📊 Scores</button>
         <button class="score-fab" id="tarot-end-btn" onclick="tarotEndBtnTap()">End ✕</button>
       </div>
     </div>
+    <div id="tarot-deck-info"></div>
   </div>
   <div id="tarot-panels"></div>
   <div id="tarot-start-wrap" hidden style="margin-top:14px">
     <button id="tarot-start-btn" onclick="tarotStartAll()" style="display:block;width:100%;background:var(--acc);color:#fff;border:none;border-radius:var(--rs);font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.6rem;text-transform:uppercase;letter-spacing:.08em;padding:18px 10px;cursor:pointer;box-shadow:0 3px 14px rgba(0,0,0,.3);">▶ START</button>
   </div>
+  <div class="gctl"><div class="in">
+    <button class="gcb" id="tarot-left" onclick="tarotLeft()"><svg class="ic" viewBox="0 0 24 24"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0zM17 5h3v2a3 3 0 0 1-3 3M7 5H4v2a3 3 0 0 0 3 3"/></svg><small>Scores</small></button>
+    <button class="gmain" id="tarot-pause-btn" onclick="tarotTogglePause()" aria-label="Pause" disabled><svg class="ic fill" viewBox="0 0 24 24"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg></button>
+    <button class="gcb" onclick="tarotEndBtnTap()"><svg class="ic" viewBox="0 0 24 24"><path d="M5 21V4M5 4h11l-2 4 2 4H5"/></svg><small>Finish</small></button>
+  </div></div>
   <!-- End-game statistics banner (hidden until game ends) -->
   <div id="tarot-end-banner" hidden style="margin-top:20px;padding:16px;background:linear-gradient(135deg,rgba(139,92,246,.18),rgba(99,57,210,.12));border:1.5px solid var(--acc);border-radius:var(--r);text-align:center;">
     <div style="font-size:.82rem;color:var(--fg2);margin-bottom:10px;font-weight:600">🎉 Game over!</div>
@@ -952,11 +1331,19 @@ input:focus{border-color:var(--acc)}
   </div>
   <div class="podium-wrap" id="tarot-podium"></div>
   <div id="tarot-scoreboard"></div>
+  <div class="rk-go">
+    <button class="rgb back" id="rk-back-s-tarot-fin" onclick="tarotFinBack()" aria-label="Back to game"><svg class="ic" viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg><small>Game</small></button>
+    <div class="rk-mid">
+      <button class="rgb sm" onclick="openTarotSave()" aria-label="Save config"><svg class="ic" viewBox="0 0 24 24"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><path d="M17 21v-8H7v8M7 3v5h8"/></svg><small>Save</small></button>
+      <button class="rgb sm" onclick="openRankOptions('tarot-fin-info')" aria-label="Game options"><svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5h.01"/></svg><small>Info</small></button>
+    </div>
+    <button class="rgb quit" onclick="confirmTarotMainMenu()" aria-label="Quit"><svg class="ic" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg><small>Quit</small></button>
+  </div>
   <!-- Aligned buttons — same style as ROWOD -->
-  <div style="margin-top:24px;display:flex;flex-direction:column;gap:10px;">
+  <div class="rk-old" style="margin-top:24px;display:flex;flex-direction:column;gap:10px;">
     <button id="tarot-fin-back-btn" onclick="tarotFinBack()" style="width:100%;padding:14px 0;background:#f97316;color:#fff;border:none;border-radius:var(--rs);font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1rem;text-transform:uppercase;letter-spacing:.06em;cursor:pointer;text-align:center;">BACK TO GAME</button>
     <div style="display:flex;gap:10px;">
-      <button onclick="openTarotSave()" style="width:100%;padding:14px 0;border-radius:var(--rs);font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1rem;text-transform:uppercase;letter-spacing:.06em;cursor:pointer;text-align:center;background:var(--surf2);color:var(--fg);border:1px solid var(--bdr);flex:1;width:auto;">💾 SAVE CONFIG</button>
+      <button onclick="openTarotSave()" style="width:100%;padding:14px 0;border-radius:var(--rs);font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1rem;text-transform:uppercase;letter-spacing:.06em;cursor:pointer;text-align:center;background:var(--surf2);color:var(--fg);border:1px solid var(--bdr);flex:1;width:auto;"><svg class="ic ico" viewBox="0 0 24 24"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><path d="M17 21v-8H7v8M7 3v5h8"/></svg>SAVE CONFIG</button>
       <button onclick="openRankOptions('tarot-fin-info')" title="Game options" aria-label="Game options" style="flex:0 0 56px;border-radius:var(--rs);background:var(--surf2);border:1px solid var(--bdr);color:var(--fg);font-size:1.35rem;cursor:pointer;display:flex;align-items:center;justify-content:center;">ⓘ</button>
     </div>
     <button onclick="confirmTarotMainMenu()" style="width:100%;padding:14px 0;border-radius:var(--rs);font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1rem;text-transform:uppercase;letter-spacing:.06em;cursor:pointer;text-align:center;background:var(--surf2);color:var(--fg);border:1px solid var(--bdr);">QUIT</button>
@@ -974,23 +1361,23 @@ input:focus{border-color:var(--acc)}
 </div>
 
 <!-- ══ S-PLAYERS-HUB ═════════════════════════════ -->
-<div class="scr" id="s-players-hub">
+<div class="scr cfg" id="s-players-hub">
   <div class="sub-hdr">
     <button class="back-btn" onclick="goBackFromPlayers()">‹</button>
     <div class="sub-hdr-title">Players</div>
     <div style="flex:1"></div>
-    <button class="btn-link" style="color:var(--fg3);font-size:.72rem;" onclick="openRosterImport()">⬇ Import</button>
-    <button class="btn-link" style="color:var(--fg3);font-size:.72rem;" onclick="openRosterExport()">⬆ Export</button>
-    <button class="btn-link" onclick="openAddPlayer()">+ Add</button>
+    <button class="btn-link" style="color:var(--fg3);font-size:.72rem;" onclick="openRosterImport()"><svg class="ic ico" viewBox="0 0 24 24"><path d="M12 3v12M7 10l5 5 5-5M4 21h16"/></svg>Import</button>
+    <button class="btn-link" style="color:var(--fg3);font-size:.72rem;" onclick="openRosterExport()"><svg class="ic ico" viewBox="0 0 24 24"><path d="M12 15V3M7 8l5-5 5 5M4 21h16"/></svg>Export</button>
   </div>
   <div style="font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--fg3);margin-bottom:10px;">
     <span id="hub-sel-count">0 selected</span> · Tap to select
   </div>
   <div id="hub-roster" style="display:flex;flex-direction:column;gap:8px;min-height:48px;"></div>
+  <div class="mta cfg-go"><button class="cfg-add" onclick="openAddPlayer()" aria-label="Add a player"><svg class="ic" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button><button class="btn bp" data-icon="check" onclick="goBackFromPlayers()">OK</button></div>
 </div>
 
 <!-- ══ S-POOL ═════════════════════════════════════ -->
-<div class="scr" id="s-pool">
+<div class="scr cfg" id="s-pool">
   <div class="sub-hdr">
     <button class="back-btn" onclick="goBackFromPool()">‹</button>
     <div class="sub-hdr-title">Exercises</div>
@@ -1004,6 +1391,7 @@ input:focus{border-color:var(--acc)}
     Active pool · <span id="hub-pool-count">0 exercise</span>
   </div>
   <div id="hub-pool" class="hub-pool-grid mb20"></div>
+  <div class="mta cfg-go"><button class="btn bp" data-icon="check" onclick="goBackFromPool()">OK</button></div>
 </div>
 
 <!-- ══ S-ABOUT ════════════════════════════════════ -->
@@ -1021,8 +1409,8 @@ input:focus{border-color:var(--acc)}
     <div class="about-section-title">Appearance</div>
     <div class="theme-seg" id="theme-seg">
       <button data-t="auto" onclick="setAppTheme('auto')">Auto</button>
-      <button data-t="light" onclick="setAppTheme('light')">☀️ Light</button>
-      <button data-t="dark" onclick="setAppTheme('dark')">🌙 Dark</button>
+      <button data-t="light" onclick="setAppTheme('light')"><svg class="ic ico" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>Light</button>
+      <button data-t="dark" onclick="setAppTheme('dark')"><svg class="ic ico" viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></svg>Dark</button>
     </div>
     <div style="font-size:.72rem;color:var(--fg3);margin-top:8px;">Auto follows your device setting. Saved on this device.</div>
   </div>
@@ -1049,15 +1437,15 @@ input:focus{border-color:var(--acc)}
   <div class="about-section">
     <div class="about-section-title">Games</div>
     <div class="credit-row">
-      <div style="font-size:1.2rem;">🚣</div>
+      <div class="cr-ic" style="font-size:1.2rem">🚣</div>
       <div><div style="font-weight:700;font-size:.88rem;">ROWOD</div><div style="font-size:.74rem;color:var(--acc);">Active</div></div>
     </div>
     <div class="credit-row">
-      <div style="font-size:1.2rem;">🃏</div>
+      <div class="cr-ic"><svg class="ic" viewBox="0 0 24 24"><rect x="8" y="3" width="12" height="16" rx="2"/><path d="M5 7v12a2 2 0 0 0 2 2h9"/></svg></div>
       <div><div style="font-weight:700;font-size:.88rem;">TAROT WOD</div><div style="font-size:.74rem;color:var(--acc);">Active</div></div>
     </div>
     <div class="credit-row" style="opacity:.5">
-      <div style="font-size:1.2rem;">🎲</div>
+      <div class="cr-ic"><svg class="ic" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="3.5"/><circle cx="8.6" cy="8.6" r="1.2" fill="currentColor" stroke="none"/><circle cx="12" cy="12" r="1.2" fill="currentColor" stroke="none"/><circle cx="15.4" cy="15.4" r="1.2" fill="currentColor" stroke="none"/></svg></div>
       <div><div style="font-weight:700;font-size:.88rem;">MONOPOFIT</div><div style="font-size:.74rem;color:var(--fg3);">Coming soon</div></div>
     </div>
   </div>
@@ -1068,34 +1456,34 @@ input:focus{border-color:var(--acc)}
 
 <!-- ══ S2: MODE & STRUCTURE ══════════════════════ -->
 <div class="scr cfg" id="s-mode">
-  <div style="display:flex;align-items:center;gap:10px;margin-bottom:22px;"><button onclick="go('s-games');updateLaunchBtn()" style="background:none;border:none;color:var(--fg2);font-size:1.6rem;cursor:pointer;padding:0 6px;line-height:1;flex-shrink:0;">‹</button><div class="dots" style="margin:0"><div class="dot ok"></div><div class="dot cur"></div><div class="dot"></div><div class="dot"></div></div><div style="margin-left:auto;font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:.82rem;text-transform:uppercase;letter-spacing:.06em;color:var(--fg3)">ROWOD</div></div>
+  <div style="display:flex;align-items:center;gap:10px;margin-bottom:22px;"><button onclick="gameEntryBack()" style="background:none;border:none;color:var(--fg2);font-size:1.6rem;cursor:pointer;padding:0 6px;line-height:1;flex-shrink:0;">‹</button><div class="dots" style="margin:0"><div class="dot ok"></div><div class="dot cur"></div><div class="dot"></div><div class="dot"></div></div><div style="margin-left:auto;font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:.82rem;text-transform:uppercase;letter-spacing:.06em;color:var(--fg3)">ROWOD</div></div>
   <div class="sh"><div class="st">Game Mode</div></div>
   <div class="cfg-sec first">
     <div class="slbl">Combo mode</div>
     <div class="mode-grid">
       <div class="mode-card sel" id="mc1" onclick="selMode(1)">
-        <div class="mode-icon">🎯</div>
+        <div class="mode-icon"><svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1" fill="currentColor"/></svg></div>
         <div><div class="mode-title">All Fixed</div><div class="mode-desc">Pre-set combos, you choose the order</div></div>
       </div>
       <div class="mode-card" id="mc2" onclick="selMode(2)">
-        <div class="mode-icon">🎲</div>
+        <div class="mode-icon"><svg class="ic" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="3.5"/><circle cx="8.6" cy="8.6" r="1.2" fill="currentColor" stroke="none"/><circle cx="12" cy="12" r="1.2" fill="currentColor" stroke="none"/><circle cx="15.4" cy="15.4" r="1.2" fill="currentColor" stroke="none"/></svg></div>
         <div><div class="mode-title">Dice Combo</div><div class="mode-desc">Fixed combos, the dice picks which to play</div></div>
       </div>
       <div class="mode-card" id="mc3" onclick="selMode(3)">
-        <div class="mode-icon">🌪️</div>
+        <div class="mode-icon"><svg class="ic" viewBox="0 0 24 24"><path d="M16 3h5v5M4 20 21 3M21 16v5h-5M15 15l6 6M4 4l5 5"/></svg></div>
         <div><div class="mode-title">Full Random</div><div class="mode-desc">Distance AND movement drawn independently</div></div>
       </div>
     </div>
     <div id="repeat-row" class="trow" style="display:none;">
-      <div class="ti"><div class="tn">🔁 Repeatable Combos</div><div class="td">Allow the same combo more than once</div></div>
+      <div class="ti"><div class="tn"><svg class="ic ico" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 3-6.7L3 8M3 3v5h5"/><path d="M12 8v4l3 2"/></svg>Repeatable Combos</div><div class="td">Allow the same combo more than once</div></div>
       <button class="tsw" id="tsw-repeat" onclick="togRepeat()"></button>
     </div>
   </div>
   <div class="cfg-sec">
     <div class="slbl">Game structure</div>
     <div class="tab-row">
-      <button class="tab sel" id="tab-rounds" onclick="selStructure('rounds')">🔁 Rounds</button>
-      <button class="tab" id="tab-time" onclick="selStructure('time')">⏱ Time limit</button>
+      <button class="tab sel" id="tab-rounds" onclick="selStructure('rounds')"><svg class="ic ico" viewBox="0 0 24 24"><path d="M17 2l4 4-4 4M3 11v-1a4 4 0 0 1 4-4h14M7 22l-4-4 4-4M21 13v1a4 4 0 0 1-4 4H3"/></svg>Rounds</button>
+      <button class="tab" id="tab-time" onclick="selStructure('time')"><svg class="ic ico" viewBox="0 0 24 24"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2.5M9 2h6"/></svg>Time limit</button>
     </div>
     <div class="stp">
       <button class="sb" id="struct-bm" onclick="chStruct(-1)">−</button>
@@ -1109,18 +1497,18 @@ input:focus{border-color:var(--acc)}
   <div class="cfg-sec">
     <div class="slbl">Penalty</div>
     <div class="trow">
-      <div class="ti"><div class="tn">⚡ Penalties enabled</div><div class="td">Actual distance → penalty if off-target</div></div>
+      <div class="ti"><div class="tn"><svg class="ic ico" viewBox="0 0 24 24"><path d="M13 2 4 14h8l-1 8 9-12h-8l1-8z"/></svg>Penalties enabled</div><div class="td">Actual distance → penalty if off-target</div></div>
       <button class="tsw" id="tsw-pen" onclick="togPen()"></button>
     </div>
     <div id="pen-config" class="cfg-sub" style="display:none">
       <div class="slbl">Penalty movement</div>
       <div class="mrow" id="pen-mvt-row" onclick="openPenMvtPicker()">
-        <div class="micon" id="pen-mvt-icon">🏃</div>
+        <div class="micon" id="pen-mvt-icon" hidden></div>
         <div class="mname" id="pen-mvt-name">Burpees</div>
         <div class="marr">›</div>
       </div>
       <div class="trow">
-        <div class="ti"><div class="tn">🎯 Exact bonus</div><div class="td">Exact distance → others get a penalty</div></div>
+        <div class="ti"><div class="tn"><svg class="ic ico" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/><circle cx="12" cy="12" r="1.6" fill="currentColor" stroke="none"/></svg>Exact bonus</div><div class="td">Exact distance → others get a penalty</div></div>
         <button class="tsw" id="tsw-exact" onclick="togExact()"></button>
       </div>
       <div id="exact-reps-row" class="cfg-sub" style="display:none">
@@ -1136,15 +1524,15 @@ input:focus{border-color:var(--acc)}
   <div class="cfg-sec">
     <div class="slbl">Player order</div>
     <div class="tab-row">
-      <button class="tab" id="ord-fixed" onclick="selOrder('fixed')">Fixed</button>
-      <button class="tab sel" id="ord-rotate" onclick="selOrder('rotate')">Rotating</button>
-      <button class="tab" id="ord-random" onclick="selOrder('random')">Random</button>
+      <button class="tab" id="ord-fixed" onclick="selOrder('fixed')"><svg class="ic ico" viewBox="0 0 24 24"><path d="M10 6h11M10 12h11M10 18h11"/><path d="M4 4v4M3 8h2M3.5 14.5c0-1 1-1.5 1.7-1.2.9.4.7 1.4 0 2L3.5 17h2.2"/></svg>Fixed</button>
+      <button class="tab sel" id="ord-rotate" onclick="selOrder('rotate')"><svg class="ic ico" viewBox="0 0 24 24"><path d="M21 12a9 9 0 0 1-15.4 6.4L3 16M3 12a9 9 0 0 1 15.4-6.4L21 8"/><path d="M21 3v5h-5M3 21v-5h5"/></svg>Rotating</button>
+      <button class="tab" id="ord-random" onclick="selOrder('random')"><svg class="ic ico" viewBox="0 0 24 24"><path d="M16 3h5v5M4 20 21 3M21 16v5h-5M15 15l6 6M4 4l5 5"/></svg>Random</button>
     </div>
   </div>
   <div class="cfg-sec">
     <div class="slbl">Distance coefficients</div>
     <div class="trow">
-      <div class="ti"><div class="tn">📏 Coefficients enabled</div><div class="td">Per-player distance multiplier (10–200%)</div></div>
+      <div class="ti"><div class="tn"><svg class="ic ico" viewBox="0 0 24 24"><path d="M3 17 17 3l4 4L7 21z"/><path d="M7 13l2 2M10 10l2 2M13 7l2 2"/></svg>Coefficients enabled</div><div class="td">Per-player distance multiplier (10–200%)</div></div>
       <button class="tsw" id="tsw-coeff" onclick="togCoeff()"></button>
     </div>
     <div id="coeff-config" style="display:none">
@@ -1163,7 +1551,7 @@ input:focus{border-color:var(--acc)}
   <div class="cfg-sec first" id="trow-de">
     <div class="slbl">Dice mode</div>
     <div class="trow">
-      <div class="ti"><div class="tn">🎲 Dice Mode</div><div class="td" id="tde-desc">Random distance draw</div></div>
+      <div class="ti"><div class="tn"><svg class="ic ico" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="3.5"/><circle cx="8.6" cy="8.6" r="1.2" fill="currentColor" stroke="none"/><circle cx="12" cy="12" r="1.2" fill="currentColor" stroke="none"/><circle cx="15.4" cy="15.4" r="1.2" fill="currentColor" stroke="none"/></svg>Dice Mode</div><div class="td" id="tde-desc">Random distance draw</div></div>
       <button class="tsw on" id="tde" onclick="togDe()"></button>
     </div>
   </div>
@@ -1199,13 +1587,19 @@ input:focus{border-color:var(--acc)}
 <div class="scr" id="s-select">
   <div class="sh" style="display:flex;align-items:flex-start;gap:6px;"><button id="sel-back-btn" onclick="abortToMvt()" style="background:none;border:none;color:var(--fg2);font-size:1.6rem;cursor:pointer;padding:4px 6px 0;line-height:1;flex-shrink:0;margin-top:2px;">‹</button><div><div class="st">Pick a COMBO</div><div class="ss" id="sel-sub">Roll the dice or select</div></div><div style="margin-left:auto;font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:.82rem;text-transform:uppercase;letter-spacing:.06em;color:var(--fg3);padding-top:4px">ROWOD</div></div>
   <div class="game-chips" id="game-chips"></div>
-  <button class="die-btn" id="die-btn" onclick="dieOrRandom()"><span class="di" id="di">🎲</span><span id="die-label">Roll the dice</span></button>
+  <button class="die-btn" id="die-btn" onclick="dieOrRandom()"><span class="di" id="di"><svg class="ic" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="3.5"/><circle cx="8.6" cy="8.6" r="1.2" fill="currentColor" stroke="none"/><circle cx="12" cy="12" r="1.2" fill="currentColor" stroke="none"/><circle cx="15.4" cy="15.4" r="1.2" fill="currentColor" stroke="none"/></svg></span><span id="die-label">Roll the dice</span></button>
   <div id="grid-or-sep">
     <div style="margin:14px 0;text-align:center;color:var(--fg3);font-size:.75rem;text-transform:uppercase;letter-spacing:.12em;" id="or-pick-lbl">— or pick —</div>
     <div class="pgrid" id="pgrid"></div>
   </div>
-  <div class="mta mt12"><button class="btn bg" id="btn-scores" onclick="showFinalScores()" style="display:none;">🏆 See final scores</button></div>
+  <div class="mta mt12"><button class="btn bg" id="btn-scores" onclick="showFinalScores()" style="display:none;"><svg class="ic ico" viewBox="0 0 24 24"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0zM17 5h3v2a3 3 0 0 1-3 3M7 5H4v2a3 3 0 0 0 3 3"/></svg>See final scores</button></div>
+  <div class="gctl"><div class="in">
+    <button class="gcb" onclick="showMidScores()"><svg class="ic" viewBox="0 0 24 24"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0zM17 5h3v2a3 3 0 0 1-3 3M7 5H4v2a3 3 0 0 0 3 3"/></svg><small>Scores</small></button>
+    <span class="gsp"></span><span class="gsp"></span>
+  </div></div>
 </div>
+
+<button class="sel-back-round" id="sel-back-round" hidden onclick="abortToMvt()" aria-label="Back to options"><svg class="ic" viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg></button>
 
 <!-- ══ S6: ACTIVE ROUND ════════════════════════ -->
 <div class="scr" id="s-active" style="background:radial-gradient(ellipse at 50% 0%,rgba(255,82,0,.1) 0%,transparent 60%);">
@@ -1216,7 +1610,7 @@ input:focus{border-color:var(--acc)}
     <div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px">
       <div style="display:flex;align-items:center;gap:10px">
         <div style="text-align:right"><div class="rhl">Player</div><div class="rhv" id="a-turn">1/4</div></div>
-        <button class="score-fab" onclick="showMidScores()">🏆 Scores</button>
+        <button class="score-fab" onclick="showMidScores()"><svg class="ic ico" viewBox="0 0 24 24"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0zM17 5h3v2a3 3 0 0 1-3 3M7 5H4v2a3 3 0 0 0 3 3"/></svg>Scores</button>
       </div>
     </div>
   </div>
@@ -1235,11 +1629,19 @@ input:focus{border-color:var(--acc)}
     <div><div class="rn" id="a-rn">Jean</div><div class="rt" id="a-rt">🚣 On the rower</div></div>
   </div>
   <div class="opanel" id="a-others"></div>
-  <div class="tdisp">
-    <div class="tval" id="tval">00:00</div>
-    <div class="tms" id="tms">.00</div>
+  <div class="ring" id="row-ring">
+    <svg viewBox="0 0 250 250">
+      <circle cx="125" cy="125" r="108" stroke="var(--surf2)" stroke-width="14" fill="none"/>
+      <circle id="ring-arc" cx="125" cy="125" r="108" stroke="var(--acc)" stroke-width="14" fill="none" stroke-linecap="round" stroke-dasharray="678.6" stroke-dashoffset="678.6" transform="rotate(-90 125 125)"/>
+    </svg>
+    <div class="c"><div class="tval" id="tval">00:00</div><div class="tms" id="tms">.00</div><div class="ru" id="ring-sub">Tap ▶ to start</div></div>
   </div>
-  <button class="gobtn go" id="gobt" onclick="togTimer()">GO !</button>
+  <span id="gobt" hidden></span>
+  <div class="gctl"><div class="in">
+    <button class="gcb" id="rowleft" onclick="rowLeft()"><svg class="ic" viewBox="0 0 24 24"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0zM17 5h3v2a3 3 0 0 1-3 3M7 5H4v2a3 3 0 0 0 3 3"/></svg><small>Scores</small></button>
+    <button class="gmain go" id="gobt2" onclick="rowMain()" aria-label="Start"><svg class="ic fill" viewBox="0 0 24 24"><path d="M7 4.5v15l13-7.5z"/></svg></button>
+    <button class="gcb" id="stopbt" onclick="rowPause()" disabled><svg class="ic fill" viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" rx="2"/></svg><small>Stop</small></button>
+  </div></div>
 </div>
 
 <!-- ══ S6b: SOLO MOVEMENT PHASE ══════════════ -->
@@ -1263,7 +1665,7 @@ input:focus{border-color:var(--acc)}
 <div class="scr" id="s-results">
   <div class="sh"><div class="st">Result</div><div class="ss" id="res-sub">Jean · 500m · Squats</div></div>
   <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">
-    <button class="score-fab" onclick="showMidScores()">🏆 Scores</button>
+    <button class="score-fab" onclick="showMidScores()"><svg class="ic ico" viewBox="0 0 24 24"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0zM17 5h3v2a3 3 0 0 1-3 3M7 5H4v2a3 3 0 0 0 3 3"/></svg>Scores</button>
   </div>
   <div class="rtbig">
     <div class="slbl" style="margin-bottom:8px;">Rowing time</div>
@@ -1271,7 +1673,7 @@ input:focus{border-color:var(--acc)}
   </div>
   <div id="dist-penalty-wrap" style="display:none">
     <div class="dist-input-wrap">
-      <div class="dist-input-lbl">⚡ Actual distance rowed</div>
+      <div class="dist-input-lbl"><svg class="ic ico" viewBox="0 0 24 24"><path d="M13 2 4 14h8l-1 8 9-12h-8l1-8z"/></svg>Actual distance rowed</div>
       <div class="dist-row" id="dist-row">
         <div class="dist-delta" id="dist-delta">—</div>
       </div>
@@ -1280,6 +1682,11 @@ input:focus{border-color:var(--acc)}
   <div class="slbl mb12" id="reps-list-lbl">Other players' reps</div>
   <div class="gap8" id="reps-list"></div>
   <div class="mta mt20"><button class="btn bp" onclick="saveRes()">Next Round</button></div>
+  <div class="gctl"><div class="in">
+    <button class="gcb" onclick="showMidScores()"><svg class="ic" viewBox="0 0 24 24"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0zM17 5h3v2a3 3 0 0 1-3 3M7 5H4v2a3 3 0 0 0 3 3"/></svg><small>Scores</small></button>
+    <button class="gmain" onclick="saveRes()" aria-label="Next round"><svg class="ic" viewBox="0 0 24 24" style="stroke-width:2.8"><path d="M9 6l6 6-6 6"/></svg></button>
+    <span class="gsp"></span>
+  </div></div>
 </div>
 
 <!-- ══ S8: FINAL SCORES ════════════════════════ -->
@@ -1300,15 +1707,25 @@ input:focus{border-color:var(--acc)}
   <!-- Tab switcher -->
   <div style="margin-top:24px;display:flex;gap:0;border:1px solid var(--bdr);border-radius:var(--rs);overflow:hidden;">
     <button id="tab-rdetail" onclick="switchScoresTab('rdetail')" style="flex:1;padding:11px 0;background:var(--acc);color:#fff;border:none;font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:.88rem;text-transform:uppercase;letter-spacing:.06em;cursor:pointer;">Round Details</button>
+    <button id="tab-pmvt" onclick="switchScoresTab('pmvt')" style="flex:1;padding:11px 0;background:var(--surf2);color:var(--fg2);border:none;border-left:1px solid var(--bdr);font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:.88rem;text-transform:uppercase;letter-spacing:.06em;cursor:pointer;">Per movement</button>
     <button id="tab-gstats" onclick="switchScoresTab('gstats')" style="flex:1;padding:11px 0;background:var(--surf2);color:var(--fg2);border:none;border-left:1px solid var(--bdr);font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:.88rem;text-transform:uppercase;letter-spacing:.06em;cursor:pointer;">Global Stats</button>
   </div>
   <div id="panel-rdetail" style="margin-top:16px;"><div id="rdetail"></div></div>
   <div id="panel-gstats" style="margin-top:16px;display:none;"><div id="globalstats"></div></div>
+  <div id="panel-pmvt" style="margin-top:16px;display:none;"><div id="rowod-pmvt"></div></div>
+  <div class="rk-go">
+    <button class="rgb back" id="rk-back-s-scores" onclick="backToGame()" aria-label="Back to game"><svg class="ic" viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg><small>Game</small></button>
+    <div class="rk-mid">
+      <button class="rgb sm" onclick="openRowodSave()" aria-label="Save config"><svg class="ic" viewBox="0 0 24 24"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><path d="M17 21v-8H7v8M7 3v5h8"/></svg><small>Save</small></button>
+      <button class="rgb sm" onclick="openRankOptions('scores-game-info')" aria-label="Game options"><svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5h.01"/></svg><small>Info</small></button>
+    </div>
+    <button class="rgb quit" onclick="confirmRowodHome()" aria-label="Quit"><svg class="ic" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg><small>Quit</small></button>
+  </div>
   <!-- Actions — same as TAROT WOD -->
-  <div style="margin-top:24px;display:flex;flex-direction:column;gap:10px;">
+  <div class="rk-old" style="margin-top:24px;display:flex;flex-direction:column;gap:10px;">
     <button id="btn-back-game" onclick="backToGame()" style="display:none;width:100%;padding:14px 0;border-radius:var(--rs);font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1rem;text-transform:uppercase;letter-spacing:.06em;cursor:pointer;text-align:center;background:#f97316;color:#fff;border:none;">BACK TO GAME</button>
     <div style="display:flex;gap:10px;">
-      <button onclick="openRowodSave()" style="width:100%;padding:14px 0;border-radius:var(--rs);font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1rem;text-transform:uppercase;letter-spacing:.06em;cursor:pointer;text-align:center;background:var(--surf2);color:var(--fg);border:1px solid var(--bdr);flex:1;width:auto;">💾 SAVE CONFIG</button>
+      <button onclick="openRowodSave()" style="width:100%;padding:14px 0;border-radius:var(--rs);font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1rem;text-transform:uppercase;letter-spacing:.06em;cursor:pointer;text-align:center;background:var(--surf2);color:var(--fg);border:1px solid var(--bdr);flex:1;width:auto;"><svg class="ic ico" viewBox="0 0 24 24"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><path d="M17 21v-8H7v8M7 3v5h8"/></svg>SAVE CONFIG</button>
       <button onclick="openRankOptions('scores-game-info')" title="Game options" aria-label="Game options" style="flex:0 0 56px;border-radius:var(--rs);background:var(--surf2);border:1px solid var(--bdr);color:var(--fg);font-size:1.35rem;cursor:pointer;display:flex;align-items:center;justify-content:center;">ⓘ</button>
     </div>
     <button onclick="confirmRowodHome()" style="width:100%;padding:14px 0;border-radius:var(--rs);font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1rem;text-transform:uppercase;letter-spacing:.06em;cursor:pointer;text-align:center;background:var(--surf2);color:var(--fg);border:1px solid var(--bdr);">QUIT</button>
@@ -1344,15 +1761,15 @@ input:focus{border-color:var(--acc)}
 <div id="roster-export-ovl" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:900;align-items:flex-end;justify-content:center;">
   <div style="background:var(--surf);border-radius:var(--r) var(--r) 0 0;padding:24px 20px 32px;width:100%;max-width:480px;box-shadow:0 -4px 32px rgba(0,0,0,.3);">
     <div style="display:flex;align-items:center;margin-bottom:4px;">
-      <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.3rem;text-transform:uppercase;letter-spacing:.04em;">⬆ Export data</div>
+      <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.3rem;text-transform:uppercase;letter-spacing:.04em;"><svg class="ic ico" viewBox="0 0 24 24"><path d="M12 15V3M7 8l5-5 5 5M4 21h16"/></svg>Export data</div>
       <button onclick="closeRosterExport()" style="margin-left:auto;background:none;border:none;color:var(--fg2);font-size:1.5rem;cursor:pointer;line-height:1;">✕</button>
     </div>
-    <div style="font-size:.8rem;color:var(--fg3);margin-bottom:8px;">Copy this code and keep it (Notes, email…) or paste it on another device with ⬇ Import.</div>
+    <div style="font-size:.8rem;color:var(--fg3);margin-bottom:8px;">Copy this code and keep it (Notes, email…) or paste it on another device with Import.</div>
     <div id="roster-export-summary" style="font-size:.75rem;color:var(--fg2);margin-bottom:14px;line-height:1.6;"></div>
     <textarea id="roster-export-code" readonly style="width:100%;box-sizing:border-box;background:var(--surf2);border:1px solid var(--bdr);border-radius:var(--rs);padding:10px 12px;color:var(--fg);font-size:.72rem;font-family:'Courier New',monospace;resize:none;height:90px;word-break:break-all;"></textarea>
     <div style="display:flex;gap:10px;margin-top:14px;">
       <button class="btn bs" style="flex:1;" onclick="closeRosterExport()">Close</button>
-      <button class="btn bp" style="flex:2;" onclick="copyRosterCode()">📋 Copy code</button>
+      <button class="btn bp" style="flex:2;" onclick="copyRosterCode()"><svg class="ic ico" viewBox="0 0 24 24"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V3h6v1M9 10h6M9 14h6M9 18h3"/></svg>Copy code</button>
     </div>
   </div>
 </div>
@@ -1361,7 +1778,7 @@ input:focus{border-color:var(--acc)}
 <div id="roster-import-ovl" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:900;align-items:flex-end;justify-content:center;">
   <div style="background:var(--surf);border-radius:var(--r) var(--r) 0 0;padding:24px 20px 32px;width:100%;max-width:480px;box-shadow:0 -4px 32px rgba(0,0,0,.3);">
     <div style="display:flex;align-items:center;margin-bottom:4px;">
-      <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.3rem;text-transform:uppercase;letter-spacing:.04em;">⬇ Import data</div>
+      <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.3rem;text-transform:uppercase;letter-spacing:.04em;"><svg class="ic ico" viewBox="0 0 24 24"><path d="M12 3v12M7 10l5 5 5-5M4 21h16"/></svg>Import data</div>
       <button onclick="closeRosterImport()" style="margin-left:auto;background:none;border:none;color:var(--fg2);font-size:1.5rem;cursor:pointer;line-height:1;">✕</button>
     </div>
     <div style="font-size:.8rem;color:var(--fg3);margin-bottom:18px;">Paste an export code. Players, exercises, configs and WODs are added to what you already have — nothing is deleted.</div>
@@ -1369,7 +1786,7 @@ input:focus{border-color:var(--acc)}
     <div id="roster-import-preview" style="display:none;margin-top:12px;font-size:.8rem;color:var(--fg2);"></div>
     <div style="display:flex;gap:10px;margin-top:14px;">
       <button class="btn bs" style="flex:1;" onclick="closeRosterImport()">Cancel</button>
-      <button class="btn bp" style="flex:2;" onclick="doRosterImport()">⬇ Import</button>
+      <button class="btn bp" style="flex:2;" onclick="doRosterImport()"><svg class="ic ico" viewBox="0 0 24 24"><path d="M12 3v12M7 10l5 5 5-5M4 21h16"/></svg>Import</button>
     </div>
   </div>
 </div>
@@ -1420,10 +1837,25 @@ input:focus{border-color:var(--acc)}
   </div>
 </div>
 
+<!-- ══ STEP SUMMARY SHEET ═════════════════════ -->
+<div id="step-ovl" onclick="if(event.target===this)closeStepSheet()" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:900;align-items:flex-end;justify-content:center;">
+  <div style="background:var(--surf);border-radius:26px 26px 0 0;border-top:1px solid var(--bdr);padding:22px 18px calc(24px + env(safe-area-inset-bottom,0px));width:100%;max-width:480px;max-height:82vh;overflow-y:auto;box-sizing:border-box;">
+    <div style="display:flex;align-items:center;margin-bottom:14px;">
+      <div id="step-title" style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-style:italic;font-size:1.5rem;text-transform:uppercase;">Summary</div>
+      <button onclick="closeStepSheet()" style="margin-left:auto;background:none;border:none;color:var(--fg2);font-size:1.5rem;cursor:pointer;line-height:1;">✕</button>
+    </div>
+    <div id="step-body"></div>
+    <div style="display:flex;gap:10px;margin-top:14px;">
+      <button class="btn bs" id="step-load" style="flex:1;"><svg class="ic ico" viewBox="0 0 24 24"><path d="M3 19V6a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v2"/><path d="M3 19l3-8h16l-3 8z"/></svg>Load</button>
+      <button class="btn bp" id="step-save" style="flex:1;font-size:1.15rem;"><svg class="ic ico" viewBox="0 0 24 24"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><path d="M17 21v-8H7v8M7 3v5h8"/></svg>Save</button>
+    </div>
+  </div>
+</div>
+
 <!-- ══ ROWOD SAVE MODAL ══════════════════════════ -->
 <div id="rowod-save-ovl" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:900;align-items:flex-end;justify-content:center;">
   <div style="background:var(--surf);border-radius:var(--r) var(--r) 0 0;padding:24px 20px 32px;width:100%;max-width:480px;box-shadow:0 -4px 32px rgba(0,0,0,.3);">
-    <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.3rem;text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px;">💾 Save configuration</div>
+    <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.3rem;text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px;"><svg class="ic ico" viewBox="0 0 24 24"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><path d="M17 21v-8H7v8M7 3v5h8"/></svg>Save configuration</div>
     <div style="font-size:.8rem;color:var(--fg3);margin-bottom:18px;">Save all options to reload later</div>
     <div style="font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--fg3);margin-bottom:6px;">Name</div>
     <input id="rowod-save-name" type="text" style="width:100%;box-sizing:border-box;background:var(--surf2);border:1px solid var(--bdr);border-radius:var(--rs);padding:10px 12px;color:var(--fg);font-size:.95rem;font-family:'Inter',sans-serif;margin-bottom:14px;" placeholder="ROWOD_…" maxlength="40">
@@ -1431,7 +1863,7 @@ input:focus{border-color:var(--acc)}
     <input id="rowod-save-comment" type="text" style="width:100%;box-sizing:border-box;background:var(--surf2);border:1px solid var(--bdr);border-radius:var(--rs);padding:10px 12px;color:var(--fg);font-size:.95rem;font-family:'Inter',sans-serif;margin-bottom:20px;" placeholder="e.g. Friday session, team A…" maxlength="80">
     <div style="display:flex;gap:10px;">
       <button class="btn bs" style="flex:1;" onclick="closeRowodSave()">Cancel</button>
-      <button class="btn bp" style="flex:2;" onclick="doRowodSave()">💾 Save</button>
+      <button class="btn bp" style="flex:2;" onclick="doRowodSave()"><svg class="ic ico" viewBox="0 0 24 24"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><path d="M17 21v-8H7v8M7 3v5h8"/></svg>Save</button>
     </div>
   </div>
 </div>
@@ -1441,7 +1873,7 @@ input:focus{border-color:var(--acc)}
   <div style="background:var(--surf);border-radius:var(--r) var(--r) 0 0;padding:24px 20px 32px;width:100%;max-width:480px;max-height:80vh;overflow-y:auto;box-shadow:0 -4px 32px rgba(0,0,0,.3);">
     <div style="display:flex;align-items:center;margin-bottom:18px;">
       <div>
-        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.3rem;text-transform:uppercase;letter-spacing:.04em;">📂 Saved configs</div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.3rem;text-transform:uppercase;letter-spacing:.04em;"><svg class="ic ico" viewBox="0 0 24 24"><path d="M3 19V6a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v2"/><path d="M3 19l3-8h16l-3 8z"/></svg>Saved configs</div>
         <div style="font-size:.8rem;color:var(--fg3);">Select a config to reload</div>
       </div>
       <button onclick="closeRowodLoad()" style="margin-left:auto;background:none;border:none;color:var(--fg2);font-size:1.5rem;cursor:pointer;line-height:1;">✕</button>
@@ -1453,7 +1885,7 @@ input:focus{border-color:var(--acc)}
 <!-- ══ TAROT SAVE MODAL ═══════════════════════ -->
 <div id="tarot-save-ovl" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:900;align-items:flex-end;justify-content:center;">
   <div style="background:var(--surf);border-radius:var(--r) var(--r) 0 0;padding:24px 20px 32px;width:100%;max-width:480px;box-shadow:0 -4px 32px rgba(0,0,0,.3);">
-    <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.3rem;text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px;">💾 Save Tarot config</div>
+    <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.3rem;text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px;"><svg class="ic ico" viewBox="0 0 24 24"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><path d="M17 21v-8H7v8M7 3v5h8"/></svg>Save Tarot config</div>
     <div style="font-size:.8rem;color:var(--fg3);margin-bottom:18px;">Save movements, penalties and game settings</div>
     <div style="font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--fg3);margin-bottom:6px;">Name</div>
     <input id="tarot-save-name" type="text" style="width:100%;box-sizing:border-box;background:var(--surf2);border:1px solid var(--bdr);border-radius:var(--rs);padding:10px 12px;color:var(--fg);font-size:.95rem;font-family:'Inter',sans-serif;margin-bottom:14px;" placeholder="TAROT_…" maxlength="40">
@@ -1461,7 +1893,7 @@ input:focus{border-color:var(--acc)}
     <input id="tarot-save-comment" type="text" style="width:100%;box-sizing:border-box;background:var(--surf2);border:1px solid var(--bdr);border-radius:var(--rs);padding:10px 12px;color:var(--fg);font-size:.95rem;font-family:'Inter',sans-serif;margin-bottom:20px;" placeholder="e.g. Friday, 4-player..." maxlength="80">
     <div style="display:flex;gap:10px;">
       <button class="btn bs" style="flex:1;" onclick="closeTarotSave()">Cancel</button>
-      <button class="btn bp" style="flex:2;" onclick="doTarotSave()">💾 Save</button>
+      <button class="btn bp" style="flex:2;" onclick="doTarotSave()"><svg class="ic ico" viewBox="0 0 24 24"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><path d="M17 21v-8H7v8M7 3v5h8"/></svg>Save</button>
     </div>
   </div>
 </div>
@@ -1471,7 +1903,7 @@ input:focus{border-color:var(--acc)}
   <div style="background:var(--surf);border-radius:var(--r) var(--r) 0 0;padding:24px 20px 32px;width:100%;max-width:480px;max-height:80vh;overflow-y:auto;box-shadow:0 -4px 32px rgba(0,0,0,.3);">
     <div style="display:flex;align-items:center;margin-bottom:18px;">
       <div>
-        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.3rem;text-transform:uppercase;letter-spacing:.04em;">📂 Saved Tarot configs</div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.3rem;text-transform:uppercase;letter-spacing:.04em;"><svg class="ic ico" viewBox="0 0 24 24"><path d="M3 19V6a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v2"/><path d="M3 19l3-8h16l-3 8z"/></svg>Saved Tarot configs</div>
         <div style="font-size:.8rem;color:var(--fg3);">Select a config to reload</div>
       </div>
       <button onclick="closeTarotLoad()" style="margin-left:auto;background:none;border:none;color:var(--fg2);font-size:1.5rem;cursor:pointer;line-height:1;">✕</button>
@@ -1493,6 +1925,14 @@ input:focus{border-color:var(--acc)}
 </div>
 
 </div><!-- #app -->
+<nav id="tabbar" hidden><div class="tabs">
+  <button data-tab="home" onclick="go('s-hub')"><svg class="ic" viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>Home</button>
+  <button data-tab="workouts" onclick="openWodsTimers()"><svg class="ic" viewBox="0 0 24 24"><path d="M6.5 6.5v11M17.5 6.5v11M3.5 9v6M20.5 9v6M6.5 12h11"/></svg>Workouts</button>
+  <button data-tab="players" onclick="openPlayersHub(_hubFrom())"><svg class="ic" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c0-3.6 2.9-6 6.5-6s6.5 2.4 6.5 6M16 4.6a3.5 3.5 0 0 1 0 6.8M18 14.3c2.2.8 3.5 2.8 3.5 5.7"/></svg>Players</button>
+  <button data-tab="exercises" onclick="openPoolHub(_hubFrom())"><svg class="ic" viewBox="0 0 24 24"><path d="M9 6h12M9 12h12M9 18h12M4 6h.01M4 12h.01M4 18h.01"/></svg>Exercises</button>
+  <button data-tab="about" onclick="go('s-about')"><svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5h.01"/></svg>About</button>
+</div></nav>
+
 
 <script>
 // ── Movement library ────────────────────────────────────────────
@@ -1625,10 +2065,33 @@ const G={
 };
 
 // ── Navigation ──────────────────────────────────────────────────
+const TAB_OF={'s-hub':'home','s-players-hub':'players','s-pool':'exercises','s-about':'about'};
+const NO_TABBAR=['s-active','s-solo','s-tarot-play','s-timer-run','s-wod-run','s-select','s-results'];
+function _updSelBack(id){
+  const b=document.getElementById('sel-back-round');if(!b)return;
+  b.hidden=!(id==='s-select'&&G.curRound===0&&!(G.results&&G.results.length));
+}
+function _updRankBar(){
+  const pairs=[['rk-back-s-scores','btn-back-game'],['rk-back-s-tarot-fin','tarot-fin-back-btn']];
+  pairs.forEach(([nb,ob])=>{const n=document.getElementById(nb),o=document.getElementById(ob);if(n&&o)n.classList.toggle('off',o.style.display==='none');});
+}
+function _updTabbar(id){
+  try{_updSelBack(id);_updRankBar();}catch(e){}
+  const tb=document.getElementById('tabbar');if(!tb)return;
+  const inGame=(id==='s-scores'&&G.gameActive)||(id==='s-tarot-fin'&&!GT.finished&&GT.startTime);
+  const show=!NO_TABBAR.includes(id)&&!inGame;
+  const t=TAB_OF[id]||'workouts';tb.hidden=!show;document.body.classList.toggle('has-tabbar',show);
+  tb.querySelectorAll('button').forEach(b=>b.classList.toggle('on',b.dataset.tab===t));
+}
 function go(id){
+  const _prev=G.currentScreen;
+  if(NAV_IDS.includes(id)&&!_navBacking&&_prev&&_prev!==id&&!NAV_SKIP.includes(_prev))_navPrev[id]=_prev;
   G.currentScreen=id;
   document.querySelectorAll('.scr').forEach(s=>s.classList.remove('on'));
-  document.getElementById(id).classList.add('on');
+  const _el=document.getElementById(id);_el.classList.add('on');
+  try{_updTabbar(id);}catch(e){}
+  try{setTimeout(_updWodBar,0);}catch(e){}
+  if(_slideDir){_el.classList.remove('slide-r','slide-l');void _el.offsetWidth;_el.classList.add(_slideDir==='r'?'slide-r':'slide-l');_slideDir=null;}
   window.scrollTo(0,0);
   document.body.scrollTop=0;
 }
@@ -1828,7 +2291,7 @@ function buildHubPoolDistList(mvt){
 
 function updatePoolCount(){
   const el=document.getElementById('hub-pool-count');
-  if(el) el.textContent=POOL.length+'exercise'+(POOL.length!==1?'s':'');
+  if(el) el.textContent=POOL.length+' exercise'+(POOL.length!==1?'s':'');
 }
 
 function updateGamesStatus(){
@@ -1848,6 +2311,7 @@ function updateLaunchBtn(){
 }
 
 function updateMenuBadges(){
+  try{const c=document.getElementById('hub-badge-cfg');if(c)c.textContent=_loadPresets().length+_loadTarotPresets().length;}catch(e){}
   const bp=document.getElementById('hub-badge-players');
   const bm=document.getElementById('hub-badge-pool');
   if(bp) bp.textContent=HUB_SEL.length;
@@ -1876,16 +2340,22 @@ document.addEventListener('DOMContentLoaded',()=>{
   _refreshLoadBtn();
 });
 
+// Remember where a game was opened from, so "back" returns there (home, Games…)
+function _setGameEntry(flow){
+  const from=G.currentScreen;
+  if(!flow.includes(from)) G._entry=from;
+}
+function gameEntryBack(){
+  const to=G._entry&&document.getElementById(G._entry)?G._entry:'s-games';
+  go(to);
+  if(to==='s-games')updateLaunchBtn();
+  if(to==='s-hub')updateMenuBadges();
+}
 function launchGame(){
-  if(HUB_SEL.length<1){toast('Select at least 1 player','err');return;}
+  _setGameEntry(['s-mode','s-dist','s-mvt','s-select','s-active','s-results','s-scores']);
   if(POOL.length<1){toast('Select at least 1 movement','err');return;}
-  const sel=ROSTER.filter(p=>HUB_SEL.includes(p.id));
-  G.np=sel.length;
-  G.players=sel.map(p=>p.name);
-  G.avatars=sel.map(p=>p.avatar||'');
+  _syncRowodPlayers();
   G.mvts=[...POOL];
-  // Keep existing coeffs if same players, else reset to 100
-  if(G.coeffs.length!==G.np) G.coeffs=Array(G.np).fill(100);
   // Sync coeff toggle UI
   document.getElementById('tsw-coeff').classList.toggle('on',G.coeffEnabled);
   document.getElementById('coeff-config').style.display=G.coeffEnabled?'block':'none';
@@ -1894,6 +2364,18 @@ function launchGame(){
   go('s-mode');
 }
 
+function _syncRowodPlayers(){
+  const sel=ROSTER.filter(p=>HUB_SEL.includes(p.id));
+  G.np=sel.length;
+  G.players=sel.map(p=>p.name);
+  G.avatars=sel.map(p=>p.avatar||'');
+  // Keep existing coeffs if same players, else reset to 100
+  if(G.coeffs.length!==G.np) G.coeffs=Array(G.np).fill(100);
+}
+function _rowodPlayersOk(){
+  if(HUB_SEL.length<1){toast('Select at least 1 player','err');return false;}
+  _syncRowodPlayers();return true;
+}
 // ── Add Player modal ─────────────────────────────────────────────
 let AP_AVATAR='';
 let AP_EDIT_ID=null;
@@ -2126,7 +2608,7 @@ function chExactReps(d){
   document.getElementById('exact-reps-v').textContent=G.exactBonusReps;
 }
 function updPenMvtDisplay(){
-  document.getElementById('pen-mvt-icon').textContent=getMvtIcon(G.penaltyMvt);
+  /* pen icon removed */
   document.getElementById('pen-mvt-name').textContent=G.penaltyMvt;
 }
 function openPenMvtPicker(){
@@ -2156,6 +2638,7 @@ function selOrder(mode){
 }
 
 function buildCoeffsUI(){
+  try{_syncRowodPlayers();}catch(e){}
   const list=document.getElementById('coeffs-list');
   if(!list) return;
   list.innerHTML='';
@@ -2211,6 +2694,7 @@ function nextD(){
     // Mode 3: use pool directly, skip s-mvt
     if(POOL.length<1){toast('Add movements in the Hub','err');return;}
     G.mvts=[...POOL];
+    if(!_rowodPlayersOk()) return;
     initGame(); go('s-select'); buildSelectScreen();
   } else {
     while(G.mvts.length<G.nd) G.mvts.push('');
@@ -2240,7 +2724,7 @@ function buildMvtsCombos(){
   topBar.appendChild(poolBanner);
   const randBtn=document.createElement('button');
   randBtn.style.cssText='padding:9px 13px;border-radius:var(--rs);background:var(--surf2);border:1.5px solid var(--bdr);color:var(--fg);font-size:.9rem;font-weight:700;cursor:pointer;white-space:nowrap;flex-shrink:0';
-  randBtn.textContent='🎲 Random';
+  randBtn.innerHTML=ICO('dice')+'Random';
   randBtn.onclick=randomRowodMvts;
   topBar.appendChild(randBtn);
   l.appendChild(topBar);
@@ -2411,6 +2895,7 @@ function nextM(){
       if(!G.mvts[i]){toast(`Choose a movement for ${G.dists[i]}m`);return;}
     }
   }
+  if(!_rowodPlayersOk()) return;
   initGame(); go('s-select'); buildSelectScreen();
 }
 
@@ -2443,7 +2928,7 @@ function buildSelectScreen(){
   if(G.structure.type==='rounds'){
     const chip=document.createElement('div');
     chip.className='gchip accent';
-    chip.textContent=`🎲 Round ${G.curRound+1}/${G.structure.value}`;
+    chip.textContent=`Round ${G.curRound+1}/${G.structure.value}`;
     chipsEl.appendChild(chip);
   } else {
     const elapsed=Date.now()-G.gameStartTime;
@@ -2452,7 +2937,7 @@ function buildSelectScreen(){
     const chip=document.createElement('div');
     chip.className='gchip accent';
     chip.textContent=`⏱ ${fmtMSS(rem)} left`;
-    chipsEl.appendChild(chip);
+    if(false) chipsEl.appendChild(chip);
   }
 
   // Check game over (time mode)
@@ -2468,7 +2953,7 @@ function buildSelectScreen(){
     document.getElementById('grid-or-sep').style.display='none';
     document.getElementById('die-btn').disabled=false;
     document.getElementById('die-label').textContent='Random combo!';
-    document.getElementById('di').textContent='🌪️';
+    document.getElementById('di').innerHTML=ICO('shuffle','');
     document.getElementById('sel-sub').textContent='Draw a random combo';
     document.getElementById('sel-sub').style.display='';
   } else {
@@ -2476,7 +2961,7 @@ function buildSelectScreen(){
     const m=G.gameMode;
     document.getElementById('or-pick-lbl').textContent=m===1?'— pick —':'— or pick —';
     document.getElementById('die-label').textContent=m===1?'Auto-select':m===2?'Roll the dice':'';
-    document.getElementById('di').textContent=m===1?'🎯':'🎲';
+    document.getElementById('di').innerHTML=ICO(m===1?'target':'dice','');
     const rem=G.pairs.filter(p=>!p.done).length;
     const roundsLeft=G.structure.type==='rounds'?G.structure.value-G.curRound:null;
     const subTxt=rem===0&&roundsLeft===null?'Pool empty – reshuffle':'';
@@ -2638,9 +3123,58 @@ function resetTimer(){
   const b=document.getElementById('gobt');
   b.textContent='GO !'; b.className='gobtn go';
   document.getElementById('tval').classList.remove('run');
+  G.paused=false;_rowCdOn=false;try{_updRowCtl();}catch(e){}
 }
+let _rowCdOn=false;
 function togTimer(){
-  if(!G.timerOn) startCd(); else stopTimer();
+  if(_rowCdOn) return;
+  if(G.timerOn){ // pause
+    G.timerOn=false;cancelAnimationFrame(G.raf);G.paused=true;
+    document.getElementById('tval').classList.remove('run');
+    _updRowCtl();return;
+  }
+  if(G.paused){G.paused=false;go_timer();return;}
+  _rowCdOn=true;_setBarClock('s-active','00:00');_updRowCtl();
+  startCdThen(()=>{_rowCdOn=false;go_timer();});
+}
+function rowMain(){ // ▶ start, then ■ stop at the same place
+  if(_rowCdOn) return;
+  if(G.timerOn||G.paused){rowStop();return;}
+  togTimer();
+}
+function rowPause(){ // ⏸ pause / ▶ resume on the right
+  if(_rowCdOn) return;
+  if(G.timerOn||G.paused) togTimer();
+}
+function rowStop(){
+  if(!G.timerOn&&!G.paused) return;
+  G.paused=false;
+  stopTimer();
+}
+function _rowCanBack(){return !G.timerOn&&!G.paused&&!_rowCdOn&&G.qPos===0&&!G.timerEl;}
+function rowLeft(){
+  if(_rowCanBack()){ // undo the combo pick: back to PICK A COMBO
+    G.curRound=Math.max(0,G.curRound-1);
+    go('s-select');buildSelectScreen();return;
+  }
+  showMidScores();
+}
+function _updRowCtl(){
+  const b=document.getElementById('gobt2'),st=document.getElementById('stopbt'),sub=document.getElementById('ring-sub');
+  if(!b)return;
+  const running=G.timerOn,paused=G.paused;
+  const act=running||paused;
+  if(b.dataset.m!==(act?'stop':'play')){b.dataset.m=act?'stop':'play';b.innerHTML=act?'<svg class="ic fill" viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" rx="2"/></svg>':'<svg class="ic fill" viewBox="0 0 24 24"><path d="M7 4.5v15l13-7.5z"/></svg>';}
+  b.classList.toggle('go',!act);b.classList.toggle('stop',act);
+  b.setAttribute('aria-label',act?'Stop':'Start');
+  if(st){const m=paused?'res':'pau';if(st.dataset.m!==m){st.dataset.m=m;st.innerHTML=paused?'<svg class="ic fill" viewBox="0 0 24 24"><path d="M7 4.5v15l13-7.5z"/></svg><small>Resume</small>':'<svg class="ic fill" viewBox="0 0 24 24"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg><small>Pause</small>';}}
+  if(st) st.disabled=!(running||paused);
+  const lb=document.getElementById('rowleft');
+  if(lb){const back=_rowCanBack();lb.classList.toggle('back',back);lb.style.visibility=back?'hidden':'';if(lb.dataset.m!==(back?'b':'s')){lb.dataset.m=back?'b':'s';lb.innerHTML=back?'<svg class="ic" viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg><small>Back</small>':'<svg class="ic" viewBox="0 0 24 24"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0zM17 5h3v2a3 3 0 0 1-3 3M7 5H4v2a3 3 0 0 0 3 3"/></svg><small>Scores</small>';}}
+  b.disabled=_rowCdOn;
+  if(sub) sub.textContent=paused?'Paused':'';
+  const ring=document.getElementById('row-ring');if(ring)ring.classList.toggle('paused',paused);
+  try{_updWodBar();}catch(e){}
 }
 // ── Sound engine ────────────────────────────────────────────────
 let _actx=null;
@@ -2691,6 +3225,7 @@ function go_timer(){
   const b=document.getElementById('gobt');
   b.textContent='STOP'; b.className='gobtn stop';
   document.getElementById('tval').classList.add('run');
+  G.paused=false;_updRowCtl();
   animT();
 }
 function animT(){
@@ -2700,7 +3235,7 @@ function animT(){
   G.raf=requestAnimationFrame(animT);
 }
 function stopTimer(){
-  G.timerOn=false; cancelAnimationFrame(G.raf);
+  G.timerOn=false; cancelAnimationFrame(G.raf); G.paused=false; try{_updRowCtl();}catch(e){}
   G.roundMs=G.timerEl;
   soundStop();
   if(G.np===1) startSoloMvtPhase(); else showRes();
@@ -2736,6 +3271,7 @@ function _soloShow(ms){
   const s=Math.floor(ms/1000),m=Math.floor(s/60),sc=s%60,cs=Math.floor((ms%1000)/10);
   document.getElementById('solo-tval').textContent=`${pad(m)}:${pad(sc)}`;
   document.getElementById('solo-tms').textContent=`.${pad(cs)}`;
+  _setBarClock('s-solo',`${pad(m)}:${pad(sc)}`);
 }
 function finishSoloMvt(){
   if(_soloRaf){cancelAnimationFrame(_soloRaf);_soloRaf=null;}
@@ -2747,6 +3283,8 @@ function updTimer(ms){
   const m=Math.floor(s/60),sc=s%60,cs=Math.floor((ms%1000)/10);
   document.getElementById('tval').textContent=`${pad(m)}:${pad(sc)}`;
   document.getElementById('tms').textContent=`.${pad(cs)}`;
+  _setBarClock('s-active',`${pad(m)}:${pad(sc)}`);
+  const arc=document.getElementById('ring-arc');if(arc)arc.setAttribute('stroke-dashoffset',678.6*(1-((ms%60000)/60000)));
 }
 function pad(n){return String(n).padStart(2,'0');}
 
@@ -2803,7 +3341,7 @@ function updateDelta(){
   const el=document.getElementById('dist-delta');
   if(actual===target){
     el.className='dist-delta exact';
-    el.textContent=G.exactBonus?'🎯 Exact ! Bonus !':'🎯 Exact !';
+    el.innerHTML=ICO('bull')+(G.exactBonus?'Exact ! Bonus !':'Exact !');
   } else if(delta>0){
     el.className='dist-delta over';
     el.textContent=`+${delta}m → ${delta} ${getMvtIcon(G.penaltyMvt)} pen.`;
@@ -2911,6 +3449,16 @@ function buildScoreboardHTML(ranked,el){
   });
 }
 
+function buildRowodPerPlayer(ranked,el){
+  const rk=tieRanks(ranked,_rowodSame);
+  const mvts=[...new Set(G.results.map(r=>r.mvt))];
+  el.innerHTML=perPlayerHtml(ranked.map((p,i)=>{
+    const rows=mvts.map(m=>({ic:getMvtIcon(m)||'💪',name:m,unit:'reps',v:G.results.filter(r=>r.mvt===m).flatMap(r=>r.others.filter(o=>o.pi===p.pi)).reduce((s,o)=>s+o.reps,0)}));
+    rows.push({ic:'🚣',name:'Row',unit:'m',v:p.totalRowDist,sub:p.rows.length?fmtTime(p.totalMs):''});
+    if(p.totalPenReps>0) rows.push({ic:'⚠️',name:'Penalty · '+G.penaltyMvt,v:p.totalPenReps,unit:'reps',pen:true});
+    return {rank:rk[i],av:renderAv(p.pi,34),name:p.name,sub:p.rows.length?`${p.totalRowDist} m rowed · ${fmtTime(p.totalMs)}`:'',total:p.totReps,unit:'reps',rows};
+  }));
+}
 function buildPodium(ranked){
   const pod=document.getElementById('podium'); pod.innerHTML='';
   const order=[1,0,2]; // left=2nd, center=1st, right=3rd
@@ -2954,18 +3502,24 @@ function showFinalScores(){
 }
 
 function switchScoresTab(tab){
-  const isRd=tab==='rdetail';
-  document.getElementById('panel-rdetail').style.display=isRd?'block':'none';
-  document.getElementById('panel-gstats').style.display=isRd?'none':'block';
-  const acc='var(--acc)',surf='var(--surf2)',white='#fff',muted='var(--fg2)';
-  const trd=document.getElementById('tab-rdetail');
-  const tgs=document.getElementById('tab-gstats');
-  if(trd){trd.style.background=isRd?acc:surf;trd.style.color=isRd?white:muted;}
-  if(tgs){tgs.style.background=isRd?surf:acc;tgs.style.color=isRd?muted:white;}
+  ['rdetail','gstats','pmvt'].forEach(t=>{
+    const on=t===tab;
+    const p=document.getElementById('panel-'+t);if(p)p.style.display=on?'block':'none';
+    const b=document.getElementById('tab-'+t);if(b){b.style.background=on?'var(--acc)':'var(--surf2)';b.style.color=on?'#0d0d0e':'var(--fg2)';}
+  });
+  if(tab==='pmvt'){const el=document.getElementById('rowod-pmvt');if(el)el.innerHTML=perMvtHtml(_rowodPerMvtItems());}
+}
+function _rowodPerMvtItems(){
+  const mv=[...new Set(G.results.map(r=>r.mvt))];
+  const items=mv.map(m=>({sym:getMvtIcon(m)||'💪',name:m,unit:'reps',rows:G.players.map((n,pi)=>({name:n,av:renderAv(pi,26),v:G.results.filter(r=>r.mvt===m).flatMap(r=>r.others.filter(o=>o.pi===pi)).reduce((s,o)=>s+o.reps,0)}))}));
+  if(G.results.length){
+    items.unshift({sym:'🚣',name:'Row',unit:'m',rows:G.players.map((n,pi)=>{const rr=G.results.filter(r=>r.ri===pi);const ms=rr.reduce((s,r)=>s+r.ms,0);return {name:n,av:renderAv(pi,26),v:rr.reduce((s,r)=>s+(r.actualDist||r.dist),0),sub:rr.length?fmtTime(ms):''};})});
+  }
+  return items;
 }
 function buildScoresSummary(){
   const el=document.getElementById('scores-game-info'); if(!el) return;
-  const GM={1:'🎯 All Fixed',2:'🎲 Dice Combo',3:'🌪️ Full Random'};
+  const GM={1:ICO('target')+'All Fixed',2:ICO('dice')+'Dice Combo',3:ICO('shuffle')+'Full Random'};
   const struct=G.structure||{type:'rounds',value:6};
   const structStr=struct.type==='rounds'?`${struct.value} rounds`:struct.type==='time'?`${struct.value} min`:'Infinite';
   const tags=[
@@ -2998,7 +3552,7 @@ function renderScoresScreen(){
   const ranked=computeStats();
   buildScoresSummary();
   buildPodium(ranked);
-  buildScoreboardHTML(ranked,document.getElementById('scoreboard'));
+  buildRowodPerPlayer(ranked,document.getElementById('scoreboard'));
   const rd=document.getElementById('rdetail'); rd.innerHTML='';
   // Group results by roundIdx
   const roundMap=new Map();
@@ -3131,6 +3685,7 @@ function abortToMvt(){
 }
 
 function openPoolHub(from){
+  if(from==='s-pool')return;
   G._poolHubBack=from||'s-hub';
   go('s-pool');buildHubPool();
 }
@@ -3141,7 +3696,9 @@ function goBackFromPool(){
   go(dest);
   if(dest==='s-mvt') buildMvtsCombos();
 }
+function _hubFrom(){const c=G.currentScreen;return (c==='s-players-hub'||c==='s-pool')?(c==='s-players-hub'?G._playersHubBack:G._poolHubBack)||'s-hub':(c||'s-hub');}
 function openPlayersHub(from){
+  if(from==='s-players-hub')return;
   G._playersHubBack=from||'s-hub';
   go('s-players-hub');buildHubRoster();
 }
@@ -3150,6 +3707,8 @@ function goBackFromPlayers(){
   updateMenuBadges();
   if(dest==='s-games') updateLaunchBtn();
   go(dest);
+  if(dest==='s-mode'&&G.coeffEnabled) buildCoeffsUI();
+  if(dest==='s-tarot-cfg') initTarotCfg();
 }
 function newGame(){
   G.gameActive=false;
@@ -3279,7 +3838,7 @@ function toggleRowodPresetDetail(id){
   if(b) b.style.color=open?'var(--acc)':'var(--fg2)';
 }
 function _rowodPresetDetail(p){
-  const GM={1:'🎯 All Fixed',2:'🎲 Dice Combo',3:'🌪️ Full Random'};
+  const GM={1:ICO('target')+'All Fixed',2:ICO('dice')+'Dice Combo',3:ICO('shuffle')+'Full Random'};
   const names=(p.playerObjects?p.playerObjects.map(x=>x.name):(p.playerNames||[]));
   const pool=p.pool||[];
   const struct=p.structure||{type:'rounds',value:6};
@@ -4087,6 +4646,7 @@ function _cardVif(card){
 
 // ── Config screen
 function openTarotCfg(){
+  _setGameEntry(['s-tarot-cfg','s-tarot-cfg2','s-tarot-play','s-tarot-fin']);
   go('s-tarot-cfg');
   initTarotCfg();
 }
@@ -4151,7 +4711,7 @@ function _setTarotPenQty(v){if(!GT.penaltyQty)GT.penaltyQty={};GT.penaltyQty[_ta
 function _penOptText(o){
   const q=(GT.penaltyQty&&GT.penaltyQty[o.k]!=null)?GT.penaltyQty[o.k]:o.def;
   const val=o.unit==='reps'?`${q} reps`:o.unit==='m'?`${q} m`:((GT.penaltyText||'').trim()||'free text');
-  return `${o.ic}  ${o.k} · ${val}`;
+  return `${o.k} · ${val}`;
 }
 function _renderTarotPenChips(){
   const sel=document.getElementById('tarot-pen-select');if(!sel)return;
@@ -4430,6 +4990,7 @@ function launchTarot(){
   GT.pDone=GT.players.map(()=>false);
   GT.pDrawn=GT.players.map(()=>0);
   GT.pMvtReps=GT.players.map(()=>({h:0,d:0,c:0,s:0,t:0,x:0,p:0}));
+  GT.pPenCount=GT.players.map(()=>0);
   // Track deck totals for the progress display
   GT.deckAtStart=GT.variant==='shared'
     ?GT.sharedDeck.length
@@ -4444,7 +5005,7 @@ function launchTarot(){
   if(GT.timerInterval) clearInterval(GT.timerInterval);
   GT.timerInterval=null;
   go('s-tarot-play');
-  _tarotCdRunning=false;
+  _tarotCdRunning=false;GT.paused=false;document.getElementById('tarot-pause-ovl')?.remove();
   buildTarotPlayScreen();
   _updTarotStartBtn();
   // Timer starts on first card flip, not here
@@ -4466,7 +5027,7 @@ function buildTarotPlayScreen(){
   if(b) b.hidden=true;
 }
 function updateTarotDeckInfo(){
-  try{_updTarotStartBtn();}catch(e){}
+  try{_updTarotStartBtn();_updTarotPauseBtn();}catch(e){}
   const el=document.getElementById('tarot-deck-info');
   if(!el) return;
   // Count cards still in deck (not in hand, not drawn)
@@ -4489,12 +5050,18 @@ function updateTarotDeckInfo(){
     const penDrawn=GT.penaltyAtStart-(penInDeck+penInHand);
     penPart=`<span style="color:#ef4444;font-weight:700;margin-left:8px">⚠️ ${penDrawn}/${GT.penaltyAtStart} pen.</span>`;
   }
-  el.innerHTML=`<span style="font-weight:800;color:var(--fg)">${drawn}<span style="font-weight:500;color:var(--fg2)">/${GT.deckAtStart}</span></span>`
-    +`<span style="color:var(--fg3);margin:0 5px">·</span>`
-    +`<span style="color:var(--fg2)">${remaining} left</span>`
-    +`<span style="color:var(--fg3);margin:0 5px">·</span>`
-    +`<span style="color:var(--fg3)">${pct}%</span>`
-    +penPart;
+  // Visual gauge: big number of cards left + a bar that empties as cards are drawn
+  const left=GT.deckAtStart>0?remaining/GT.deckAtStart:0;
+  let pen='';
+  if(GT.penaltyAtStart>0){
+    const penInDeck2=GT.variant==='shared'?GT.sharedDeck.filter(c=>c.type==='penalty').length:GT.pDecks.reduce((s,d)=>s+d.filter(c=>c.type==='penalty').length,0);
+    const penInHand2=GT.players.filter((_,i)=>GT.pCard[i]&&GT.pCard[i].type==='penalty').length;
+    const pd=Math.max(0,GT.penaltyAtStart-(penInDeck2+penInHand2));
+    pen=`<span class="tdk-pen">⚠️ <u>${'●'.repeat(pd)}${'○'.repeat(Math.max(0,GT.penaltyAtStart-pd))}</u></span>`;
+  }
+  el.innerHTML=`<div class="tdk"><div class="tdk-l"><b>${remaining}</b><span>cards<br>left</span></div>`
+    +`<div class="tdk-r"><div class="tdk-bar${left<.2?' low':''}"><i style="width:${Math.round(left*100)}%"></i></div>`
+    +`<div class="tdk-sub"><span>${drawn} / ${GT.deckAtStart} drawn · ${pct}%</span>${pen}</div></div></div>`;
 }
 function showCardReveal(card,pi){
   if(!card||card.type==='back') return;
@@ -4632,7 +5199,8 @@ function tarotStartAll(){
   if(!GT.players.some((_,i)=>GT.pCard[i]&&GT.pCard[i].type==='back')) return;
   _tarotCdRunning=true;
   const w=document.getElementById('tarot-start-wrap');if(w)w.hidden=true;
-  startCdThen(()=>{_tarotCdRunning=false;tarotFlip();});
+  _updTarotPauseBtn();
+  startCdThen(()=>{_tarotCdRunning=false;tarotFlip();_updTarotPauseBtn();});
 }
 function _updTarotStartBtn(){
   const w=document.getElementById('tarot-start-wrap');if(!w)return;
@@ -4712,6 +5280,7 @@ function _recordCard(pi,card){
   if(GT.pDrawn) GT.pDrawn[pi]=(GT.pDrawn[pi]||0)+1;
   if(GT.pMvtReps){
     const mk=card.type==='penalty'?'p':card.type==='atout'?'t':card.type==='excuse'?'x':card.suit;
+    if(card.type==='penalty'){if(!GT.pPenCount)GT.pPenCount=GT.players.map(()=>0);GT.pPenCount[pi]=(GT.pPenCount[pi]||0)+1;}
     GT.pMvtReps[pi][mk]=(GT.pMvtReps[pi][mk]||0)+cardReps(card);
   }
 }
@@ -4879,7 +5448,46 @@ function tarotEndBtnTap(){
 }
 
 // ── Scores
+function _tarotPreStart(){return !GT.finished&&!GT.paused&&GT.timerInterval===null&&GT.players.some((_,i)=>GT.pCard[i]&&GT.pCard[i].type==='back');}
+function tarotLeft(){
+  if(_tarotPreStart()&&!_tarotCdRunning){go('s-tarot-cfg2');initTarotCfg2();return;}
+  showTarotScores();
+}
+function tarotTogglePause(){
+  if(GT.finished) return;
+  if(_tarotPreStart()){tarotStartAll();_updTarotPauseBtn();return;}
+  const b=document.getElementById('tarot-pause-btn');
+  if(!GT.paused){
+    if(GT.timerInterval===null) return;
+    GT.elapsed=Math.floor((Date.now()-GT.startTime)/1000);
+    stopTarotTimer();GT.paused=true;
+    const o=document.createElement('div');o.className='pause-ovl';o.id='tarot-pause-ovl';
+    o.innerHTML='<b>Paused</b><span>Tap to resume</span>';o.onclick=tarotTogglePause;document.body.appendChild(o);
+    _updTarotPauseBtn();
+  } else {
+    GT.paused=false;document.getElementById('tarot-pause-ovl')?.remove();
+    GT.startTime=Date.now()-GT.elapsed*1000;startTarotTimer();
+    _updTarotPauseBtn();
+  }
+}
+function _updTarotPauseBtn(){
+  const b=document.getElementById('tarot-pause-btn');if(!b)return;
+  const pre=_tarotPreStart();
+  if(pre){
+    b.disabled=_tarotCdRunning;b.classList.add('go');
+    if(b.dataset.m!=='play'){b.dataset.m='play';b.innerHTML='<svg class="ic fill" viewBox="0 0 24 24"><path d="M7 4.5v15l13-7.5z"/></svg>';b.setAttribute('aria-label','Start');}
+  } else {
+    b.classList.remove('go');
+    b.disabled=GT.finished||(GT.timerInterval===null&&!GT.paused);
+    const m=GT.paused?'resume':'pause';
+    if(b.dataset.m!==m){b.dataset.m=m;b.innerHTML=GT.paused?'<svg class="ic fill" viewBox="0 0 24 24"><path d="M7 4.5v15l13-7.5z"/></svg>':'<svg class="ic fill" viewBox="0 0 24 24"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>';b.setAttribute('aria-label',GT.paused?'Resume':'Pause');}
+  }
+  try{_updWodBar();}catch(e){}
+  const l=document.getElementById('tarot-left');
+  if(l){const back=pre&&!_tarotCdRunning;l.classList.toggle('back',back);l.style.visibility=back?'hidden':'';const m=back?'b':'s';if(l.dataset.m!==m){l.dataset.m=m;l.innerHTML=back?'<svg class="ic" viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg><small>Back</small>':'<svg class="ic" viewBox="0 0 24 24"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0zM17 5h3v2a3 3 0 0 1-3 3M7 5H4v2a3 3 0 0 0 3 3"/></svg><small>Scores</small>';}}
+}
 function tarotFinishGame(){
+  if(GT.paused){GT.paused=false;document.getElementById('tarot-pause-ovl')?.remove();}
   GT.finished=true;
   stopTarotTimer();
   showTarotScores();
@@ -4887,9 +5495,10 @@ function tarotFinishGame(){
 function showTarotScores(){
   // Looking at the scores must not stop the game clock — only STOP/Finish (or the end of the game) does
   if(GT.finished) stopTarotTimer();
-  else if(GT.startTime) GT.elapsed=Math.floor((Date.now()-GT.startTime)/1000);
+  else if(GT.startTime&&!GT.paused) GT.elapsed=Math.floor((Date.now()-GT.startTime)/1000);
   go('s-tarot-fin');
   renderTarotScores();
+  try{_updRankBar();}catch(e){}
 }
 function renderTarotScores(){
   const ranked=[...GT.players.map((_,pi)=>({pi,name:GT.players[pi],av:GT.avatars[pi]||'',reps:GT.pReps[pi],bouts:GT.pBouts[pi],excuse:GT.pExcuse[pi]}))]
@@ -4955,65 +5564,71 @@ function renderTarotScores(){
   if(sb){
     sb.innerHTML='';
     // Section title
-    const title=document.createElement('div');
-    title.className='rk-sect';
-    title.textContent='Per player detail';
-    sb.appendChild(title);
+    const tabs=document.createElement('div');tabs.className='rk-tabs';tabs.id='tk-tabs';
+    tabs.innerHTML='<button data-t="pp" onclick="tarotRankTab(\'pp\')">Per player</button><button data-t="pm" onclick="tarotRankTab(\'pm\')">Per movement</button>';
+    sb.appendChild(tabs);
+    const ppWrap=document.createElement('div');ppWrap.id='tk-pp';sb.appendChild(ppWrap);
+    const pmWrap=document.createElement('div');pmWrap.id='tk-pm';pmWrap.innerHTML=perMvtHtml(_tarotPerMvtItems());sb.appendChild(pmWrap);
     const trk2=tieRanks(ranked,(a,b)=>a.reps===b.reps);
-    ranked.forEach((p,i)=>{
-      const rc=['','r1','r2','r3'][trk2[i]]||'';
-      const av=p.av||'';
-      const initials=p.name.split(' ').map(w=>w[0]).join('').toUpperCase().slice(0,2);
-      const avHtml=tarotAvHtml(av,38,initials);
+    ppWrap.innerHTML=perPlayerHtml(ranked.map((p,i)=>{
+      const mr=(GT.pMvtReps&&GT.pMvtReps[p.pi])||{};
       const drawn=GT.pDrawn?GT.pDrawn[p.pi]:0;
-      const mvtReps=GT.pMvtReps?GT.pMvtReps[p.pi]:null;
-
-      // Per-movement rows
-      const suitKeys=[{k:'h',sym:'♥',col:'#E74C3C'},{k:'d',sym:'♦',col:'#E74C3C'},{k:'c',sym:'♣',col:'var(--fg)'},{k:'s',sym:'♠',col:'var(--fg)'},{k:'t',sym:'★',col:'#F0B800'}];
-      let mvtRowsHtml='';
-      if(mvtReps){
-        suitKeys.forEach(({k,sym,col})=>{
-          const r=mvtReps[k]||0;
-          if(r===0) return;
-          const mvtName=GT.mvtMap[k]||'—';
-          mvtRowsHtml+=`<div style="display:flex;align-items:center;gap:5px;font-size:.78rem;padding:2px 0;border-top:1px solid var(--bdr)">
-            <span style="color:${col};width:14px;text-align:center;flex-shrink:0">${sym}</span>
-            <span style="flex:1;color:var(--fg2);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${mvtName}</span>
-            <span style="font-weight:700;color:var(--acc)">${r}</span>
-            <span style="color:var(--fg3);font-size:.72rem">reps</span>
-          </div>`;
-        });
-        if(mvtReps.x>0) mvtRowsHtml+=`<div style="display:flex;align-items:center;gap:5px;font-size:.78rem;padding:2px 0;border-top:1px solid var(--bdr)">
-            <span style="width:14px;text-align:center;flex-shrink:0">🃏</span>
-            <span style="flex:1;color:var(--fg2)">via Excuse</span>
-            <span style="font-weight:700;color:var(--acc)">${mvtReps.x}</span>
-            <span style="color:var(--fg3);font-size:.72rem">reps</span>
-          </div>`;
-        const penCount=mvtReps?mvtReps.p||0:0;
-        if(penCount>0){
-          mvtRowsHtml+=`<div style="display:flex;align-items:center;gap:5px;font-size:.78rem;padding:2px 0;border-top:2px solid #ef4444">
-            <span style="width:14px;text-align:center;flex-shrink:0">⚠️</span>
-            <span style="flex:1;font-weight:700;color:#ef4444">${penCount}× penalty card</span>
-          </div>`;
-        }
-      }
-
-      const d=document.createElement('div');
-      d.style.cssText='background:var(--surf);border:1.5px solid var(--bdr);border-radius:var(--r);margin-bottom:10px;overflow:hidden';
-      d.innerHTML=`<div class="pcrd-score" style="border-bottom:${mvtRowsHtml?'1px solid var(--bdr)':'none'};border-radius:0">
-        <div class="prank ${rc}">${trk2[i]}</div>${avHtml}
-        <div style="flex:1;margin-left:2px;min-width:0">
-          <div style="font-weight:700;font-size:.93rem">${p.name}</div>
-          <div style="font-size:.72rem;color:var(--fg3)">${drawn} card${drawn!==1?'s':''} drawn</div>
-        </div>
-        <div style="text-align:right"><div class="ptime">${p.reps}</div><div class="psub">total reps</div></div>
-      </div>
-      ${mvtRowsHtml?`<div style="padding:4px 12px 6px">${mvtRowsHtml}</div>`:''}`;
-      sb.appendChild(d);
-    });
+      const rows=TAROT_SUIT_INFO.filter(si=>GT.mvtMap[si.key]).map(si=>({ic:si.sym,icColor:si.color,name:GT.mvtMap[si.key],v:mr[si.key]||0,unit:'reps'}));
+      if(mr.x>0) rows.push({ic:'🃏',name:'Absorbed by Excuse',v:mr.x,unit:'reps'});
+      const pc=(GT.pPenCount&&GT.pPenCount[p.pi])||0;
+      if(GT.penaltyMode) rows.push({ic:'⚠️',name:'Penalty · '+tarotPenaltyLabel(),v:pc,unit:'×',pen:true});
+      return {rank:trk2[i],av:tarotAvHtml(p.av||'',34,p.name.charAt(0).toUpperCase()),name:p.name,sub:`${drawn} card${drawn!==1?'s':''} drawn`,total:p.reps,unit:'reps',rows};
+    }));
+    tarotRankTab(_tkTab);
   }
 }
 function tarotFinBack(){go('s-tarot-play');}
+// ── Per-movement ranking block (shared by both games)
+// items: [{sym,symColor,name,unit,rows:[{av,name,v,sub}]}]
+function perMvtHtml(items){
+  if(!items.length) return '<div class="pm-empty">No movement played yet</div>';
+  return items.map(it=>{
+    const rows=[...it.rows].sort((a,b)=>b.v-a.v);
+    const rk=tieRanks(rows,(a,b)=>a.v===b.v);
+    const max=Math.max(1,...rows.map(r=>r.v));
+    const tot=rows.reduce((s,r)=>s+r.v,0);
+    return `<div class="pm-card"><div class="pm-head"><div class="pm-sym" style="color:${it.symColor||'var(--fg)'}">${it.sym}</div><div class="pm-name">${it.name}</div><div class="pm-tot">${tot}<small>${it.unit}</small></div></div>`+
+      rows.map((r,i)=>`<div class="pm-row"><div class="pm-rk ${['','r1','r2','r3'][rk[i]]||''}">${rk[i]}</div>${r.av}<div class="pm-pl"><b>${r.name}</b><div class="pm-bar"><i style="width:${Math.round(r.v/max*100)}%"></i></div></div><div class="pm-v">${r.v}<small>${it.unit}</small>${r.sub?`<div style="font-size:.62rem;color:var(--fg3);font-weight:600">${r.sub}</div>`:''}</div></div>`).join('')+
+      `</div>`;
+  }).join('');
+}
+// Per-player cards, same look as the per-movement cards
+// players: [{rank,av,name,sub,total,unit,rows:[{ic,icColor,name,v,unit,sub,pen}]}]
+function perPlayerHtml(players){
+  return players.map(p=>{
+    const max=Math.max(1,...p.rows.filter(r=>!r.pen&&r.unit===p.rows[0].unit).map(r=>r.v));
+    return `<div class="pm-card"><div class="pm-head"><div class="pm-rank ${['','r1','r2','r3'][p.rank]||''}">${p.rank}</div>${p.av}<div class="pm-who"><span class="pm-name">${p.name}</span>${p.sub?`<small>${p.sub}</small>`:''}</div><div class="pm-tot">${p.total}<small>${p.unit}</small></div></div>`+
+      p.rows.map(r=>{
+        const rmax=r.unit===p.rows[0].unit?max:Math.max(1,...p.rows.filter(x=>x.unit===r.unit).map(x=>x.v));
+        return `<div class="pm-row${r.pen?' pen':''}"><div></div><div class="pm-ic" style="color:${r.icColor||'var(--fg)'}">${r.ic}</div><div class="pm-pl"><b>${r.name}</b>${r.pen?'':`<div class="pm-bar"><i style="width:${Math.round(r.v/rmax*100)}%"></i></div>`}</div><div class="pm-v">${r.v}<small>${r.unit}</small>${r.sub?`<div style="font-size:.62rem;color:var(--fg3);font-weight:600">${r.sub}</div>`:''}</div></div>`;
+      }).join('')+`</div>`;
+  }).join('');
+}
+let _tkTab='pp';
+function tarotRankTab(t){
+  _tkTab=t;
+  const a=document.getElementById('tk-pp'),b=document.getElementById('tk-pm');if(!a||!b)return;
+  a.hidden=t!=='pp';b.hidden=t!=='pm';
+  document.querySelectorAll('#tk-tabs button').forEach(x=>x.classList.toggle('on',x.dataset.t===t));
+}
+function _tarotPerMvtItems(){
+  const items=[];
+  TAROT_SUIT_INFO.forEach(si=>{
+    const mv=GT.mvtMap[si.key];if(!mv)return;
+    items.push({sym:si.sym,symColor:si.color,name:mv,unit:'reps',rows:GT.players.map((n,pi)=>({name:n,av:tarotAvHtml(GT.avatars[pi]||'',26,n.charAt(0).toUpperCase()),v:(GT.pMvtReps&&GT.pMvtReps[pi]&&GT.pMvtReps[pi][si.key])||0}))});
+  });
+  if(GT.pMvtReps&&GT.pMvtReps.some(m=>m.x>0)) items.push({sym:'🃏',name:'Absorbed by Excuse',unit:'reps',rows:GT.players.map((n,pi)=>({name:n,av:tarotAvHtml(GT.avatars[pi]||'',26,n.charAt(0).toUpperCase()),v:GT.pMvtReps[pi].x||0}))});
+  if(GT.penaltyMode){
+    const pc=pi=>{let c=0;return c;};
+    items.push({sym:'⚠️',symColor:'#ef4444',name:'Penalty · '+tarotPenaltyLabel(),unit:'×',rows:GT.players.map((n,pi)=>({name:n,av:tarotAvHtml(GT.avatars[pi]||'',26,n.charAt(0).toUpperCase()),v:(GT.pPenCount&&GT.pPenCount[pi])||0}))});
+  }
+  return items;
+}
 
 // ── TAROT Quit overlay
 function confirmTarotMainMenu(){
@@ -6838,10 +7453,240 @@ function openRankOptions(srcId){
 }
 function closeRankOptions(){document.getElementById('rk-opt-ovl').style.display='none';}
 
+// Option screens: add a ‹ back button next to Next, reusing the header back action
+function _initCfgBars(){
+  document.querySelectorAll('.scr.cfg').forEach(scr=>{
+    const go_=scr.querySelector('.cfg-go');if(!go_||go_.querySelector('.cfg-back'))return;
+    const hb=scr.querySelector('button');if(!hb)return;
+    const b=document.createElement('button');b.className='cfg-back';b.setAttribute('aria-label','Back');
+    b.innerHTML='<svg class="ic" viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg>';
+    b.onclick=()=>{_slideDir='l';hb.click();};
+    go_.insertBefore(b,go_.firstChild);
+    const nb=go_.querySelector('.btn.bp');
+    if(nb&&!nb.classList.contains('cfg-next')){
+      const txt=nb.textContent.trim().toUpperCase();
+      const launch=false; // always an orange › : the game screen has its own ▶
+      const check=nb.dataset.icon==='check';
+      nb.classList.add('cfg-next');if(launch)nb.classList.add('launch');
+      nb.setAttribute('aria-label',nb.textContent.trim());
+      nb.innerHTML=check?'<svg class="ic" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>':launch?'<svg class="ic fill" viewBox="0 0 24 24"><path d="M7 4.5v15l13-7.5z"/></svg>':'<svg class="ic" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg>';
+      if(check){nb.setAttribute('aria-label','Done');}
+      nb.addEventListener('click',()=>{_slideDir='r';},true);
+      const st=STEP_OF[scr.id];
+      if(st&&!scr.querySelector('.wod-bar')){
+        const bar=document.createElement('div');bar.className='wod-bar';
+        bar.innerHTML=`<div class="wb-in"><div class="wb-name">${st[2]==='rowod'?'ROWOD':'TAROT WOD'}<small>Step ${st[0]} / ${st[1]}</small></div>`
+          +`<button class="hero-arr" data-d="-1" aria-label="Previous step"><svg class="ic" viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg></button>`
+          +`<button class="hero-arr" data-d="1" aria-label="Next step"><svg class="ic" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button></div>`
+          +`<div class="wb-prog"><i style="width:${Math.round(st[0]/st[1]*100)}%"></i></div>`;
+        bar.querySelector('[data-d="-1"]').onclick=()=>{const x=scr.querySelector('.cfg-back');if(x)x.click();};
+        bar.querySelector('[data-d="1"]').onclick=()=>{const x=scr.querySelector('.cfg-next');if(x)x.click();};
+        scr.insertBefore(bar,scr.firstChild);scr.classList.add('has-wodbar');
+      }
+    }
+  });
+}
+// Top WOD banner also during the game: ‹ goes back until the game is really launched
+const GAME_BAR={'s-select':['rowod','Pick a combo'],'s-active':['rowod','Round'],'s-solo':['rowod','Max reps'],'s-results':['rowod','Result'],'s-tarot-play':['tarot','Playing']};
+function _watchTarotClock(){
+  const d=document.getElementById('tarot-timer-display');if(!d||d._w)return;d._w=1;
+  new MutationObserver(()=>_setBarClock('s-tarot-play',d.textContent,d.style.color&&d.style.color!=='var(--acc)'?d.style.color:'')).observe(d,{childList:true,characterData:true,subtree:true,attributes:true});
+}
+
+// ── Top banner with ‹ on every page without one (V24) ──
+const NAV_IDS=['s-wods-timers','s-timers','s-wods','s-wod-create','s-games','s-players-hub','s-pool','s-about'];
+const NAV_SKIP=['s-active','s-solo','s-results','s-select','s-tarot-play','s-tarot-fin','s-scores','s-timer-run','s-wod-run'];
+const NAV_CRUMB={'s-wods-timers':'Workouts','s-timers':'Timers','s-wods':'Classics','s-wod-create':'Custom WOD','s-games':'Games','s-players-hub':'Players','s-pool':'Exercises','s-about':'About'};
+const NAV_RUN=['s-timer-run','s-wod-run'];NAV_CRUMB['s-timer-run']='Timer';NAV_CRUMB['s-wod-run']='Classics';
+const _navPrev={};let _navBacking=false;
+function navBack(id){
+  const scr=document.getElementById(id);
+  const dest=_navPrev[id];
+  _slideDir='l';
+  if(NAV_RUN.includes(id)||id==='s-players-hub'||id==='s-pool'||!dest||dest===id){const b=scr.querySelector('.sub-hdr .back-btn');if(b){b.click();return;}go('s-hub');return;}
+  delete _navPrev[id];
+  _navBacking=true;try{
+    if(dest==='s-games')updateLaunchBtn();
+    if(dest==='s-hub'&&typeof updateMenuBadges==='function')updateMenuBadges();
+    go(dest);
+  }finally{_navBacking=false;}
+}
+function _initNavBars(){
+  NAV_IDS.concat(NAV_RUN).forEach(id=>{
+    const scr=document.getElementById(id);if(!scr||scr.querySelector('.wod-bar'))return;
+    const bar=document.createElement('div');bar.className='wod-bar nav-bar';
+    bar.innerHTML=`<div class="wb-in"><div class="wb-name">WOD HUB<small>${NAV_CRUMB[id]||''}</small></div><button class="hero-arr" aria-label="Back"><svg class="ic" viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg></button></div>`;
+    bar.querySelector('.hero-arr').onclick=()=>navBack(id);
+    scr.insertBefore(bar,scr.firstChild);scr.classList.add('has-navbar');
+  });
+}
+function _initGameBars(){
+  setTimeout(_watchTarotClock,0);
+  Object.entries(GAME_BAR).forEach(([id,[g,lbl]])=>{
+    const scr=document.getElementById(id);if(!scr||scr.querySelector('.wod-bar'))return;
+    const bar=document.createElement('div');bar.className='wod-bar';
+    bar.innerHTML=`<div class="wb-in"><div class="wb-name">${g==='rowod'?'ROWOD':'TAROT WOD'}<small class="wb-lbl">${lbl}</small></div><div class="wb-clock">00:00</div>`
+      +`<button class="hero-arr" data-d="-1" aria-label="Back"><svg class="ic" viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg></button>`
+      +`<button class="hero-arr" data-d="1" aria-label="Next"><svg class="ic" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button></div>`;
+    bar.querySelector('[data-d="-1"]').onclick=()=>{const t=_swipeTargets(scr);if(t&&t.back)t.back();};
+    bar.querySelector('[data-d="1"]').onclick=()=>{const t=_swipeTargets(scr);if(t&&t.next)t.next();};
+    scr.appendChild(bar);scr.classList.add('has-gamebar');
+  });
+}
+function _gameLive(id){
+  if(id==='s-active') return !!(G.timerOn||G.paused||G.timerEl>0||_rowCdOn);
+  if(id==='s-solo') return true;
+  if(id==='s-tarot-play') return !!(GT.timerInterval!==null||GT.paused||GT.finished);
+  return false;
+}
+function _setBarClock(id,txt,color){
+  const scr=document.getElementById(id);if(!scr)return;
+  const c=scr.querySelector('.wb-clock');if(!c)return;
+  c.textContent=txt;if(color)c.style.color=color;
+}
+function _updWodBar(){
+  const scr=document.querySelector('.scr.on');if(!scr||!scr.classList.contains('has-gamebar'))return;
+  const t=_swipeTargets(scr)||{};
+  const bar=scr.querySelector('.wod-bar');
+  bar.classList.toggle('live',_gameLive(scr.id));
+  bar.querySelector('[data-d="-1"]').hidden=!t.back;
+  bar.querySelector('[data-d="1"]').hidden=!t.next;
+  if(scr.id==='s-active'){const l=bar.querySelector('.wb-lbl');if(l)l.textContent=(G.structure.type==='rounds'?`Round ${G.curRound}/${G.structure.value}`:`Round ${G.curRound}`)+` · Player ${G.qPos+1}/${G.np}`;}
+}
+// Option steps: centre button = progress + summary sheet
+const STEP_OF={'s-mode':[1,3,'rowod'],'s-dist':[2,3,'rowod'],'s-mvt':[3,3,'rowod'],'s-tarot-cfg':[1,2,'tarot'],'s-tarot-cfg2':[2,2,'tarot']};
+function _stepRow(title,val,onclick,cur){
+  return `<div class="ss-row${cur?' cur':''}" onclick="${onclick}"><div><div class="ss-t">${title}</div><div class="ss-v">${val}</div></div><div class="ss-ch">${cur?'●':'›'}</div></div>`;
+}
+function openStepSheet(game,cur){
+  const sel=ROSTER.filter(p=>HUB_SEL.includes(p.id)).map(p=>p.name);
+  const pl=sel.length?sel.join(', '):'<span style="color:#ef4444">No player selected</span>';
+  let h='';
+  if(game==='rowod'){
+    const GM={1:ICO('target')+'All Fixed',2:ICO('dice')+'Dice Combo',3:ICO('shuffle')+'Full Random'};
+    const st=G.structure.type==='rounds'?`${G.structure.value} rounds`:`${G.structure.value} min`;
+    const ord={fixed:'Fixed order',rotate:'Rotating order',random:'Random order'}[G.orderMode]||'';
+    const combos=G.gameMode===3?(POOL.join(' · ')||'—'):G.dists.slice(0,G.nd).map((d,i)=>`${d}m → ${G.mvts[i]||'?'}`).join(' · ');
+    h=_stepRow('Players',pl,"closeStepSheet();openPlayersHub(G.currentScreen)",false)
+     +_stepRow('1 · Game mode',`${GM[G.gameMode]} · ${st} · ${ord}${G.penaltyEnabled?' · '+ICO('zap')+'Penalties':''}${G.coeffEnabled?' · '+ICO('ruler')+'Coeffs':''}`,"closeStepSheet();go('s-mode')",cur==='s-mode')
+     +_stepRow('2 · Distances',G.dists.slice(0,G.nd).map(d=>d+'m').join(' · '),"closeStepSheet();go('s-dist');buildDists()",cur==='s-dist')
+     +(G.gameMode===3?'':_stepRow('3 · Combos',combos,"closeStepSheet();go('s-mvt');buildMvtsCombos()",cur==='s-mvt'));
+  } else {
+    const mv=TAROT_SUIT_INFO.map(si=>`${si.sym} ${GT.mvtMap[si.key]||'?'}`).join(' · ');
+    h=_stepRow('Players',pl,"closeStepSheet();openPlayersHub(G.currentScreen)",false)
+     +_stepRow('1 · Deck & mode',`${GT.variant==='shared'?`Shared · ${GT.numDecks} deck${GT.numDecks>1?'s':''}`:'1 deck / player'} · ${GT.deckType==='crossfit'?'CrossFit':'Classic'} · ${GT.gameMode==='time'?`⏱ ${GT.timeDuration} min`:'All the way'}`,"closeStepSheet();go('s-tarot-cfg');initTarotCfg()",cur==='s-tarot-cfg')
+     +_stepRow('2 · Movements',mv+(GT.penaltyMode?` · ⚠️ ${GT.penaltyCount} × ${tarotPenaltyLabel()}`:''),"closeStepSheet();go('s-tarot-cfg2');initTarotCfg2()",cur==='s-tarot-cfg2');
+  }
+  const save=game==='rowod'?'openRowodSave()':'openTarotSave()';
+  const load=game==='rowod'?'openRowodLoad()':'openTarotLoad()';
+  document.getElementById('step-body').innerHTML=h;
+  document.getElementById('step-title').textContent=(game==='rowod'?'ROWOD':'TAROT WOD')+' · Summary';
+  document.getElementById('step-save').setAttribute('onclick',`closeStepSheet();${save}`);
+  document.getElementById('step-load').setAttribute('onclick',`closeStepSheet();${load}`);
+  document.getElementById('step-ovl').style.display='flex';
+}
+function closeStepSheet(){document.getElementById('step-ovl').style.display='none';}
+
+// Swipe with live feedback: the page follows the finger, an arrow grows at the edge.
+// Swipe right = back, swipe left = next (option screens), also "back" on game screens before the start.
+let _slideDir=null,_sw=null;
+function _swipeTargets(scr){
+  const id=scr.id,t={back:null,next:null};
+  if(scr.classList.contains('cfg')){
+    const b=scr.querySelector('.cfg-back'),n=scr.querySelector('.cfg-next');
+    if(b)t.back=()=>b.click();if(n)t.next=()=>n.click();
+  } else if(scr.classList.contains('has-navbar')){
+    t.back=()=>navBack(id);
+  } else if(id==='s-select'){
+    const sb=document.getElementById('sel-back-round');if(sb&&!sb.hidden)t.back=()=>{_slideDir='l';abortToMvt();};
+  } else if(id==='s-tarot-play'){
+    if(typeof _tarotPreStart==='function'&&_tarotPreStart()&&!_tarotCdRunning)t.back=()=>{_slideDir='l';tarotLeft();};
+  } else if(id==='s-scores'||id==='s-tarot-fin'){
+    const rb=document.getElementById('rk-back-'+id);if(rb&&!rb.classList.contains('off'))t.back=()=>{_slideDir='l';rb.click();};
+  } else if(id==='s-active'){
+    if(typeof _rowCanBack==='function'&&_rowCanBack())t.back=()=>{_slideDir='l';rowLeft();};
+  }
+  return (t.back||t.next)?t:null;
+}
+function _swInd(){
+  let d=document.getElementById('swipe-ind');
+  if(!d){d=document.createElement('div');d.id='swipe-ind';document.body.appendChild(d);}
+  return d;
+}
+function _swMove(dx){
+  const sw=_sw;const allowed=dx>0?!!sw.tg.back:!!sw.tg.next;
+  const eff=allowed?dx:dx*.15;
+  const p=allowed?Math.min(1,Math.abs(dx)/90):0;
+  sw.kids.forEach(k=>{k.style.transition='none';k.style.transform=`translateX(${eff*.6}px)`;k.style.opacity=String(1-Math.min(.35,Math.abs(eff)/600));});
+  const ind=_swInd();
+  ind.className=(dx>0?'l':'r')+(p>=1?' go':'');
+  ind.innerHTML=dx>0?'<svg class="ic" viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg>':'<svg class="ic" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg>';
+  ind.style.opacity=String(allowed?Math.min(1,p*1.4):0);
+  ind.style.transform=`translateY(-50%) translateX(${dx>0?Math.min(60,dx*.5)-60:Math.max(-60,dx*.5)+60}px) scale(${.6+.4*p})`;
+}
+function _swReset(anim){
+  if(!_sw)return;const kids=_sw.kids;
+  kids.forEach(k=>{k.style.transition=anim?'transform .2s ease,opacity .2s ease':'none';k.style.transform='';k.style.opacity='';});
+  if(anim)setTimeout(()=>kids.forEach(k=>{k.style.transition='';}),220);
+  const ind=document.getElementById('swipe-ind');if(ind){ind.style.opacity='0';}
+}
+document.addEventListener('touchstart',e=>{
+  _sw=null;
+  const scr=document.querySelector('.scr.on');
+  if(!scr||e.touches.length!==1)return;
+  if(e.target.closest('input,textarea,select,.drum-col,.drum-picker,.mo,[contenteditable],.gctl,.cfg-go,#tabbar,.wod-bar'))return;
+  if(document.querySelector('.mo:not(.h)'))return;
+  const tg=_swipeTargets(scr);if(!tg)return;
+  const t=e.touches[0];
+  _sw={x:t.clientX,y:t.clientY,t:Date.now(),scr,tg,lock:false,dx:0,kids:[...scr.children].filter(k=>!k.classList.contains('cfg-go')&&!k.classList.contains('gctl')&&!k.classList.contains('wod-bar'))};
+},{passive:true});
+document.addEventListener('touchmove',e=>{
+  if(!_sw)return;const t=e.touches[0];const dx=t.clientX-_sw.x,dy=t.clientY-_sw.y;
+  if(!_sw.lock){
+    if(Math.abs(dy)>12&&Math.abs(dy)>Math.abs(dx)){_sw=null;return;}
+    if(Math.abs(dx)>10&&Math.abs(dx)>Math.abs(dy)*1.2)_sw.lock=true;else return;
+  }
+  _sw.dx=dx;_swMove(dx);
+},{passive:true});
+document.addEventListener('touchend',e=>{
+  if(!_sw)return;
+  const sw=_sw;const t=e.changedTouches[0];const dx=t.clientX-sw.x,dt=Date.now()-sw.t;
+  const fast=dt<300&&Math.abs(dx)>45;
+  const go_=sw.lock&&(Math.abs(dx)>=90||fast);
+  const fn=dx>0?sw.tg.back:sw.tg.next;
+  if(go_&&fn){_swReset(false);_sw=null;fn();}
+  else{_swReset(true);_sw=null;}
+},{passive:true});
+document.addEventListener('touchcancel',()=>{if(_sw){_swReset(true);_sw=null;}},{passive:true});
+
+// ── Home: featured games carousel
+function heroGo(d){
+  const tr=document.getElementById('hero-track');if(!tr)return;
+  const n=tr.children.length,w=tr.clientWidth+12;
+  let i=Math.round(tr.scrollLeft/w)+d;
+  if(i<0)i=n-1;if(i>=n)i=0;
+  tr.scrollTo({left:i*w,behavior:'smooth'});
+}
+function _heroDots(){
+  const tr=document.getElementById('hero-track');if(!tr)return;
+  const i=Math.round(tr.scrollLeft/(tr.clientWidth+12));
+  document.querySelectorAll('#hero-dots i').forEach((d,k)=>d.classList.toggle('on',k===i));
+}
+function _initHero(){
+  const tr=document.getElementById('hero-track');if(!tr)return;
+  tr.addEventListener('scroll',()=>{clearTimeout(tr._t);tr._t=setTimeout(_heroDots,60);},{passive:true});
+  const j=document.getElementById('hero-joker');if(j&&typeof JOKER_IMAGES!=='undefined'&&JOKER_IMAGES.length)j.src=JOKER_IMAGES[1%JOKER_IMAGES.length];
+}
+
 // Init
 loadRoster(); loadPool(); buildHub(); loadCustomWods(); go('s-hub');
 applyAppTheme();
 cloudInit();
+_initCfgBars();
+_initGameBars();
+_initNavBars();
+_initHero();
+_updTabbar('s-hub');
 updStructDisplay();
 updPenMvtDisplay();
 </script>
