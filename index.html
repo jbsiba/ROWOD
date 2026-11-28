@@ -1979,6 +1979,7 @@ const MVTS=['Squats','Burpees','Pull-ups','Push-ups','Box Jumps',
   'Thrusters','Deadlifts','Clean & Jerk','Push Jerk','Front Squat','Back Squats','Deadlift High Pull',
   'DB Snatch','DB Cleans','DB Push Press','DB Squats','Devil Press','Man Maker',
   'Kettlebell Swings','KB Squats','KB Deadlift','KB Deadlift High Pull',
+  'Plate Overhead Lunges','Plate Squat','Plate Ground to Overhead','Plate Deadlift','Plate Clean','Plate Push Press','Plate Hammer',
   'Run','Row','Ski Erg','Bike'];
 
 const MVT_ICONS={
@@ -1990,6 +1991,7 @@ const MVT_ICONS={
   'Front Squat':'🏋️','Back Squats':'🏋️','Deadlift High Pull':'⬆️',
   'DB Snatch':'💪','DB Cleans':'🏋️','DB Push Press':'⬆️','DB Squats':'🦵','Devil Press':'😈','Man Maker':'🔨',
   'Kettlebell Swings':'🔔','KB Squats':'🔔','KB Deadlift':'🔔','KB Deadlift High Pull':'🔔',
+  'Plate Overhead Lunges':'🥏','Plate Squat':'🥏','Plate Ground to Overhead':'🥏','Plate Deadlift':'🥏','Plate Clean':'🥏','Plate Push Press':'🥏','Plate Hammer':'🥏',
   'Run':'🏃','Row':'🚣','Ski Erg':'⛷️','Bike':'🚴'
 };
 const MVT_CATS={
@@ -2005,6 +2007,7 @@ const MVT_CATS={
   'DB Squats':'Dumbbell','Devil Press':'Dumbbell','Man Maker':'Dumbbell',
   'Kettlebell Swings':'Kettlebell','KB Squats':'Kettlebell',
   'KB Deadlift':'Kettlebell','KB Deadlift High Pull':'Kettlebell',
+  'Plate Overhead Lunges':'Plate','Plate Squat':'Plate','Plate Ground to Overhead':'Plate','Plate Deadlift':'Plate','Plate Clean':'Plate','Plate Push Press':'Plate','Plate Hammer':'Plate',
   'Run':'Cardio','Row':'Cardio','Ski Erg':'Cardio','Bike':'Cardio'
 };
 const MVT_CAT_DEFS=[
@@ -2013,6 +2016,7 @@ const MVT_CAT_DEFS=[
   {k:'Barbell',    l:'🏋️ Barbell'},
   {k:'Dumbbell',   l:'💪 Dumbbell'},
   {k:'Kettlebell', l:'🔔 Kettlebell'},
+  {k:'Plate',      l:'🥏 Plate'},
   {k:'Cardio',     l:'❤️ Cardio'}
 ];
 const MVT_CAT_COLORS={
@@ -2020,6 +2024,7 @@ const MVT_CAT_COLORS={
   Barbell:'#f59e0b',
   Dumbbell:'#8b5cf6',
   Kettlebell:'#10b981',
+  Plate:'#ec4899',
   Cardio:'#ef4444'
 };
 const CARDIO_MVTS=['Run','Row','Ski Erg','Bike'];
@@ -2781,7 +2786,7 @@ function buildMvtsMode3(){
     G.mvts=[...MVTS.slice(0,8)];
   }
   const l=document.getElementById('mlist'); l.innerHTML='';
-  const catOrder=['Bodyweight','Barbell','Dumbbell','Kettlebell','Cardio'];
+  const catOrder=['Bodyweight','Barbell','Dumbbell','Kettlebell','Plate','Cardio'];
   catOrder.forEach(k=>{
     const col=MVT_CAT_COLORS[k]||'#888';
     const def=MVT_CAT_DEFS.find(d=>d.k===k);
@@ -2865,7 +2870,7 @@ function buildMvtOpts(current,badge,mode){
   const baseList=mode==='combo'&&POOL.length>0?POOL:MVTS;
   // Group by category
   const cats=[...new Set(baseList.map(m=>MVT_CATS[m]).filter(Boolean))];
-  const catOrder=['Bodyweight','Barbell','Dumbbell','Kettlebell','Cardio'];
+  const catOrder=['Bodyweight','Barbell','Dumbbell','Kettlebell','Plate','Cardio'];
   catOrder.filter(k=>cats.includes(k)).forEach(k=>{
     const col=MVT_CAT_COLORS[k]||'var(--fg3)';
     const def=MVT_CAT_DEFS.find(d=>d.k===k);
@@ -4176,7 +4181,7 @@ let GT = {
   np:0, players:[], avatars:[], ids:[],
   variant:'shared', numDecks:1, deckType:'classic',
   mvtMap:{h:'',d:'',c:'',s:'',t:''},
-  penaltyMode:false, penaltyCount:3, penaltyMvt:'Burpees', penaltyQty:{}, penaltyText:'',
+  penaltyMode:false, penaltyCount:3, penaltyMvt:'Run', penaltyQty:{}, penaltyText:'',
   gameMode:'cards', timeDuration:20, selfie:false,
   // runtime
   sharedDeck:[], pDecks:[],
@@ -4934,7 +4939,7 @@ function buildTarotMvtList(suitKey){
   if(!list) return;
   list.innerHTML='';
   const mvtSource=(POOL&&POOL.length)?POOL:MVTS;
-  const catOrder=['Bodyweight','Barbell','Dumbbell','Kettlebell','Cardio'];
+  const catOrder=['Bodyweight','Barbell','Dumbbell','Kettlebell','Plate','Cardio'];
   const cats=[...new Set(mvtSource.map(m=>MVT_CATS[m]).filter(Boolean))];
   catOrder.filter(k=>cats.includes(k)).forEach(k=>{
     const col=MVT_CAT_COLORS[k]||'var(--fg3)';
@@ -5775,7 +5780,7 @@ function _renderTarotPresets(){
         `<span>🃏 ${p.variant||'shared'} · ${p.numDecks||1} deck(s)</span>`+
         (p.playerObjects&&p.playerObjects.length?`<span>👥 ${p.playerObjects.length} players</span>`:'')+
         (mvts.length?`<span>💪 ${mvts.join(' / ')}</span>`:'')+
-        (p.penaltyMode?`<span>⚠️ ${p.penaltyCount||3} penalties · ${tarotPenaltyLabelFor(p.penaltyMvt||'Burpees',p.penaltyQty,p.penaltyText)}</span>`:'')+
+        (p.penaltyMode?`<span>⚠️ ${p.penaltyCount||3} penalties · ${tarotPenaltyLabelFor(p.penaltyMvt||'Run',p.penaltyQty,p.penaltyText)}</span>`:'')+
       `</div>`+
       `<div style="display:flex;gap:8px;">`+
         `<button onclick="applyTarotPreset(${p.id})" style="flex:1;background:var(--acc);color:#fff;border:none;border-radius:var(--rs);padding:8px 0;font-weight:700;font-size:.85rem;cursor:pointer;font-family:'Barlow Condensed',sans-serif;letter-spacing:.04em;">▶ Load</button>`+
@@ -5796,7 +5801,7 @@ function applyTarotPreset(id){
   GT.mvtMap={...GT.mvtMap,...(p.mvtMap||{})};
   GT.penaltyMode=!!p.penaltyMode;
   GT.penaltyCount=p.penaltyCount||3;
-  GT.penaltyMvt=p.penaltyMvt||'Burpees';
+  GT.penaltyMvt=p.penaltyMvt||'Run';
   GT.penaltyQty={...(p.penaltyQty||{})};
   GT.penaltyText=p.penaltyText||'';
   GT.gameMode=p.gameMode||'cards';
@@ -5852,7 +5857,7 @@ function _tarotPresetDetail(p){
     `<b>Mode:</b> ${p.gameMode==='time'?`Timer ${p.timeDuration||20} min`:'Cards'}`,
     p.playerObjects&&p.playerObjects.length?`<b>Players:</b> ${p.playerObjects.map(x=>x.name).join(', ')}`:null,
     mvtRows.length?`<b>Movements:</b><br>${mvtRows.join('<br>')}`:null,
-    p.penaltyMode?`<b>Penalties:</b> ON · ${p.penaltyCount||3} per game · ${tarotPenaltyLabelFor(p.penaltyMvt||'Burpees',p.penaltyQty,p.penaltyText)}`:null,
+    p.penaltyMode?`<b>Penalties:</b> ON · ${p.penaltyCount||3} per game · ${tarotPenaltyLabelFor(p.penaltyMvt||'Run',p.penaltyQty,p.penaltyText)}`:null,
   ].filter(Boolean);
   return rows.map(r=>`<div style="margin-bottom:4px;">${r}</div>`).join('');
 }
