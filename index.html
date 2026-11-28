@@ -7595,21 +7595,53 @@ function _sfCardLabel(card){
   if(card.type==='penalty') return 'Penalty card';
   return cardFullName(card);
 }
+function _sfOverlay(card){
+  if(!card||card.type==='back') return null;
+  if(card.type==='penalty') return {img:getPenaltyImg(card),big:'PENALTY',small:tarotPenaltyLabel(),red:true};
+  const ci=(GT.deckType==='crossfit'?CARD_IMAGES_CROSSFIT:CARD_IMAGES)[cardImageKey(card)];
+  if(card.type==='excuse') return {img:ci,big:'EXCUSE',small:'Joker to use later'};
+  const mv=GT.mvtMap[card.type==='atout'?'t':card.suit]||'';
+  return {img:ci,big:String(cardReps(card)),small:mv};
+}
+const _sfImgCache={};
+function _sfImg(src){if(!src)return Promise.resolve(null);if(_sfImgCache[src])return _sfImgCache[src];return _sfImgCache[src]=new Promise(r=>{const i=new Image();i.onload=()=>r(i);i.onerror=()=>r(null);i.src=src;});}
 function selfieSnap(pi,card){
   if(!GT.selfie||!_sfStream||!_sfVideo)return;
   const label=_sfCardLabel(card);
-  setTimeout(()=>{
+  const ov=_sfOverlay(card);
+  const name=pi<0?'Team':GT.players[pi];
+  const pImg=_sfImg(ov&&ov.img);
+  setTimeout(async()=>{
     const v=_sfVideo;if(!_sfStream)return;
     if(!v.videoWidth){GT.selfieStatus='The camera is on but sends no image yet';return;}
-    const S=360,vw=v.videoWidth,vh=v.videoHeight,m=Math.min(vw,vh);
+    const S=540,vw=v.videoWidth,vh=v.videoHeight,m=Math.min(vw,vh);
     const c=document.createElement('canvas');c.width=S;c.height=S;
-    const x=c.getContext('2d');x.translate(S,0);x.scale(-1,1);
-    x.drawImage(v,(vw-m)/2,(vh-m)/2,m,m,0,0,S,S);
-    let url='';try{url=c.toDataURL('image/jpeg',.72);}catch(e){return;}
-    GT.selfies.push({pi,name:pi<0?'Team':GT.players[pi],card:label,t:GT.startTime?Math.max(0,Math.floor((Date.now()-GT.startTime)/1000)):0,url});
+    const x=c.getContext('2d');
+    x.save();x.translate(S,0);x.scale(-1,1);x.drawImage(v,(vw-m)/2,(vh-m)/2,m,m,0,0,S,S);x.restore();
     v.classList.remove('snap');void v.offsetWidth;v.classList.add('snap');
+    const cimg=await pImg;
+    // first name, top left
+    x.font=`italic 900 ${S*.07}px "Barlow Condensed",sans-serif`;x.textBaseline='top';
+    const nw=x.measureText(name.toUpperCase()).width;
+    x.fillStyle='rgba(13,13,14,.55)';_sfRound(x,S*.035,S*.035,nw+S*.06,S*.095,S*.03);x.fill();
+    x.fillStyle='#fff';x.fillText(name.toUpperCase(),S*.065,S*.05);
+    if(ov){
+      const g=x.createLinearGradient(0,S*.55,0,S);g.addColorStop(0,'rgba(0,0,0,0)');g.addColorStop(1,'rgba(0,0,0,.75)');x.fillStyle=g;x.fillRect(0,S*.55,S,S*.45);
+      const ch=S*.34,cw=ch*.5,cx=S*.04,cy=S-ch-S*.04;
+      if(cimg){x.save();x.shadowColor='rgba(0,0,0,.5)';x.shadowBlur=S*.03;_sfRound(x,cx,cy,cw,ch,S*.02);x.clip();x.drawImage(cimg,cx,cy,cw,ch);x.restore();
+        if(ov.red){x.strokeStyle='#ef4444';x.lineWidth=S*.008;_sfRound(x,cx,cy,cw,ch,S*.02);x.stroke();}}
+      const tx=cx+(cimg?cw+S*.04:0);x.textBaseline='alphabetic';
+      x.fillStyle=ov.red?'#ef4444':'#ff5a1f';x.font=`italic 900 ${S*(ov.big.length>3?.11:.16)}px "Barlow Condensed",sans-serif`;
+      x.fillText(ov.big,tx,S-S*.04-S*.085);
+      x.fillStyle='#fff';x.font=`italic 900 ${S*.07}px "Barlow Condensed",sans-serif`;
+      let sm=ov.small.toUpperCase();const maxw=S-tx-S*.04;while(sm.length>3&&x.measureText(sm).width>maxw)sm=sm.slice(0,-2)+'…';
+      x.fillText(sm,tx,S-S*.055);
+    }
+    let url='';try{url=c.toDataURL('image/jpeg',.8);}catch(e){return;}
+    GT.selfies.push({pi,name,card:label,t:GT.startTime?Math.max(0,Math.floor((Date.now()-GT.startTime)/1000)):0,url});
   },1200);
 }
+function _sfRound(x,X,Y,W,H,r){x.beginPath();x.moveTo(X+r,Y);x.arcTo(X+W,Y,X+W,Y+H,r);x.arcTo(X+W,Y+H,X,Y+H,r);x.arcTo(X,Y+H,X,Y,r);x.arcTo(X,Y,X+W,Y,r);x.closePath();}
 function selfieGalleryHtml(){
   const L=GT.selfies||[];
   if(!L.length){
@@ -7617,14 +7649,14 @@ function selfieGalleryHtml(){
     const why=st&&st!=='on'&&st!=='starting'?st:st==='on'?'The camera was on but no card was drawn after it started':'Selfie option was off for this game';
     return `<div class="pm-empty"><b>No selfie taken</b><br><span style="font-size:.8rem">${why}</span></div>`;
   }
-  return `<div class="sf-acts"><button class="btn bp" onclick="selfieFilm()"><svg class="ic ico fill" viewBox="0 0 24 24"><path d="M7 4.5v15l13-7.5z" fill="currentColor" stroke="none"/></svg>Film</button><button class="btn bs" onclick="selfieSaveSheet()"><svg class="ic ico" viewBox="0 0 24 24"><path d="M12 3v12M7 10l5 5 5-5M4 21h16"/></svg>Save</button></div>`+'<div class="sf-grid">'+L.map((p,i)=>`<button class="sf-it" onclick="selfieOpen(${i})"><img src="${p.url}" alt=""><span><b>${p.name}</b>${p.card}</span></button>`).join('')+'</div>'
+  return `<div class="sf-acts"><button class="btn bp" onclick="selfieFilm()"><svg class="ic ico fill" viewBox="0 0 24 24"><path d="M7 4.5v15l13-7.5z" fill="currentColor" stroke="none"/></svg>Film</button><button class="btn bs" onclick="selfieSaveSheet()"><svg class="ic ico" viewBox="0 0 24 24"><path d="M12 3v12M7 10l5 5 5-5M4 21h16"/></svg>Save</button></div>`+'<div class="sf-grid">'+L.map((p,i)=>`<button class="sf-it" onclick="selfieOpen(${i})"><img src="${p.url}" alt=""></button>`).join('')+'</div>'
     +'<div class="sf-note">Selfies are kept only until you leave the scores · Save to keep them</div>';
 }
 function selfieOpen(i){
   const L=GT.selfies||[];const p=L[i];if(!p)return;
   document.getElementById('sf-view')?.remove();
   const o=document.createElement('div');o.id='sf-view';o.className='sf-view';
-  o.innerHTML=`<img src="${p.url}" alt=""><div class="sf-cap"><b>${p.name}</b> · ${p.card} · ${fmtTarotTime(p.t)}</div><div class="sf-nav"><button ${i<=0?'disabled':''} onclick="event.stopPropagation();selfieOpen(${i-1})"><svg class="ic" viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg></button><span>${i+1} / ${L.length}</span><button ${i>=L.length-1?'disabled':''} onclick="event.stopPropagation();selfieOpen(${i+1})"><svg class="ic" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button></div>`;
+  o.innerHTML=`<img src="${p.url}" alt=""><div class="sf-nav"><button ${i<=0?'disabled':''} onclick="event.stopPropagation();selfieOpen(${i-1})"><svg class="ic" viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg></button><span>${i+1} / ${L.length}</span><button ${i>=L.length-1?'disabled':''} onclick="event.stopPropagation();selfieOpen(${i+1})"><svg class="ic" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button></div>`;
   o.onclick=e=>{if(e.target===o)o.remove();};
   o.querySelector('img').onclick=()=>o.remove();
   document.body.appendChild(o);
@@ -7637,13 +7669,8 @@ function _sfCaption(p){return {a:p.name,b:p.card+' · '+fmtTarotTime(p.t)};}
 function _sfDrawFrame(x,S,img,p,k,n,fade){
   x.fillStyle='#0d0d0e';x.fillRect(0,0,S,S);
   if(img){x.globalAlpha=fade;x.drawImage(img,0,0,S,S);x.globalAlpha=1;}
-  const g=x.createLinearGradient(0,S*.62,0,S);g.addColorStop(0,'rgba(0,0,0,0)');g.addColorStop(1,'rgba(0,0,0,.8)');x.fillStyle=g;x.fillRect(0,S*.62,S,S*.38);
-  const c=_sfCaption(p);
-  x.fillStyle='#fff';x.font=`italic 900 ${S*.085}px "Barlow Condensed",sans-serif`;x.textBaseline='alphabetic';
-  x.fillText(c.a.toUpperCase(),S*.05,S*.86);
-  x.font=`600 ${S*.042}px Inter,sans-serif`;x.fillStyle='rgba(255,255,255,.85)';x.fillText(c.b,S*.05,S*.93);
   x.fillStyle='#ff5a1f';x.fillRect(0,S-S*.012,S*(k+1)/n,S*.012);
-  x.font=`italic 900 ${S*.05}px "Barlow Condensed",sans-serif`;x.fillStyle='#ff5a1f';x.textAlign='right';x.fillText('TAROT WOD',S*.95,S*.08);x.textAlign='left';
+  x.font=`italic 900 ${S*.05}px "Barlow Condensed",sans-serif`;x.fillStyle='#ff5a1f';x.textAlign='right';x.textBaseline='alphabetic';x.fillText('TAROT WOD',S*.95,S*.08);x.textAlign='left';
 }
 async function selfieFilm(){
   const L=GT.selfies||[];if(!L.length)return;
