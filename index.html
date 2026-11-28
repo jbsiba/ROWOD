@@ -743,6 +743,28 @@ body.has-tabbar .cfg .cfg-go{bottom:calc(62px + env(safe-area-inset-bottom,0px))
 #s-players-hub .cfg-back,#s-pool .cfg-back{visibility:hidden}
 #s-pool .cfg-go{display:none!important}
 .nav-bar .wb-name{font-size:1.3rem}
+
+/* ════════ SELFIES (V28) */
+#sf-live{opacity:0;pointer-events:none;position:fixed;z-index:35;top:calc(5px + env(safe-area-inset-top,0px));right:max(128px,calc(env(safe-area-inset-right,0px) + 128px));width:42px;height:42px;border-radius:50%;object-fit:cover;transform:scaleX(-1);border:2px solid #0d0d0e;box-shadow:0 4px 14px rgba(0,0,0,.4);background:#000;display:block}
+body.sf-play #sf-live{opacity:1}
+#sf-live.snap{animation:sfSnap .45s ease-out}
+@keyframes sfSnap{0%{box-shadow:0 0 0 0 #fff;filter:brightness(2.4)}100%{box-shadow:0 0 0 14px rgba(255,255,255,0);filter:none}}
+.sf-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.sf-it{position:relative;padding:0;border:none;border-radius:14px;overflow:hidden;background:var(--surf2);aspect-ratio:1;cursor:pointer;max-width:100%}
+.sf-it img{width:100%;height:100%;object-fit:cover;display:block}
+.sf-it span{position:absolute;left:0;right:0;bottom:0;padding:14px 6px 5px;background:linear-gradient(transparent,rgba(0,0,0,.75));color:#fff;font-size:.62rem;line-height:1.2;text-align:left;display:flex;flex-direction:column}
+.sf-it b{font-size:.72rem}
+.sf-note{font-size:.72rem;color:var(--fg3);text-align:center;margin:12px 0 4px}
+.sf-view{position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.92);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:20px max(16px,env(safe-area-inset-right,0px)) 20px max(16px,env(safe-area-inset-left,0px))}
+.sf-view img{width:min(92vw,460px);max-width:100%;border-radius:20px}
+.sf-cap{color:#fff;font-size:.9rem}
+.sf-nav{display:flex;align-items:center;gap:18px;color:#fff;font-weight:700}
+.sf-nav button{width:44px;height:44px;border-radius:50%;border:none;background:var(--acc);color:#0d0d0e;display:flex;align-items:center;justify-content:center}
+.sf-nav button:disabled{opacity:.3}
+
+.sf-acts{display:flex;gap:8px;margin-bottom:10px}.sf-acts .btn{flex:1;margin:0;display:flex;align-items:center;justify-content:center;min-height:52px;white-space:nowrap}
+.sf-cv{width:min(92vw,460px);max-width:100%;border-radius:20px;aspect-ratio:1}
+#sf-save{z-index:10000}
 </style>
 <script>
 const _ICO={"target": "<circle cx=\"12\" cy=\"12\" r=\"9\"/><circle cx=\"12\" cy=\"12\" r=\"5\"/><circle cx=\"12\" cy=\"12\" r=\"1\" fill=\"currentColor\"/>", "dice": "<rect x=\"4\" y=\"4\" width=\"16\" height=\"16\" rx=\"3.5\"/><circle cx=\"8.6\" cy=\"8.6\" r=\"1.2\" fill=\"currentColor\" stroke=\"none\"/><circle cx=\"12\" cy=\"12\" r=\"1.2\" fill=\"currentColor\" stroke=\"none\"/><circle cx=\"15.4\" cy=\"15.4\" r=\"1.2\" fill=\"currentColor\" stroke=\"none\"/>", "shuffle": "<path d=\"M16 3h5v5M4 20 21 3M21 16v5h-5M15 15l6 6M4 4l5 5\"/>", "repeat": "<path d=\"M17 2l4 4-4 4M3 11v-1a4 4 0 0 1 4-4h14M7 22l-4-4 4-4M21 13v1a4 4 0 0 1-4 4H3\"/>", "timer": "<circle cx=\"12\" cy=\"13\" r=\"8\"/><path d=\"M12 9v4l2.5 2.5M9 2h6\"/>", "again": "<path d=\"M3 12a9 9 0 1 0 3-6.7L3 8M3 3v5h5\"/><path d=\"M12 8v4l3 2\"/>", "zap": "<path d=\"M13 2 4 14h8l-1 8 9-12h-8l1-8z\"/>", "bull": "<circle cx=\"12\" cy=\"12\" r=\"8\"/><path d=\"M12 2v4M12 18v4M2 12h4M18 12h4\"/><circle cx=\"12\" cy=\"12\" r=\"1.6\" fill=\"currentColor\" stroke=\"none\"/>", "ruler": "<path d=\"M3 17 17 3l4 4L7 21z\"/><path d=\"M7 13l2 2M10 10l2 2M13 7l2 2\"/>", "order": "<path d=\"M10 6h11M10 12h11M10 18h11\"/><path d=\"M4 4v4M3 8h2M3.5 14.5c0-1 1-1.5 1.7-1.2.9.4.7 1.4 0 2L3.5 17h2.2\"/>", "rotate": "<path d=\"M21 12a9 9 0 0 1-15.4 6.4L3 16M3 12a9 9 0 0 1 15.4-6.4L21 8\"/><path d=\"M21 3v5h-5M3 21v-5h5\"/>", "deck": "<rect x=\"8\" y=\"3\" width=\"12\" height=\"16\" rx=\"2\"/><path d=\"M5 7v12a2 2 0 0 0 2 2h9\"/>", "deckp": "<rect x=\"5\" y=\"3\" width=\"14\" height=\"18\" rx=\"2\"/><circle cx=\"12\" cy=\"10\" r=\"2.6\"/><path d=\"M8 17c1-2.2 2.4-3.2 4-3.2s3 1 4 3.2\"/>", "heartc": "<rect x=\"5\" y=\"3\" width=\"14\" height=\"18\" rx=\"2\"/><path d=\"M12 16s-3.6-2.2-3.6-4.6a1.9 1.9 0 0 1 3.6-.9 1.9 1.9 0 0 1 3.6.9c0 2.4-3.6 4.6-3.6 4.6z\"/>", "kb": "<path d=\"M8.5 10V7.5a3.5 3.5 0 0 1 7 0V10\"/><path d=\"M7.3 20a6.5 6.5 0 1 1 9.4 0z\"/>", "flag": "<path d=\"M5 21V4M5 4h11l-2 4 2 4H5\"/>", "alert": "<path d=\"M12 3 2 20h20z\"/><path d=\"M12 9.5v4.5M12 17h.01\"/>", "hat": "<path d=\"M5 20h14M5.5 20v-2.5h13V20\"/><path d=\"M6 17.5C6 12 4.5 8.5 2.5 8c2.5-2 6.5 1 8 6\"/><path d=\"M18 17.5c0-5.5 1.5-9 3.5-9.5-2.5-2-6.5 1-8 6\"/><path d=\"M10 17.5c0-6 .8-10 2-13 1.2 3 2 7 2 13\"/><circle cx=\"2.5\" cy=\"9.5\" r=\"1.2\"/><circle cx=\"21.5\" cy=\"9.5\" r=\"1.2\"/><circle cx=\"12\" cy=\"3.2\" r=\"1.2\"/>", "pencil": "<path d=\"M12 20h9\"/><path d=\"M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z\"/>", "pad": "<path d=\"M6 11h4M8 9v4\"/><circle cx=\"15.5\" cy=\"12\" r=\".8\" fill=\"currentColor\"/><circle cx=\"18\" cy=\"10\" r=\".8\" fill=\"currentColor\"/><path d=\"M17.3 5H6.7a4 4 0 0 0-4 3.6L2 15a3 3 0 0 0 5.5 1.8L9 15h6l1.5 1.8A3 3 0 0 0 22 15l-.7-6.4a4 4 0 0 0-4-3.6z\"/>", "trophy": "<path d=\"M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0zM17 5h3v2a3 3 0 0 1-3 3M7 5H4v2a3 3 0 0 0 3 3\"/>", "hour": "<path d=\"M5 3h14M5 21h14\"/><path d=\"M7 3v2.5c0 2.6 2 4.3 5 6.5-3 2.2-5 3.9-5 6.5V21M17 3v2.5c0 2.6-2 4.3-5 6.5 3 2.2 5 3.9 5 6.5V21\"/><path d=\"M9.5 18.5c.8-1.2 1.6-1.8 2.5-2.2.9.4 1.7 1 2.5 2.2z\" fill=\"currentColor\"/><path d=\"M10 7h4\"/>", "interval": "<circle cx=\"12\" cy=\"13\" r=\"8\"/><path d=\"M12 9v4h4M9 2h6\"/><path d=\"M20 5l1.5-1.5\"/>", "save": "<path d=\"M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z\"/><path d=\"M17 21v-8H7v8M7 3v5h8\"/>", "folder": "<path d=\"M3 19V6a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v2\"/><path d=\"M3 19l3-8h16l-3 8z\"/>", "down": "<path d=\"M12 3v12M7 10l5 5 5-5M4 21h16\"/>", "up": "<path d=\"M12 15V3M7 8l5-5 5 5M4 21h16\"/>", "rules": "<rect x=\"5\" y=\"4\" width=\"14\" height=\"17\" rx=\"2\"/><path d=\"M9 4V3h6v1M9 10h6M9 14h6M9 18h3\"/>", "sun": "<circle cx=\"12\" cy=\"12\" r=\"4\"/><path d=\"M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4\"/>", "moon": "<path d=\"M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z\"/>", "camera": "<path d=\"M3 8a2 2 0 0 1 2-2h2l2-2h6l2 2h2a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z\"/><circle cx=\"12\" cy=\"13\" r=\"3.5\"/>", "row": "<path d=\"M3 20h18\"/><circle cx=\"8\" cy=\"6\" r=\"2\"/><path d=\"M9 9l2 6 5-3 3 4M9.5 10l8 .5\"/>"};
@@ -1236,6 +1258,13 @@ try{var _h=document.documentElement;_h.lang='en';_h.setAttribute('translate','no
         <div><div class="sv" id="tduv">20</div><div style="text-align:center;font-size:.7rem;color:var(--fg3);margin-top:2px;">minutes</div></div>
         <button class="sb" id="tdurbp" onclick="chTarotDur(5)">+</button>
       </div>
+    </div>
+  </div>
+  <div class="cfg-sec">
+    <div class="slbl">Selfies</div>
+    <div class="trow">
+      <div class="ti"><div class="tn"><svg class="ic ico" viewBox="0 0 24 24"><path d="M3 8a2 2 0 0 1 2-2h2l2-2h6l2 2h2a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><circle cx="12" cy="13" r="3.5"/></svg>Selfie on each draw</div><div class="td">The front camera snaps the reaction to every card · gallery at the end</div></div>
+      <button class="tsw" id="tsw-selfie" onclick="togTarotSelfie()"></button>
     </div>
   </div>
   <div class="mta cfg-go"><button class="btn bp" onclick="go('s-tarot-cfg2');initTarotCfg2()">NEXT</button></div>
@@ -2085,6 +2114,8 @@ function _updTabbar(id){
 }
 function go(id){
   const _prev=G.currentScreen;
+  document.body.classList.toggle('sf-play',id==='s-tarot-play');
+  if(id!=='s-tarot-play'&&id!=='s-tarot-fin'&&typeof selfieStop==='function')selfieStop();
   if(NAV_IDS.includes(id)&&!_navBacking&&_prev&&_prev!==id&&!NAV_SKIP.includes(_prev))_navPrev[id]=_prev;
   G.currentScreen=id;
   document.querySelectorAll('.scr').forEach(s=>s.classList.remove('on'));
@@ -4138,7 +4169,7 @@ let GT = {
   variant:'shared', numDecks:1, deckType:'classic',
   mvtMap:{h:'',d:'',c:'',s:'',t:''},
   penaltyMode:false, penaltyCount:3, penaltyMvt:'Burpees', penaltyQty:{}, penaltyText:'',
-  gameMode:'cards', timeDuration:20,
+  gameMode:'cards', timeDuration:20, selfie:false,
   // runtime
   sharedDeck:[], pDecks:[],
   pReps:[], pBouts:[], pCard:[], pExcuse:[], pDone:[],
@@ -4651,6 +4682,7 @@ function openTarotCfg(){
   initTarotCfg();
 }
 function initTarotCfg(){
+  document.getElementById('tsw-selfie')?.classList.toggle('on',!!GT.selfie);
   updateTarotVariantUI();
   updateTarotGameModeUI();
   updateTarotDeckTypeUI();
@@ -4962,6 +4994,8 @@ function launchTarot(){
   GT.avatars=selPlayers.map(p=>p.avatar||'');
   GT.ids=selPlayers.map(p=>p.id);
   GT.finished=false; GT._endTap=0;
+  GT.selfies=[];GT.selfieStatus='';GT._sfShown=false;
+  if(GT.selfie) selfieStart(); else selfieStop();
   // Build deck(s)
   if(GT.variant==='shared'){
     let combined=[];
@@ -5223,6 +5257,7 @@ function tarotFlip(pi){
     startTarotTimer();
   }
   GT.players.forEach((_,i)=>renderTarotPanel(i));
+  selfieSnap(GT.players.length>1?-1:0,GT.players.length>1?null:GT.pCard[0]);
   updateTarotDeckInfo();
 }
 function tarotPanelTap(pi){
@@ -5242,6 +5277,7 @@ function tarotDraw(pi){
   renderTarotPanel(pi);
   updateTarotDeckInfo();
   showCardReveal(card,pi);
+  selfieSnap(pi,card);
 }
 function tarotConfirmExcuseDraw(pi){
   document.getElementById('card-reveal-ol')?.remove();
@@ -5299,6 +5335,7 @@ function _tarotDrawNext(pi){
   updateTarotDeckInfo();
   renderTarotPanel(pi);
   showCardReveal(card,pi);
+  selfieSnap(pi,card);
 }
 function tarotNext(pi){
   const card=GT.pCard[pi];
@@ -5565,8 +5602,9 @@ function renderTarotScores(){
     sb.innerHTML='';
     // Section title
     const tabs=document.createElement('div');tabs.className='rk-tabs';tabs.id='tk-tabs';
-    tabs.innerHTML='<button data-t="pp" onclick="tarotRankTab(\'pp\')">Per player</button><button data-t="pm" onclick="tarotRankTab(\'pm\')">Per movement</button>';
+    tabs.innerHTML='<button data-t="pp" onclick="tarotRankTab(\'pp\')">Per player</button><button data-t="pm" onclick="tarotRankTab(\'pm\')">Per movement</button>'+((GT.selfie||(GT.selfies&&GT.selfies.length))?'<button data-t="sf" onclick="tarotRankTab(\'sf\')">Selfies</button>':'');
     sb.appendChild(tabs);
+    const sfWrap=document.createElement('div');sfWrap.id='tk-sf';sfWrap.hidden=true;sfWrap.innerHTML=selfieGalleryHtml();sb.appendChild(sfWrap);
     const ppWrap=document.createElement('div');ppWrap.id='tk-pp';sb.appendChild(ppWrap);
     const pmWrap=document.createElement('div');pmWrap.id='tk-pm';pmWrap.innerHTML=perMvtHtml(_tarotPerMvtItems());sb.appendChild(pmWrap);
     const trk2=tieRanks(ranked,(a,b)=>a.reps===b.reps);
@@ -5579,7 +5617,7 @@ function renderTarotScores(){
       if(GT.penaltyMode) rows.push({ic:'⚠️',name:'Penalty · '+tarotPenaltyLabel(),v:pc,unit:'×',pen:true});
       return {rank:trk2[i],av:tarotAvHtml(p.av||'',34,p.name.charAt(0).toUpperCase()),name:p.name,sub:`${drawn} card${drawn!==1?'s':''} drawn`,total:p.reps,unit:'reps',rows};
     }));
-    tarotRankTab(_tkTab);
+    tarotRankTab(GT.finished&&GT.selfie&&!GT._sfShown?(GT._sfShown=true,'sf'):_tkTab);
   }
 }
 function tarotFinBack(){go('s-tarot-play');}
@@ -5613,7 +5651,8 @@ let _tkTab='pp';
 function tarotRankTab(t){
   _tkTab=t;
   const a=document.getElementById('tk-pp'),b=document.getElementById('tk-pm');if(!a||!b)return;
-  a.hidden=t!=='pp';b.hidden=t!=='pm';
+  const f=document.getElementById('tk-sf');if(t==='sf'&&!f)t='pp';
+  a.hidden=t!=='pp';b.hidden=t!=='pm';if(f)f.hidden=t!=='sf';
   document.querySelectorAll('#tk-tabs button').forEach(x=>x.classList.toggle('on',x.dataset.t===t));
 }
 function _tarotPerMvtItems(){
@@ -5684,7 +5723,7 @@ function doTarotSave(){
     mvtMap:{...GT.mvtMap},
     penaltyMode:GT.penaltyMode, penaltyCount:GT.penaltyCount, penaltyMvt:GT.penaltyMvt,
     penaltyQty:{...(GT.penaltyQty||{})}, penaltyText:GT.penaltyText||'',
-    gameMode:GT.gameMode, timeDuration:GT.timeDuration,
+    gameMode:GT.gameMode, timeDuration:GT.timeDuration, selfie:!!GT.selfie,
     np:HUB_SEL.length,
     playerIds:[...HUB_SEL],
     playerObjects:ROSTER.filter(r=>HUB_SEL.includes(r.id)).map(r=>({...r})),
@@ -5754,6 +5793,7 @@ function applyTarotPreset(id){
   GT.penaltyText=p.penaltyText||'';
   GT.gameMode=p.gameMode||'cards';
   GT.timeDuration=p.timeDuration||20;
+  GT.selfie=!!p.selfie;
   GT.presetName=p.name||'';
   // Players (recreate any that no longer exist in the roster)
   let missing=0;
@@ -7519,6 +7559,159 @@ function _initNavBars(){
     bar.querySelector('.hero-arr').onclick=()=>navBack(id);
     scr.insertBefore(bar,scr.firstChild);scr.classList.add('has-navbar');
   });
+}
+
+// ── TAROT selfies (V28) ──
+let _sfStream=null,_sfVideo=null;
+function togTarotSelfie(){GT.selfie=!GT.selfie;document.getElementById('tsw-selfie')?.classList.toggle('on',GT.selfie);}
+async function selfieStart(){
+  if(_sfStream){GT.selfieStatus='on';return;}
+  GT.selfieStatus='starting';
+  if(!window.isSecureContext){GT.selfieStatus='The page is not served over https — the camera only works from the GitHub Pages link (https://…)';toast('Selfies: camera needs the https link','err');return;}
+  if(!navigator.mediaDevices||!navigator.mediaDevices.getUserMedia){GT.selfieStatus='This browser gives no access to the camera (in the Claude preview the camera is always blocked — test from the GitHub Pages link)';toast('Selfies: camera not available here','err');return;}
+  try{
+    _sfStream=await navigator.mediaDevices.getUserMedia({video:{facingMode:'user',width:{ideal:640},height:{ideal:640}},audio:false});
+  }catch(e){_sfStream=null;
+    const n=e&&e.name||'';
+    GT.selfieStatus=n==='NotAllowedError'?'Camera access was refused. On iPhone: Settings › Safari › Camera › Allow (or tap “aA” › Website settings › Camera), then relaunch the game':
+      n==='NotFoundError'?'No front camera found':'Camera error: '+(n||e);
+    toast(n==='NotAllowedError'?'Selfies: camera access refused':'Selfies: camera unavailable','err');return;}
+  GT.selfieStatus='on';
+  toast('Selfies ON — the camera snaps every draw','ok');
+  if(!_sfVideo){
+    _sfVideo=document.createElement('video');_sfVideo.id='sf-live';
+    _sfVideo.setAttribute('playsinline','');_sfVideo.muted=true;_sfVideo.autoplay=true;
+    document.body.appendChild(_sfVideo);
+  }
+  _sfVideo.srcObject=_sfStream;_sfVideo.hidden=false;
+  try{await _sfVideo.play();}catch(e){}
+}
+function selfieStop(){
+  if(_sfStream){_sfStream.getTracks().forEach(t=>t.stop());_sfStream=null;}
+  if(_sfVideo){_sfVideo.srcObject=null;_sfVideo.hidden=true;}
+}
+function _sfCardLabel(card){
+  if(!card) return 'First draw';
+  if(card.type==='penalty') return 'Penalty card';
+  return cardFullName(card);
+}
+function selfieSnap(pi,card){
+  if(!GT.selfie||!_sfStream||!_sfVideo)return;
+  const label=_sfCardLabel(card);
+  setTimeout(()=>{
+    const v=_sfVideo;if(!_sfStream)return;
+    if(!v.videoWidth){GT.selfieStatus='The camera is on but sends no image yet';return;}
+    const S=360,vw=v.videoWidth,vh=v.videoHeight,m=Math.min(vw,vh);
+    const c=document.createElement('canvas');c.width=S;c.height=S;
+    const x=c.getContext('2d');x.translate(S,0);x.scale(-1,1);
+    x.drawImage(v,(vw-m)/2,(vh-m)/2,m,m,0,0,S,S);
+    let url='';try{url=c.toDataURL('image/jpeg',.72);}catch(e){return;}
+    GT.selfies.push({pi,name:pi<0?'Team':GT.players[pi],card:label,t:GT.startTime?Math.max(0,Math.floor((Date.now()-GT.startTime)/1000)):0,url});
+    v.classList.remove('snap');void v.offsetWidth;v.classList.add('snap');
+  },1200);
+}
+function selfieGalleryHtml(){
+  const L=GT.selfies||[];
+  if(!L.length){
+    const st=GT.selfieStatus||'';
+    const why=st&&st!=='on'&&st!=='starting'?st:st==='on'?'The camera was on but no card was drawn after it started':'Selfie option was off for this game';
+    return `<div class="pm-empty"><b>No selfie taken</b><br><span style="font-size:.8rem">${why}</span></div>`;
+  }
+  return `<div class="sf-acts"><button class="btn bp" onclick="selfieFilm()"><svg class="ic ico fill" viewBox="0 0 24 24"><path d="M7 4.5v15l13-7.5z" fill="currentColor" stroke="none"/></svg>Film</button><button class="btn bs" onclick="selfieSaveSheet()"><svg class="ic ico" viewBox="0 0 24 24"><path d="M12 3v12M7 10l5 5 5-5M4 21h16"/></svg>Save</button></div>`+'<div class="sf-grid">'+L.map((p,i)=>`<button class="sf-it" onclick="selfieOpen(${i})"><img src="${p.url}" alt=""><span><b>${p.name}</b>${p.card}</span></button>`).join('')+'</div>'
+    +'<div class="sf-note">Selfies are kept only until you leave the scores · Save to keep them</div>';
+}
+function selfieOpen(i){
+  const L=GT.selfies||[];const p=L[i];if(!p)return;
+  document.getElementById('sf-view')?.remove();
+  const o=document.createElement('div');o.id='sf-view';o.className='sf-view';
+  o.innerHTML=`<img src="${p.url}" alt=""><div class="sf-cap"><b>${p.name}</b> · ${p.card} · ${fmtTarotTime(p.t)}</div><div class="sf-nav"><button ${i<=0?'disabled':''} onclick="event.stopPropagation();selfieOpen(${i-1})"><svg class="ic" viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg></button><span>${i+1} / ${L.length}</span><button ${i>=L.length-1?'disabled':''} onclick="event.stopPropagation();selfieOpen(${i+1})"><svg class="ic" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button></div>`;
+  o.onclick=e=>{if(e.target===o)o.remove();};
+  o.querySelector('img').onclick=()=>o.remove();
+  document.body.appendChild(o);
+}
+
+// ── Selfie film + save (V30) ──
+let _sfFilmT=null;
+function _sfLoadImgs(){return Promise.all((GT.selfies||[]).map(p=>new Promise(r=>{const i=new Image();i.onload=()=>r(i);i.onerror=()=>r(null);i.src=p.url;})));}
+function _sfCaption(p){return {a:p.name,b:p.card+' · '+fmtTarotTime(p.t)};}
+function _sfDrawFrame(x,S,img,p,k,n,fade){
+  x.fillStyle='#0d0d0e';x.fillRect(0,0,S,S);
+  if(img){x.globalAlpha=fade;x.drawImage(img,0,0,S,S);x.globalAlpha=1;}
+  const g=x.createLinearGradient(0,S*.62,0,S);g.addColorStop(0,'rgba(0,0,0,0)');g.addColorStop(1,'rgba(0,0,0,.8)');x.fillStyle=g;x.fillRect(0,S*.62,S,S*.38);
+  const c=_sfCaption(p);
+  x.fillStyle='#fff';x.font=`italic 900 ${S*.085}px "Barlow Condensed",sans-serif`;x.textBaseline='alphabetic';
+  x.fillText(c.a.toUpperCase(),S*.05,S*.86);
+  x.font=`600 ${S*.042}px Inter,sans-serif`;x.fillStyle='rgba(255,255,255,.85)';x.fillText(c.b,S*.05,S*.93);
+  x.fillStyle='#ff5a1f';x.fillRect(0,S-S*.012,S*(k+1)/n,S*.012);
+  x.font=`italic 900 ${S*.05}px "Barlow Condensed",sans-serif`;x.fillStyle='#ff5a1f';x.textAlign='right';x.fillText('TAROT WOD',S*.95,S*.08);x.textAlign='left';
+}
+async function selfieFilm(){
+  const L=GT.selfies||[];if(!L.length)return;
+  document.getElementById('sf-film')?.remove();clearInterval(_sfFilmT);
+  const imgs=await _sfLoadImgs();
+  const o=document.createElement('div');o.id='sf-film';o.className='sf-view';
+  o.innerHTML=`<canvas width="720" height="720" class="sf-cv"></canvas><div class="sf-nav"><button onclick="event.stopPropagation();selfieFilm()" aria-label="Replay"><svg class="ic" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 3-6.7L3 8M3 3v5h5"/></svg></button><button onclick="event.stopPropagation();selfieSaveSheet()" aria-label="Save"><svg class="ic" viewBox="0 0 24 24"><path d="M12 3v12M7 10l5 5 5-5M4 21h16"/></svg></button><button onclick="event.stopPropagation();clearInterval(_sfFilmT);document.getElementById('sf-film').remove()" aria-label="Close"><svg class="ic" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>`;
+  o.onclick=e=>{if(e.target===o){clearInterval(_sfFilmT);o.remove();}};
+  document.body.appendChild(o);
+  const cv=o.querySelector('canvas'),x=cv.getContext('2d');
+  let k=0,f=0;const FPS=20,PER=18;
+  _sfFilmT=setInterval(()=>{
+    if(!document.body.contains(cv)){clearInterval(_sfFilmT);return;}
+    _sfDrawFrame(x,720,imgs[k],L[k],k,L.length,Math.min(1,(f+1)/5));
+    if(++f>=PER){f=0;k++;if(k>=L.length){clearInterval(_sfFilmT);}}
+  },1000/FPS);
+}
+function selfieSaveSheet(){
+  document.getElementById('sf-save')?.remove();
+  const o=document.createElement('div');o.id='sf-save';o.className='mo';
+  o.innerHTML=`<div class="ms"><div class="mt" style="margin-bottom:6px">Save selfies</div>
+  <div style="font-size:.82rem;color:var(--fg3);margin-bottom:16px">Opens the iPhone share menu: “Save images/video” puts them in Photos, or send them by WhatsApp, AirDrop…</div>
+  <div style="display:flex;flex-direction:column;gap:10px">
+  <button class="btn bp" onclick="selfieSavePhotos()">All photos (${(GT.selfies||[]).length})</button>
+  <button class="btn bp" id="sf-save-film" onclick="selfieSaveFilm()">The film (video)</button>
+  <button class="btn bs" onclick="document.getElementById('sf-save').remove()">Cancel</button></div></div>`;
+  o.onclick=e=>{if(e.target===o)o.remove();};
+  document.body.appendChild(o);
+}
+function _sfStamp(){const d=new Date();return d.getFullYear()+String(d.getMonth()+1).padStart(2,'0')+String(d.getDate()).padStart(2,'0')+'-'+String(d.getHours()).padStart(2,'0')+String(d.getMinutes()).padStart(2,'0');}
+async function _sfShareFiles(files,title){
+  try{
+    if(navigator.canShare&&navigator.canShare({files})){await navigator.share({files,title});return true;}
+  }catch(e){if(e&&e.name==='AbortError')return true;}
+  // fallback: download
+  try{files.forEach(f=>{const a=document.createElement('a');a.href=URL.createObjectURL(f);a.download=f.name;document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove();},4000);});return true;}catch(e){}
+  toast('Saving is not possible here — use the GitHub Pages link','err');return false;
+}
+async function selfieSavePhotos(){
+  const L=GT.selfies||[];if(!L.length)return;
+  const st=_sfStamp();
+  const files=await Promise.all(L.map(async(p,i)=>{const b=await (await fetch(p.url)).blob();return new File([b],`tarot-${st}-${String(i+1).padStart(2,'0')}-${p.name.normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^A-Za-z0-9-]+/g,'_')}.jpg`,{type:'image/jpeg'});}));
+  if(await _sfShareFiles(files,'Tarot WOD selfies'))document.getElementById('sf-save')?.remove();
+}
+async function selfieSaveFilm(){
+  const L=GT.selfies||[];if(!L.length)return;
+  if(typeof MediaRecorder==='undefined'){toast('Video recording not supported on this device','err');return;}
+  const btn=document.getElementById('sf-save-film');if(btn){btn.disabled=true;btn.textContent='Making the film… 0%';}
+  const imgs=await _sfLoadImgs();
+  const cv=document.createElement('canvas');cv.width=720;cv.height=720;const x=cv.getContext('2d');
+  const types=['video/mp4;codecs=avc1','video/mp4','video/webm;codecs=vp9','video/webm'];
+  const mime=types.find(t=>MediaRecorder.isTypeSupported&&MediaRecorder.isTypeSupported(t))||'';
+  let rec;try{rec=new MediaRecorder(cv.captureStream(20),mime?{mimeType:mime,videoBitsPerSecond:2500000}:{});}catch(e){toast('Video recording not supported on this device','err');if(btn){btn.disabled=false;btn.textContent='The film (video)';}return;}
+  const chunks=[];rec.ondataavailable=e=>{if(e.data&&e.data.size)chunks.push(e.data);};
+  const done=new Promise(r=>rec.onstop=r);
+  _sfDrawFrame(x,720,imgs[0],L[0],0,L.length,0);
+  rec.start(250);
+  const FPS=20,PER=18;
+  for(let k=0;k<L.length;k++){
+    for(let f=0;f<PER;f++){_sfDrawFrame(x,720,imgs[k],L[k],k,L.length,Math.min(1,(f+1)/5));await new Promise(r=>setTimeout(r,1000/FPS));}
+    if(btn)btn.textContent=`Making the film… ${Math.round((k+1)/L.length*100)}%`;
+  }
+  await new Promise(r=>setTimeout(r,300));rec.stop();await done;
+  const type=(rec.mimeType||mime||'video/webm').split(';')[0];
+  const ext=type.includes('mp4')?'mp4':'webm';
+  const file=new File([new Blob(chunks,{type})],`tarot-${_sfStamp()}-film.${ext}`,{type});
+  if(btn){btn.disabled=false;btn.textContent='The film (video)';}
+  if(await _sfShareFiles([file],'Tarot WOD film'))document.getElementById('sf-save')?.remove();
 }
 function _initGameBars(){
   setTimeout(_watchTarotClock,0);
